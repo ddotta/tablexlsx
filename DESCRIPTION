@@ -1,0 +1,15 @@
+Package: tablexlsx
+Type: Package
+Title: Functions to export data frames or tibbles to xlsx workbook
+Version: 0.1.0
+Author: c(
+    person(
+      "Damien", "Dotta",
+      email = "damien.dotta@live.fr",
+      role = c("aut", "cre")
+    )
+Maintainer: Damien Dotta <damien.dotta@live.fr>
+Description: This package contains functions that allow to export data frames or tibbles to xlsx workbook.
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
