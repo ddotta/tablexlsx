@@ -1,3 +1,4 @@
+#' @name add_table
 #' @title Function that adds a data frame to an (existing) .xlsx workbook sheet
 #'
 #' @param Table : data frame to be exported to the workbook sheet
@@ -31,6 +32,19 @@ add_table <- function(
     Footnote2,
     Footnote3){
 
+
+  # Assert parameters
+  assert_class(Table, "data.frame")
+  assert_class
+  assert_character1(SheetTitle)
+  assert_character1(TableTitle)
+  assert_numeric1(StartRow)
+  assert_numeric1(StartCol)
+  assert_class(FormatList, "list")
+  assert_numeric1(HeightTableTitle)
+  assert_character1(Footnote1)
+  assert_character1(Footnote2)
+  assert_character1(Footnote3)
 
   # If the sheet does not exist in the Excel file, we create it; otherwise, we invoke it
   if (!(SheetTitle %in% names(WbTitle))) {
