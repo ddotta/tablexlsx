@@ -1,12 +1,12 @@
-#' @title Function that adds a data frame or tibble to an (existing) .xlsx workbook sheet
+#' @title Function that adds a data frame to an (existing) .xlsx workbook sheet
 #'
-#' @param Table : data frame or tibble to be exported to the workbook sheet
+#' @param Table : data frame to be exported to the workbook sheet
 #' @param WbTitle : workbook
 #' @param SheetTitle : string used for the sheet's name
-#' @param TableTitle : string used for the data frame/tibble's title
+#' @param TableTitle : string used for the data frame's title
 #' @param StartRow : export start line number in the sheet (by default 1)
 #' @param StartCol : export start column number in the sheet (by default 1)
-#' @param FormatList : list that indicates the format of each column of the data frame/tibble
+#' @param FormatList : list that indicates the format of each column of the data frame
 #' @param HeightTableTitle : multiplier (if needed) for the height of the title line (by default 2)
 #' @param Footnote1 : string for footnote1
 #' @param Footnote2 : string for footnote2

@@ -2,7 +2,7 @@
 % Please edit documentation in R/add_table.R
 \name{add_table}
 \alias{add_table}
-\title{Function that adds a data frame or tibble to an (existing) .xlsx workbook sheet}
+\title{Function that adds a data frame to an (existing) .xlsx workbook sheet}
 \usage{
 add_table(
   Table,
@@ -19,19 +19,19 @@ add_table(
 )
 }
 \arguments{
-\item{Table}{: data frame or tibble to be exported to the workbook sheet}
+\item{Table}{: data frame to be exported to the workbook sheet}
 
 \item{WbTitle}{: workbook}
 
 \item{SheetTitle}{: string used for the sheet's name}
 
-\item{TableTitle}{: string used for the data frame/tibble's title}
+\item{TableTitle}{: string used for the data frame's title}
 
 \item{StartRow}{: export start line number in the sheet (by default 1)}
 
 \item{StartCol}{: export start column number in the sheet (by default 1)}
 
-\item{FormatList}{: list that indicates the format of each column of the data frame/tibble}
+\item{FormatList}{: list that indicates the format of each column of the data frame}
 
 \item{HeightTableTitle}{: multiplier (if needed) for the height of the title line (by default 2)}
 
@@ -45,5 +45,5 @@ add_table(
 excel wb object
 }
 \description{
-Function that adds a data frame or tibble to an (existing) .xlsx workbook sheet
+Function that adds a data frame to an (existing) .xlsx workbook sheet
 }
