@@ -1,7 +1,7 @@
 :package: Package `tablexlsx` <img src="man/figures/hex_tablexlsx.png" width=110 align="right"/>
 ======================================
 
-R package that allows to convert export data frames or tibbles from R to xslx workbooks
+R package that allows to convert export data frames from R to xslx workbooks
 
 ## Installation
 
@@ -17,4 +17,4 @@ library(tablexlsx)
 
 This package is a  wrapper of some functions from the great [openxlsx](https://github.com/ycphs/openxlsx) package.  
 
-The purpose of this package is to meet the needs of R users who want to export data frames or tibbles in `xlsx` files to share their data and results with other users not necessarily R users.  
+The purpose of this package is to meet the needs of R users who want to export data frames in `xlsx` files to share their data and results with other users not necessarily R users.  
