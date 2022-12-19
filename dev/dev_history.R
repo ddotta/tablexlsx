@@ -4,8 +4,8 @@
 ####################  AU QUOTIDIEN  ###############################
 # 3.a. Inclure du code, le documenter et le tester
 # Pour chaque fonction du package :
-usethis::use_r("utilities")
-usethis::use_test("csv_to_parquet")
+usethis::use_r("get_piped_name")
+usethis::use_test("add_table")
 # écrire le code de la fonction
 # documenter la fonction
 # # Pour mettre à jour la documentation et le NAMESPACE
@@ -46,7 +46,7 @@ usethis::use_pkgdown()
 usethis::use_github_action(name = "check-release")
 
 # Ajout des fichiers dans `data-raw`
-usethis::use_data_raw("region-2022")
+usethis::use_data_raw("style_guide")
 
 # Creation des vignettes
 usethis::use_vignette("aa-conversions")
