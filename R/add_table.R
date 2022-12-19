@@ -35,7 +35,7 @@ add_table <- function(
 
   # Assert parameters
   assert_class(Table, "data.frame")
-  assert_class
+  assert_class(WbTitle,"Workbook")
   assert_character1(SheetTitle)
   assert_character1(TableTitle)
   assert_numeric1(StartRow)
