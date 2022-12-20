@@ -1,4 +1,4 @@
-column_style <- function(object,ListStyle) {
+columnstyle <- function(object,ListStyle) {
 
   # check if ListStyle is a list
   assert_class(ListStyle, "list")
