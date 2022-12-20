@@ -5,28 +5,20 @@
 ## Style's definitions
 style <- list(
   # For title
-  style_title = openxlsx::createStyle(fontSize = 16, textDecoration = c("bold")),
+  title = openxlsx::createStyle(fontSize = 16, textDecoration = c("bold")),
   # For footnote1
-  style_footnote1 = openxlsx::createStyle(fontSize = 12),
+  footnote1 = openxlsx::createStyle(fontSize = 12),
   # For footnote2
-  style_footnote2 = openxlsx::createStyle(fontSize = 12, textDecoration = c("bold")),
+  footnote2 = openxlsx::createStyle(fontSize = 12, textDecoration = c("bold")),
   # For footnote3
-  style_footnote3 = openxlsx::createStyle(fontSize = 12, textDecoration = c("bold")),
+  footnote3 = openxlsx::createStyle(fontSize = 12, textDecoration = c("bold")),
   # For column headers
-  style_col_header = openxlsx::createStyle(fontSize = 12,
+  col_header = openxlsx::createStyle(fontSize = 12,
                                             textDecoration = c("bold"),
                                             border = c("top", "bottom", "left", "right"),
                                             borderStyle = "thin",
                                             wrapText = TRUE,
                                             halign = "center"),
-
-  # For column headers
-  style_col_header = openxlsx::createStyle(fontSize = 12,
-                                              textDecoration = c("bold"),
-                                              border = c("top", "bottom", "left", "right"),
-                                              borderStyle = "thin",
-                                              wrapText=TRUE,
-                                              halign = "center"),
 
   # For cells in character format
   char = openxlsx::createStyle(fontSize = 12,
