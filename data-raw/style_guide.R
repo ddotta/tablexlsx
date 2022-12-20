@@ -1,9 +1,9 @@
-######################################################################%#
-#### Code to create the rds file `style_guide.rda in `inst/extdata`####
-####################################################################%#
+################################################################%#
+#### Code to create the rds file `style.rda in `inst/extdata`####
+##############################################################%#
 
 ## Style's definitions
-style_guide <- list(
+style <- list(
   # For title
   style_title = openxlsx::createStyle(fontSize = 16, textDecoration = c("bold")),
   # For footnote1
@@ -49,4 +49,4 @@ style_guide <- list(
 )
 
 
-usethis::use_data(style_guide, overwrite = TRUE)
+usethis::use_data(style, overwrite = TRUE)
