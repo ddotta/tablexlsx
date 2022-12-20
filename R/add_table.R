@@ -76,26 +76,7 @@ add_table <- function(
                      sheet = mysheet,
                      cols = StartCol,
                      rows = StartRow,
-                     style = style_title)
-
-
-  ## Style's definitions
-  # For title
-  style_title <- openxlsx::createStyle(fontSize = 16, textDecoration = c("bold"))
-  # For footnote1
-  style_footnote1 <- openxlsx::createStyle(fontSize = 12)
-  # For footnote2
-  style_footnote2 <- openxlsx::createStyle(fontSize = 12, textDecoration = c("bold"))
-  # For footnote3
-  style_footnote3 <- openxlsx::createStyle(fontSize = 12, textDecoration = c("bold"))
-  # For column headers
-  style_col_header <- openxlsx::createStyle(fontSize = 12,
-                                            textDecoration = c("bold"),
-                                            border = c("top", "bottom", "left", "right"),
-                                            borderStyle = "thin",
-                                            wrapText = TRUE,
-                                            halign = "center")
-
+                     style = style$style_title)
 
 
   # Add a table
@@ -123,18 +104,18 @@ add_table <- function(
                       startCol = StartCol, startRow = StartRow + nrow(Table) + 4)
   openxlsx::addStyle(WbTitle, sheet = mysheet,
                      cols = StartCol, rows = StartRow + nrow(Table) + 4,
-                     style = style_footnote1)
+                     style = style$style_footnote1)
 
   openxlsx::writeData(WbTitle, sheet = mysheet, x = Footnote2,
                       startCol = StartCol, startRow = StartRow + nrow(Table) + 5)
   openxlsx::addStyle(WbTitle, sheet = mysheet,
                      cols = StartCol, rows = StartRow + nrow(Table) + 5,
-                     style = style_footnote2)
+                     style = style$style_footnote2)
 
   openxlsx::writeData(WbTitle, sheet = mysheet, x = Footnote3,
                       startCol = StartCol, startRow = StartRow + nrow(Table) + 6)
   openxlsx::addStyle(WbTitle, sheet = mysheet,
                      cols = StartCol, rows = StartRow + nrow(Table) + 6,
-                     style = style_footnote3)
+                     style = style$style_footnote3)
 
 }
