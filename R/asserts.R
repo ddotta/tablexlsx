@@ -62,3 +62,33 @@ assert_numeric1 <- function(x, scalar = FALSE) {
     stop(msg, call. = FALSE)
   }
 }
+
+#' @name assert_named_list
+#'
+#' @param x Object
+#'
+#' @noRd
+assert_named_list <- function(x) {
+
+  ok <- !is.null(names(x))
+
+  if (!ok) {
+    stop(substitute(x), " must be a named list", call. = FALSE)
+  }
+}
+
+#' @name assert_named_list_in_list
+#'
+#' @param x Object
+#'
+#' @noRd
+assert_named_list_in_list <- function(x) {
+
+  ok <- sapply(x, function(y) {
+    !("" %in% allNames(y))
+  })
+
+  if (!all(ok)) {
+    stop(substitute(x), " must be a list composed of one or more lists of which all elements must be named", call. = FALSE)
+  }
+}
