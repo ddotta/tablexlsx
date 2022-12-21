@@ -2,7 +2,8 @@ toxlsx <- function(object,
                    tosheet,
                    title,
                    columnstyle,
-                   path) {
+                   path,
+                   automaticopen = TRUE) {
 
 
   # check if object is a data frame or a list
@@ -72,8 +73,15 @@ toxlsx <- function(object,
   openxlsx::saveWorkbook(wb,
                          file.path(
                            path,
-                           "test.xlsx"
+                           "export.xlsx"
                          ),
                          overwrite = TRUE)
+
+  if (isTRUE(automaticopen)) {
+    openxlsx::openXL(file = file.path(
+      path,
+      "export.xlsx"
+    ))
+  }
 
 }
