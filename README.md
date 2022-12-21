@@ -33,11 +33,14 @@ iris %>% toxlsx()
 - Export a list of data frames to an xlsx file by specifying which data frame goes in which sheet, styling each column, giving a title and footnotes...
 
 ``` r
+iris <- iris %>% head()
+cars <- cars %>% head()
+
 list(iris,cars) %>%
   toxlsx(tosheet = list("iris" = "first",
                         "cars" = "second"),
-         title = list("iris" = "Presentation of iris",
-                      "cars" = "Data about cars"),
+         title = list("iris" = "Head of iris",
+                      "cars" = "Head of cars"),
          columnstyle = list("iris" = list("c1" = "number",
                                           "c2" = "number",
                                           "c3" = "number",
@@ -53,3 +56,7 @@ list(iris,cars) %>%
                            "cars" = "Source : M. Ezekiel"),
          path = "C:/Users/AQEW8W/Downloads")
 ```
+
+Preview of the xlsx file in LibreOffice Calc :  
+
+<img src="man/figures/preview_Calc.png" width="100%" />
