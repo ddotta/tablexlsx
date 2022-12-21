@@ -1,5 +1,6 @@
 toxlsx <- function(object,
                    tosheet,
+                   title,
                    columnstyle,
                    path) {
 
@@ -36,6 +37,7 @@ toxlsx <- function(object,
 
   for (df in output_name) {
     output[[df]][["sheet"]] <- tosheet[[df]]
+    output[[df]][["title"]] <- title[[df]]
     output[[df]][["column"]] <- columnstyle[[df]]
   }
 
@@ -56,7 +58,7 @@ toxlsx <- function(object,
       Table = get(df),
       WbTitle = wb,
       SheetTitle = output[[df]][["sheet"]],
-      TableTitle = "toto",
+      TableTitle = output[[df]][["title"]],
       StartRow = 1,
       StartCol = 1,
       FormatList = ColumnList,
