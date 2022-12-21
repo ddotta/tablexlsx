@@ -19,6 +19,7 @@ This package is a  wrapper of some functions from the great [openxlsx](https://g
 
 The purpose of this package is to meet the needs of R users who want to export data frames in `xlsx` files to share their data and results with other users not necessarily R users.  
 
+The goal is to get an API that is as simple as possible to use. The package will be improved over time and will include features such as the possibility to highlight in excel files some remarkable rows/columns (for example totals or coefficients...).
 
 ## Examples
 
