@@ -54,9 +54,11 @@ toxlsx <- function(object,
   # Fill workbook
   for (df in output_name) {
 
+    # Initialize empty named list to format columns
     ColumnList <- setNames(vector("list",length = length(output[[df]][["column"]])),
                            names(output[[df]][["column"]]))
 
+    # Fill ColumnList
     for (i in 1:length(output[[df]][["column"]])) {
       ColumnList[[i]] <- style[[output[[df]][["column"]][[paste0("c",i)]]]]
     }
