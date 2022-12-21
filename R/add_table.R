@@ -76,7 +76,7 @@ add_table <- function(
                      sheet = mysheet,
                      cols = StartCol,
                      rows = StartRow,
-                     style = style$style_title)
+                     style = style$title)
 
 
   # Add a table
@@ -86,36 +86,35 @@ add_table <- function(
                            startRow = StartRow + 2,
                            startCol = StartCol + 1,
                            rowNames = FALSE,
-                           headerStyle = style_col_header)
+                           headerStyle = style$col_header)
 
   # Format of the table's columns
-  assign_format <- function(i) {
+  sapply(seq_len(length(FormatList)), function(i) {
+
     openxlsx::addStyle(WbTitle, sheet = mysheet,
                        cols = i + StartCol,
                        rows = ((StartRow + 3):(StartRow + 2 + nrow(Table))),
                        style = FormatList[[i]])
-  }
 
-  sapply(seq_len(length(FormatList)), assign_format)
-
+  })
 
   # Add footnotes
   openxlsx::writeData(WbTitle, sheet = mysheet, x = Footnote1,
                       startCol = StartCol, startRow = StartRow + nrow(Table) + 4)
   openxlsx::addStyle(WbTitle, sheet = mysheet,
                      cols = StartCol, rows = StartRow + nrow(Table) + 4,
-                     style = style$style_footnote1)
+                     style = style$footnote1)
 
   openxlsx::writeData(WbTitle, sheet = mysheet, x = Footnote2,
                       startCol = StartCol, startRow = StartRow + nrow(Table) + 5)
   openxlsx::addStyle(WbTitle, sheet = mysheet,
                      cols = StartCol, rows = StartRow + nrow(Table) + 5,
-                     style = style$style_footnote2)
+                     style = style$footnote2)
 
   openxlsx::writeData(WbTitle, sheet = mysheet, x = Footnote3,
                       startCol = StartCol, startRow = StartRow + nrow(Table) + 6)
   openxlsx::addStyle(WbTitle, sheet = mysheet,
                      cols = StartCol, rows = StartRow + nrow(Table) + 6,
-                     style = style$style_footnote3)
+                     style = style$footnote3)
 
 }
