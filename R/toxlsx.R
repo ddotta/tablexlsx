@@ -2,6 +2,9 @@ toxlsx <- function(object,
                    tosheet,
                    title,
                    columnstyle,
+                   footnote1,
+                   footnote2,
+                   footnote3,
                    path,
                    automaticopen = TRUE) {
 
@@ -40,6 +43,9 @@ toxlsx <- function(object,
     output[[df]][["sheet"]] <- tosheet[[df]]
     output[[df]][["title"]] <- title[[df]]
     output[[df]][["column"]] <- columnstyle[[df]]
+    output[[df]][["footnote1"]] <- footnote1[[df]]
+    output[[df]][["footnote2"]] <- footnote2[[df]]
+    output[[df]][["footnote3"]] <- footnote3[[df]]
   }
 
   # Creation empty workbook
@@ -64,23 +70,23 @@ toxlsx <- function(object,
       StartCol = 1,
       FormatList = ColumnList,
       HeightTableTitle = 2,
-      Footnote1 = "titi",
-      Footnote2 = "tata",
-      Footnote3 = "tutu")
+      TableFootnote1 = output[[df]][["footnote1"]],
+      TableFootnote2 = output[[df]][["footnote2"]],
+      TableFootnote3 = output[[df]][["footnote3"]])
 
   }
 
   openxlsx::saveWorkbook(wb,
                          file.path(
                            path,
-                           "export.xlsx"
+                           "Export.xlsx"
                          ),
                          overwrite = TRUE)
 
   if (isTRUE(automaticopen)) {
     openxlsx::openXL(file = file.path(
       path,
-      "export.xlsx"
+      "Export.xlsx"
     ))
   }
 
