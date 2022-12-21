@@ -21,7 +21,7 @@ style <- list(
                                             halign = "center"),
 
   # For cells in character format
-  char = openxlsx::createStyle(fontSize = 12,
+  character = openxlsx::createStyle(fontSize = 12,
                                   border = c("top", "bottom", "left", "right"),
                                   borderStyle = "thin"),
 
