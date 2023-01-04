@@ -1,3 +1,8 @@
+<!-- badges: start -->
+![GitHub top
+language](https://img.shields.io/github/languages/top/ddotta/tablexlsx)
+<!-- badges: end -->
+
 :package: Package `tablexlsx` <img src="man/figures/hex_tablexlsx.png" width=110 align="right"/>
 ======================================
 
