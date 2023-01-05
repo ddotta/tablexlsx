@@ -22,14 +22,20 @@ style <- list(
 
   # For cells in character format
   character = openxlsx::createStyle(fontSize = 12,
-                                  border = c("top", "bottom", "left", "right"),
-                                  borderStyle = "thin"),
+                                    border = c("top", "bottom", "left", "right"),
+                                    borderStyle = "thin"),
 
   # For cells in number format (with thousands separator)
   number = openxlsx::createStyle(fontSize = 12,
-                                      numFmt = "### ### ### ##0",
-                                      border = c("top", "bottom", "left", "right"),
-                                      borderStyle = "thin"),
+                                 numFmt = "### ### ### ##0",
+                                 border = c("top", "bottom", "left", "right"),
+                                 borderStyle = "thin"),
+
+  # For cells in number format with decimals (and with thousands separator)
+  decimal = openxlsx::createStyle(fontSize = 12,
+                                  numFmt = "### ### ### ##0.0",
+                                  border = c("top", "bottom", "left", "right"),
+                                  borderStyle = "thin"),
 
   # For cells in percentage format (centered)
   percent = openxlsx::createStyle(fontSize = 12,
