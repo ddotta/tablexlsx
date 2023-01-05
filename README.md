@@ -63,6 +63,6 @@ list(iris,cars) %>%
          path = "C:/Users/AQEW8W/Downloads")
 ```
 
-Preview of the xlsx file in LibreOffice Calc :  
+Preview of the xlsx file in LibreOffice Calc with the 2 data frames in the 2 separates sheets :  
 
 <img src="man/figures/preview_Calc.png" width="100%" />
