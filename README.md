@@ -39,7 +39,7 @@ iris %>% toxlsx(path = "mypath")
 :two: Export a list of several data frames to an xlsx file (each data frame in a different sheet)
 
 ``` r
-list(iris,mtcars) %>% toxlsx(path = "C:/Users/AQEW8W/Downloads")
+list(iris,mtcars) %>% toxlsx(path = "mypath")
 ```
 
 :three: Export a list of data frames to an xlsx file by specifying which data frame goes in which sheet, styling each column, giving a title and footnotes...
