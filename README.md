@@ -33,7 +33,7 @@ This package will allow you to make exports in xlsx format, whether they are sim
 - Simply export a data frame to an xlsx file 
 
 ``` r
-iris %>% toxlsx()
+iris %>% toxlsx(path = "C:/Users/AQEW8W/Downloads")
 ```
 
 - Export a list of data frames to an xlsx file by specifying which data frame goes in which sheet, styling each column, giving a title and footnotes...
