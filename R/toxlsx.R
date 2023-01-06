@@ -1,10 +1,10 @@
 toxlsx <- function(object,
-                   tosheet,
-                   title,
-                   columnstyle,
-                   footnote1,
-                   footnote2,
-                   footnote3,
+                   tosheet = list(),
+                   title = list(),
+                   columnstyle = list(),
+                   footnote1 = list(),
+                   footnote2 = list(),
+                   footnote3 = list(),
                    path,
                    automaticopen = TRUE) {
 
@@ -13,10 +13,18 @@ toxlsx <- function(object,
   assert_class(object, c("data.frame","list"))
   # check if tosheet is a list
   assert_class(tosheet, "list")
+  # check if title is a list
+  assert_class(title, "list")
   # check if columnstyle is a list
   assert_class(columnstyle, "list")
   # check if columnstyle is a named list
   assert_named_list(columnstyle)
+  # check if footnote1 is a list
+  assert_class(footnote1, "list")
+  # check if footnote2 is a list
+  assert_class(footnote2, "list")
+  # check if footnote3 is a list
+  assert_class(footnote3, "list")
 
   sc <- sys.calls()
   caller <- sc[[length(sc) - 1]]
