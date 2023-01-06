@@ -30,13 +30,19 @@ The goal is to get an API that is as simple as possible to use. The package will
 
 This package will allow you to make exports in xlsx format, whether they are simple or very customized :
 
-- Simply export a data frame to an xlsx file 
+:one: Simply export a data frame to an xlsx file 
 
 ``` r
-iris %>% toxlsx(path = "C:/Users/AQEW8W/Downloads")
+iris %>% toxlsx(path = "mypath")
 ```
 
-- Export a list of data frames to an xlsx file by specifying which data frame goes in which sheet, styling each column, giving a title and footnotes...
+:two: Export a list of several data frames to an xlsx file (each data frame in a different sheet)
+
+``` r
+list(iris,mtcars) %>% toxlsx(path = "C:/Users/AQEW8W/Downloads")
+```
+
+:three: Export a list of data frames to an xlsx file by specifying which data frame goes in which sheet, styling each column, giving a title and footnotes...
 
 ``` r
 iris <- iris %>% head()
@@ -60,7 +66,7 @@ list(iris,cars) %>%
                            "cars" = "Data recorded in the 1920s"),
          footnote3 = list("iris" = "Source : R.A. Fisher",
                            "cars" = "Source : M. Ezekiel"),
-         path = "C:/Users/AQEW8W/Downloads")
+         path = "mypath")
 ```
 
 Preview of the xlsx file in LibreOffice Calc with the 2 data frames in the 2 separates sheets :  
