@@ -13,9 +13,9 @@ add_table(
   StartCol = 1,
   FormatList,
   HeightTableTitle = 2,
-  Footnote1,
-  Footnote2,
-  Footnote3
+  TableFootnote1,
+  TableFootnote2,
+  TableFootnote3
 )
 }
 \arguments{
@@ -35,11 +35,11 @@ add_table(
 
 \item{HeightTableTitle}{: multiplier (if needed) for the height of the title line (by default 2)}
 
-\item{Footnote1}{: string for footnote1}
+\item{TableFootnote1}{: string for TableFootnote1}
 
-\item{Footnote2}{: string for footnote2}
+\item{TableFootnote2}{: string for TableFootnote2}
 
-\item{Footnote3}{: string for footnote1}
+\item{TableFootnote3}{: string for TableFootnote1}
 }
 \value{
 excel wb object
