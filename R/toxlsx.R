@@ -47,18 +47,24 @@ toxlsx <- function(object,
   output <- setNames(vector("list",length = length(output_name)),
                      output_name)
 
+  # Initialize also an empty list for Sheetslist
+  Sheetslist <- output
+
   for (df in output_name) {
+
     output[[df]][["sheet"]] <-
       if (length(tosheet)==0) {
         paste0("Sheet ",as.character(which(output_name == df)))
       } else {
         tosheet[[df]]
       }
+    Sheetslist[which(output_name == df)] <- output[[df]][["sheet"]]
     output[[df]][["title"]] <- if (length(title)==0) df else title[[df]]
     output[[df]][["column"]] <- if (paste(names(columnstyle), collapse = '') %in% c("default")) list() else columnstyle[[df]]
     output[[df]][["footnote1"]] <- if (length(footnote1)==0) "" else footnote1[[df]]
     output[[df]][["footnote2"]] <- if (length(footnote2)==0) "" else footnote2[[df]]
     output[[df]][["footnote3"]] <- if (length(footnote3)==0) "" else footnote3[[df]]
+
   }
 
   # Creation empty workbook
