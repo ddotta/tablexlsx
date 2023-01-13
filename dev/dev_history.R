@@ -4,7 +4,7 @@
 ####################  AU QUOTIDIEN  ###############################
 # 3.a. Inclure du code, le documenter et le tester
 # Pour chaque fonction du package :
-usethis::use_r("get_piped_name")
+usethis::use_r("add_table")
 usethis::use_test("add_table")
 # écrire le code de la fonction
 # documenter la fonction
