@@ -53,6 +53,8 @@ list(iris,cars) %>%
                         "cars" = "second"),
          title = list("iris" = "Head of iris",
                       "cars" = "Head of cars"),
+         # The `columnstyle` argument is optional in toxlsx(). 
+         # It is used only if you want to specify the format of each column
          columnstyle = list("iris" = list("c1" = "decimal",
                                           "c2" = "decimal",
                                           "c3" = "number",
