@@ -26,11 +26,11 @@ add_table <- function(
     TableTitle,
     StartRow = 1,
     StartCol = 1,
-    FormatList,
+    FormatList = list(),
     HeightTableTitle = 2,
-    TableFootnote1,
-    TableFootnote2,
-    TableFootnote3){
+    TableFootnote1 = list(),
+    TableFootnote2 = list(),
+    TableFootnote3 = list()){
 
 
   # Assert parameters
