@@ -74,6 +74,8 @@ list(iris,cars) %>%
          path = mypath)
 ```
 
+The equivalent with the {openxlsx} syntax would be much longer and more painful to write. See [here](https://gist.github.com/ddotta/25ae0ec6c142dd7327057990ef955ae4) for the equivalent of the third example.  
+
 Preview of the xlsx file in LibreOffice Calc with the 2 data frames in the 2 separates sheets :  
 
 <img src="man/figures/preview_Calc.png" width="100%" />
