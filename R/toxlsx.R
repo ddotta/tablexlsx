@@ -107,8 +107,9 @@ toxlsx <- function(object,
 
   # Fill workbook
   for (df in output_name) {
+    # If argument columnstyle is not filled in the function
     if (paste(names(columnstyle), collapse = "") %in% c("default")) {
-      # Initialize empty named list to format columns
+      # Initialize empty named list to format columns (ColumnList)
       ColumnList <- as.list(setNames(
         rep("character", length(names(get(df)))),
         paste0("c", 1:length(names(get(df))))
@@ -118,8 +119,9 @@ toxlsx <- function(object,
       for (i in 1:length(ColumnList)) {
         ColumnList[[i]] <- style[[ColumnList[[paste0("c", i)]]]]
       }
+    # Else if argument columnstyle is filled in the function
     } else {
-      # Initialize empty named list to format columns
+      # Initialize empty named list to format columns (ColumnList)
       ColumnList <- setNames(
         vector("list", length = length(output[[df]][["column"]])),
         names(output[[df]][["column"]])
