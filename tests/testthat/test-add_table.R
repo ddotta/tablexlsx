@@ -23,7 +23,7 @@ test_that("add_table function throws error when passing invalid data type for Wb
   expect_snapshot(
     add_table(Table, WbTitle, SheetTitle, TableTitle),
     error = TRUE
-    )
+  )
 })
 
 test_that("add_table function throws error when passing invalid data type for SheetTitle parameter", {
@@ -36,7 +36,7 @@ test_that("add_table function throws error when passing invalid data type for Sh
   expect_snapshot(
     add_table(Table, WbTitle, SheetTitle, TableTitle),
     error = TRUE
-    )
+  )
 })
 
 test_that("add_table function throws error when passing invalid data type for TableTitle parameter", {
@@ -49,7 +49,7 @@ test_that("add_table function throws error when passing invalid data type for Ta
   expect_snapshot(
     add_table(Table, WbTitle, SheetTitle, TableTitle),
     error = TRUE
-    )
+  )
 })
 
 test_that("add_table function throws error when passing invalid data type for StartRow parameter", {
@@ -63,7 +63,7 @@ test_that("add_table function throws error when passing invalid data type for St
   expect_snapshot(
     add_table(Table, WbTitle, SheetTitle, TableTitle, StartRow),
     error = TRUE
-    )
+  )
 })
 
 test_that("add_table function throws error when passing invalid data type for StartCol parameter", {
@@ -77,7 +77,7 @@ test_that("add_table function throws error when passing invalid data type for St
   expect_snapshot(
     add_table(Table, WbTitle, SheetTitle, TableTitle, StartCol = StartCol),
     error = TRUE
-    )
+  )
 })
 
 test_that("add_table function throws error when passing invalid data type for StartRow parameter", {
@@ -92,7 +92,8 @@ test_that("add_table function throws error when passing invalid data type for St
 
   expect_snapshot(
     add_table(Table, WbTitle, SheetTitle, TableTitle, StartRow, StartCol, FormatList),
-    error = TRUE)
+    error = TRUE
+  )
 })
 
 test_that("add_table function throws error when passing invalid data type for StartCol parameter", {
@@ -107,7 +108,8 @@ test_that("add_table function throws error when passing invalid data type for St
 
   expect_snapshot(
     add_table(Table, WbTitle, SheetTitle, TableTitle, StartRow, StartCol, FormatList),
-    error = TRUE)
+    error = TRUE
+  )
 })
 
 test_that("add_table function throws error when passing invalid data type for TableFootnote1 parameter", {
@@ -123,9 +125,11 @@ test_that("add_table function throws error when passing invalid data type for Ta
 
   expect_snapshot(
     add_table(Table, WbTitle, SheetTitle, TableTitle,
-              StartRow, StartCol, FormatList, TableFootnote1 = TableFootnote1),
+      StartRow, StartCol, FormatList,
+      TableFootnote1 = TableFootnote1
+    ),
     error = TRUE
-    )
+  )
 })
 
 test_that("add_table function throws error when passing invalid data type for TableFootnote2 parameter", {
@@ -141,9 +145,11 @@ test_that("add_table function throws error when passing invalid data type for Ta
 
   expect_snapshot(
     add_table(Table, WbTitle, SheetTitle, TableTitle,
-              StartRow, StartCol, FormatList, TableFootnote2 = TableFootnote2),
+      StartRow, StartCol, FormatList,
+      TableFootnote2 = TableFootnote2
+    ),
     error = TRUE
-    )
+  )
 })
 
 test_that("add_table function throws error when passing invalid data type for TableFootnote3 parameter", {
@@ -159,9 +165,11 @@ test_that("add_table function throws error when passing invalid data type for Ta
 
   expect_snapshot(
     add_table(Table, WbTitle, SheetTitle, TableTitle, StartRow, StartCol,
-              FormatList, TableFootnote3 = TableFootnote3),
+      FormatList,
+      TableFootnote3 = TableFootnote3
+    ),
     error = TRUE
-    )
+  )
 })
 
 test_that("add_table function creates a new sheet in the workbook if the sheet name does not exist", {
@@ -179,7 +187,7 @@ test_that("add_table function creates a new sheet in the workbook if the sheet n
 
 test_that("add_table function adds data frame to the specified sheet in the workbook", {
   wb <- openxlsx::createWorkbook()
-  Table <- data.frame(A=c(1,2,3), B=c("a","b","c"))
+  Table <- data.frame(A = c(1, 2, 3), B = c("a", "b", "c"))
   WbTitle <- wb
   SheetTitle <- "Sheet1"
   TableTitle <- "Test Table"
@@ -249,7 +257,7 @@ test_that("add_table function applies correct formatting to columns and rows of 
 
 test_that("add_table function returns the excel workbook object", {
   wb <- openxlsx::createWorkbook()
-  Table <- data.frame(A = c(1,2,3), B = c(4,5,6))
+  Table <- data.frame(A = c(1, 2, 3), B = c(4, 5, 6))
   WbTitle <- wb
   SheetTitle <- "Sheet1"
   TableTitle <- "Test Table"

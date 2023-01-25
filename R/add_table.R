@@ -30,12 +30,11 @@ add_table <- function(
     HeightTableTitle = 2,
     TableFootnote1 = list(),
     TableFootnote2 = list(),
-    TableFootnote3 = list()){
-
+    TableFootnote3 = list()) {
 
   # Assert parameters
   assert_class(Table, "data.frame")
-  assert_class(WbTitle,"Workbook")
+  assert_class(WbTitle, "Workbook")
   assert_character1(SheetTitle)
   assert_character1(TableTitle)
   assert_numeric1(StartRow)
@@ -55,66 +54,90 @@ add_table <- function(
 
 
   # Adjusting the size of columns and rows
-  openxlsx::setColWidths(WbTitle, sheet = mysheet, cols = StartCol + 1,widths = 45)
-  openxlsx::setColWidths(WbTitle, sheet = mysheet, cols = StartCol + 2,widths = 30)
-  openxlsx::setColWidths(WbTitle, sheet = mysheet, cols = c(StartCol + 3:38),widths = 20)
+  openxlsx::setColWidths(WbTitle, sheet = mysheet, cols = StartCol + 1, widths = 45)
+  openxlsx::setColWidths(WbTitle, sheet = mysheet, cols = StartCol + 2, widths = 30)
+  openxlsx::setColWidths(WbTitle, sheet = mysheet, cols = c(StartCol + 3:38), widths = 20)
 
   # Size of column headers
-  openxlsx::setRowHeights(WbTitle, sheet = mysheet, rows = StartRow + 2, heights = 20*HeightTableTitle)
+  openxlsx::setRowHeights(WbTitle, sheet = mysheet, rows = StartRow + 2, heights = 20 * HeightTableTitle)
 
   # Add title
   openxlsx::setRowHeights(WbTitle, sheet = mysheet, rows = StartRow, heights = 20)
 
   # Definition of column formats
-  openxlsx::writeData(WbTitle,
-                      sheet = mysheet,
-                      x = TableTitle,
-                      startCol = StartCol,
-                      startRow = StartRow)
+  openxlsx::writeData(
+    WbTitle,
+    sheet = mysheet,
+    x = TableTitle,
+    startCol = StartCol,
+    startRow = StartRow
+  )
 
-  openxlsx::addStyle(WbTitle,
-                     sheet = mysheet,
-                     cols = StartCol,
-                     rows = StartRow,
-                     style = style$title)
+  openxlsx::addStyle(
+    WbTitle,
+    sheet = mysheet,
+    cols = StartCol,
+    rows = StartRow,
+    style = style$title
+  )
 
 
   # Add a table
-  openxlsx::writeDataTable(wb = WbTitle,
-                           sheet = mysheet,
-                           x = Table,
-                           startRow = StartRow + 2,
-                           startCol = StartCol + 1,
-                           rowNames = FALSE,
-                           headerStyle = style$col_header)
+  openxlsx::writeDataTable(
+    wb = WbTitle,
+    sheet = mysheet,
+    x = Table,
+    startRow = StartRow + 2,
+    startCol = StartCol + 1,
+    rowNames = FALSE,
+    headerStyle = style$col_header
+  )
 
   # Format of the table's columns
   sapply(seq_len(length(FormatList)), function(i) {
-
-    openxlsx::addStyle(WbTitle, sheet = mysheet,
-                       cols = i + StartCol,
-                       rows = ((StartRow + 3):(StartRow + 2 + nrow(Table))),
-                       style = FormatList[[i]])
-
+    openxlsx::addStyle(
+      WbTitle,
+      sheet = mysheet,
+      cols = i + StartCol,
+      rows = ((StartRow + 3):(StartRow + 2 + nrow(Table))),
+      style = FormatList[[i]]
+    )
   })
 
   # Add footnotes
-  openxlsx::writeData(WbTitle, sheet = mysheet, x = TableFootnote1,
-                      startCol = StartCol, startRow = StartRow + nrow(Table) + 4)
-  openxlsx::addStyle(WbTitle, sheet = mysheet,
-                     cols = StartCol, rows = StartRow + nrow(Table) + 4,
-                     style = style$footnote1)
+  openxlsx::writeData(
+    WbTitle,
+    sheet = mysheet, x = TableFootnote1,
+    startCol = StartCol, startRow = StartRow + nrow(Table) + 4
+  )
+  openxlsx::addStyle(
+    WbTitle,
+    sheet = mysheet,
+    cols = StartCol, rows = StartRow + nrow(Table) + 4,
+    style = style$footnote1
+  )
 
-  openxlsx::writeData(WbTitle, sheet = mysheet, x = TableFootnote2,
-                      startCol = StartCol, startRow = StartRow + nrow(Table) + 5)
-  openxlsx::addStyle(WbTitle, sheet = mysheet,
-                     cols = StartCol, rows = StartRow + nrow(Table) + 5,
-                     style = style$footnote2)
+  openxlsx::writeData(
+    WbTitle,
+    sheet = mysheet, x = TableFootnote2,
+    startCol = StartCol, startRow = StartRow + nrow(Table) + 5
+  )
+  openxlsx::addStyle(
+    WbTitle,
+    sheet = mysheet,
+    cols = StartCol, rows = StartRow + nrow(Table) + 5,
+    style = style$footnote2
+  )
 
-  openxlsx::writeData(WbTitle, sheet = mysheet, x = TableFootnote3,
-                      startCol = StartCol, startRow = StartRow + nrow(Table) + 6)
-  openxlsx::addStyle(WbTitle, sheet = mysheet,
-                     cols = StartCol, rows = StartRow + nrow(Table) + 6,
-                     style = style$footnote3)
-
+  openxlsx::writeData(
+    WbTitle,
+    sheet = mysheet, x = TableFootnote3,
+    startCol = StartCol, startRow = StartRow + nrow(Table) + 6
+  )
+  openxlsx::addStyle(
+    WbTitle,
+    sheet = mysheet,
+    cols = StartCol, rows = StartRow + nrow(Table) + 6,
+    style = style$footnote3
+  )
 }

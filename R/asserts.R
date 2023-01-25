@@ -69,7 +69,6 @@ assert_numeric1 <- function(x, scalar = FALSE) {
 #'
 #' @noRd
 assert_named_list <- function(x) {
-
   ok <- !is.null(names(x))
 
   if (!ok) {
@@ -83,7 +82,6 @@ assert_named_list <- function(x) {
 #'
 #' @noRd
 assert_named_list_in_list <- function(x) {
-
   ok <- sapply(x, function(y) {
     !("" %in% allNames(y))
   })
