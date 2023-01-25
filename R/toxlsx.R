@@ -1,3 +1,30 @@
+#' Convert R objects to excel files
+#'
+#' This is a function called "toxlsx" that takes in several parameters
+#' including an "object" (which must be a data frame or list),
+#' "tosheet", "title", "columnstyle", "footnote1", "footnote2", and "footnote3"
+#' (all of which must be lists), and "path" and "automaticopen".
+#' The function starts by performing several assertions to ensure that the
+#' input parameters are of the correct type and format. It then creates an
+#' empty list called "output" and names its elements using the "output_name"
+#' variable. The function then loops through each element in "output_name"
+#' and assigns values to several elements within the "output" list.
+#' The function then creates an empty workbook and fills it with the data
+#' from the "output" list. The function also includes some additional logic
+#' for formatting columns in the workbook.
+#'
+#' @param object data.frame or list to be converted to excel
+#' @param tosheet list of sheet names for each element of object
+#' @param title list of title for each element of object
+#' @param columnstyle list of style for each element of object
+#' @param footnote1 list of footnote1 for each element of object
+#' @param footnote2 list of footnote2 for each element of object
+#' @param footnote3 list of footnote3 for each element of object
+#' @param path path to save excel file
+#' @param automaticopen logical indicating if excel file should open automatically
+#'
+#' @return an excel file
+#'
 toxlsx <- function(object,
                    tosheet = list(),
                    title = list(),
@@ -7,6 +34,7 @@ toxlsx <- function(object,
                    footnote3 = list(),
                    path,
                    automaticopen = TRUE) {
+
   # check if object is a data frame or a list
   assert_class(object, c("data.frame", "list"))
   # check if tosheet is a list
@@ -24,9 +52,13 @@ toxlsx <- function(object,
   # check if footnote3 is a list
   assert_class(footnote3, "list")
 
+  # Get the function call of the last function call
   sc <- sys.calls()
   caller <- sc[[length(sc) - 1]]
+  # Convert the function call to a character vector
   output_char <- lapply(as.list(caller), deparse)[[2]]
+
+  # Check if the output_char contains the word "list"
   if (grepl("list", output_char)) {
     # Remove all whitespace from output_char
     output_char <- gsub(" ", "", output_char, fixed = TRUE)
@@ -52,11 +84,14 @@ toxlsx <- function(object,
   # Initialize also an empty list for Sheetslist
   Sheetslist <- output
 
+  # Loop through each element in output_name
   for (df in output_name) {
     output[[df]][["sheet"]] <-
       if (length(tosheet) == 0) {
+        # If tosheet is not provided, use "Sheet #" as the sheet name
         paste0("Sheet ", as.character(which(output_name == df)))
       } else {
+        # Else use df as the sheet name
         tosheet[[df]]
       }
     Sheetslist[which(output_name == df)] <- output[[df]][["sheet"]]
@@ -96,6 +131,7 @@ toxlsx <- function(object,
       }
     }
 
+    # Use add_table() function to add each df in workbook
     add_table(
       Table = get(df),
       WbTitle = wb,
@@ -111,6 +147,7 @@ toxlsx <- function(object,
     )
   }
 
+  # Save workbook
   openxlsx::saveWorkbook(
     wb,
     file.path(
@@ -120,6 +157,7 @@ toxlsx <- function(object,
     overwrite = TRUE
   )
 
+  # Open workbook automatically if automaticopen is TRUE
   if (isTRUE(automaticopen)) {
     openxlsx::openXL(file = file.path(
       path,
