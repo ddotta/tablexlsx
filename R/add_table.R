@@ -1,4 +1,5 @@
 #' @name add_table
+#'
 #' @title Function that adds a data frame to an (existing) .xlsx workbook sheet
 #'
 #' @param Table : data frame to be exported to the workbook sheet
