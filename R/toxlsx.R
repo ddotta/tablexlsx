@@ -1,6 +1,8 @@
-#' Convert R objects to excel files
+#' @name toxlsx
 #'
-#' This is a function called "toxlsx" that takes in several parameters
+#' @title Convert R data frames to excel files
+#'
+#' @description This is a function called "toxlsx" that takes in several parameters
 #' including an "object" (which must be a data frame or list),
 #' "tosheet", "title", "columnstyle", "footnote1", "footnote2", and "footnote3"
 #' (all of which must be lists), and "path" and "automaticopen".
@@ -133,13 +135,50 @@ toxlsx <- function(object,
       }
     }
 
+    # If at least two sheets are filled in tosheet argument
+    if (length(tosheet) > 1) {
+      # We split this tosheet list according to each distint element
+      listsplitted <- split(tosheet, match(tosheet, unique(unlist(tosheet))))
+      # Each element of listsplitted is named with the name of each processed sheet
+      listsplitted <- setNames(listsplitted,
+                               unique(unlist(tosheet)))
+      # We create namecurrentsheet as the name where df must be written
+      namecurrentsheet <- names(listsplitted[[tosheet[[df]]]])
+      # We create multipledfinsheet of the same length as listsplitted
+      #  made up of booleans that indicate whether several df are in the same sheet
+      multipledfinsheet <- lapply(listsplitted, function(x) length(x)>1)
+    }
+
+    # Useful print to debug
+    # print(output_name)
+    # print(listsplitted)
+    # print(multipledfinsheet[[tosheet[[df]]]])
+    # print(calcstartrow(which(namecurrentsheet == df)))
+
     # Use add_table() function to add each df in workbook
     add_table(
       Table = get(df),
       WbTitle = wb,
       SheetTitle = output[[df]][["sheet"]],
       TableTitle = output[[df]][["title"]],
-      StartRow = 1,
+      StartRow =
+        # If the "tosheet" argument is not filled in
+        # or if only one sheet is filled in "tosheet",
+        # then we necessarily start writing from line 1
+        if (length(tosheet) == 0 | length(tosheet) == 1) {
+          1
+          # Else if at least two sheets are filled in "tosheet" argument
+          # and each df must be in different sheets
+        } else if (length(tosheet) > 1 & isFALSE(multipledfinsheet[[tosheet[[df]]]])) {
+          1
+          # Else if at least two sheets are filled in "tosheet" argument
+          # and at least two df must be in a same sheet
+        } else if (length(tosheet) > 1 & isTRUE(multipledfinsheet[[tosheet[[df]]]])) {
+          # StartRow is equal to 1 for first df
+          # StartRow is equal to 11 + nrow(first df) for second df
+          # StartRow is equal to 21 + nrow(first df) + nrow(second df) for third df
+          calcstartrow(which(namecurrentsheet == df)) + calcskippedrow(mylist = object, x = which(namecurrentsheet == df))
+        },
       StartCol = 1,
       FormatList = ColumnList,
       HeightTableTitle = 2,
@@ -148,6 +187,11 @@ toxlsx <- function(object,
       TableFootnote3 = output[[df]][["footnote3"]]
     )
   }
+
+  print(file.path(
+    path,
+    "Export.xlsx"
+  ))
 
   # Save workbook
   openxlsx::saveWorkbook(
