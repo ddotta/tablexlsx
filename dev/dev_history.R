@@ -16,12 +16,11 @@ roxygen2::roxygenise()
 devtools::test()
 
 # 3.b. Si besoin, déclarer une dépendance dans DESCRIPTION
-usethis::use_package("readr")
+usethis::use_package("openxlsx")
 # pour utiliser %>% dans un package
 # usethis::use_pipe()
 
 # Pour réaliser le contrôle de conformité du package
-unlink("Data",recursive = TRUE)
 devtools::check()
 
 # 3.c. Astuce qui peut aider durant le développement
