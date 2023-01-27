@@ -188,11 +188,6 @@ toxlsx <- function(object,
     )
   }
 
-  print(file.path(
-    path,
-    "Export.xlsx"
-  ))
-
   # Save workbook
   openxlsx::saveWorkbook(
     wb,
