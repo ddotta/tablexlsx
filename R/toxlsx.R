@@ -2,13 +2,23 @@
 #'
 #' @title Convert R data frames to excel files
 #'
+#' @description This function allows you to write R data frames given
+#' in the `object` argument to excel files located in the `path` directory.
+#' The function takes several arguments but the only two required are `object` and `path`.
+#'
 #' @param object data.frame to be converted to excel
-#' @param tosheet list of sheet names for each element of object
+#' @param tosheet list of sheet names for each element of object.
+#'   If omitted, sheets are named by default "Sheet 1", "Sheet 2"...
 #' @param title list of title for each element of object
-#' @param columnstyle list of style for each element of object
+#'   If omitted, title takes the name of the dataframe in `object`
+#' @param columnstyle list of style for columns of each element of object
+#'   Only useful if you want to customise the style of each column `
 #' @param footnote1 list of footnote1 for each element of object
+#'   If omitted, no footnote1
 #' @param footnote2 list of footnote2 for each element of object
+#'   If omitted, no footnote2
 #' @param footnote3 list of footnote3 for each element of object
+#'   If omitted, no footnote3
 #' @param path path to save excel file
 #' @param filename name for the excel file ("Export" by default)
 #' @param automaticopen logical indicating if excel file should open automatically (TRUE by default)
