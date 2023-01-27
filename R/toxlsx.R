@@ -23,6 +23,8 @@
 #' @param filename name for the excel file ("Export" by default)
 #' @param automaticopen logical indicating if excel file should open automatically (TRUE by default)
 #'
+#' @importFrom stats setNames
+#'
 #' @return an excel file
 #'
 toxlsx <- function(object,

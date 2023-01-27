@@ -67,6 +67,8 @@ assert_numeric1 <- function(x, scalar = FALSE) {
 #'
 #' @param x Object
 #'
+#' @importFrom methods allNames
+#'
 #' @noRd
 assert_named_list <- function(x) {
   ok <- !is.null(names(x))
