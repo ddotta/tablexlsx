@@ -26,6 +26,11 @@ The purpose of this package is to meet the needs of R users who want to export d
 
 The goal is to get an API that is as simple as possible to use. The package will be improved over time and will include features such as the possibility to highlight in excel files some remarkable rows/columns (for example totals or coefficients...).
 
+Some advantages of using this package :  
+
+- A simpler syntax for common export operations of excel files (see examples below);  
+- The possibility to write several data frames in the same sheet one below the other;  
+
 ## Examples
 
 This package will allow you to make exports in xlsx format, whether they are simple or very customized :
@@ -45,7 +50,32 @@ iris %>% toxlsx(path = mypath)
 list(iris,mtcars) %>% toxlsx(path = mypath)
 ```
 
-:three: Export a list of data frames to an xlsx file by specifying which data frame goes in which sheet, styling each column, giving a title and footnotes...
+:three: Export a list of several data frames to an xlsx file (several data frames in a same sheet)
+
+``` r
+tb1 <- data.frame(tables = c(rep("iris",5),rep("cars",2)),
+                  var = c(names(iris),names(cars)))
+
+tb2 <- data.frame(tables = c("iris","cars","mtcars"),
+                  rownumber = c(150,50,32))
+
+list(tb1,tb2) %>%
+  toxlsx(tosheet = list("tb1" = "mydata",
+                        "tb2" = "mydata"),
+         footnote1 = list("tb1" = "The data set contains 3 classes of 50 instances each, where each class refers to a type of iris plant.",
+                          "tb2" = "The data give the speed of cars and the distances taken to stop. Note that the data were recorded in the 1920s."),
+         footnote2 = list("tb1" = "Predicted attribute: class of iris plant.",
+                          "tb2" = "Data recorded in the 1920s"),
+         footnote3 = list("tb1" = "Source : R.A. Fisher",
+                          "tb2" = "Source : M. Ezekiel"),
+         path=mypath)
+```
+
+Preview of the xlsx file in LibreOffice Calc :  
+
+<img src="man/figures/preview_Calc_ex3.png" width="100%" />
+
+:four: Export a list of data frames to an xlsx file by specifying which data frame goes in which sheet, styling each column, giving a title and footnotes...
 
 ``` r
 iris <- iris %>% head()
@@ -74,8 +104,8 @@ list(iris,cars) %>%
          path = mypath)
 ```
 
-The equivalent with the {openxlsx} syntax would be much longer and more painful to write. See [here](https://gist.github.com/ddotta/25ae0ec6c142dd7327057990ef955ae4) for the equivalent of the third example.  
+The equivalent with the {openxlsx} syntax would be much longer and more painful to write. See [here](https://gist.github.com/ddotta/25ae0ec6c142dd7327057990ef955ae4) for the equivalent of the fourth example.  
 
-Preview of the xlsx file in LibreOffice Calc with the 2 data frames in the 2 separates sheets :  
+Preview of the xlsx file in LibreOffice Calc :  
 
-<img src="man/figures/preview_Calc.png" width="100%" />
+<img src="man/figures/preview_Calc_ex4.png" width="100%" />
