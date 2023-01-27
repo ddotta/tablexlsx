@@ -2,20 +2,7 @@
 #'
 #' @title Convert R data frames to excel files
 #'
-#' @description This is a function called "toxlsx" that takes in several parameters
-#' including an "object" (which must be a data frame or list),
-#' "tosheet", "title", "columnstyle", "footnote1", "footnote2", and "footnote3"
-#' (all of which must be lists), and "path" and "automaticopen".
-#' The function starts by performing several assertions to ensure that the
-#' input parameters are of the correct type and format. It then creates an
-#' empty list called "output" and names its elements using the "output_name"
-#' variable. The function then loops through each element in "output_name"
-#' and assigns values to several elements within the "output" list.
-#' The function then creates an empty workbook and fills it with the data
-#' from the "output" list. The function also includes some additional logic
-#' for formatting columns in the workbook.
-#'
-#' @param object data.frame or list to be converted to excel
+#' @param object data.frame to be converted to excel
 #' @param tosheet list of sheet names for each element of object
 #' @param title list of title for each element of object
 #' @param columnstyle list of style for each element of object
@@ -23,7 +10,8 @@
 #' @param footnote2 list of footnote2 for each element of object
 #' @param footnote3 list of footnote3 for each element of object
 #' @param path path to save excel file
-#' @param automaticopen logical indicating if excel file should open automatically
+#' @param filename name for the excel file ("Export" by default)
+#' @param automaticopen logical indicating if excel file should open automatically (TRUE by default)
 #'
 #' @return an excel file
 #'
@@ -35,6 +23,7 @@ toxlsx <- function(object,
                    footnote2 = list(),
                    footnote3 = list(),
                    path,
+                   filename = "Export",
                    automaticopen = TRUE) {
 
   # check if object is a data frame or a list
@@ -193,7 +182,7 @@ toxlsx <- function(object,
     wb,
     file.path(
       path,
-      "Export.xlsx"
+      paste0(filename,".xlsx")
     ),
     overwrite = TRUE
   )
@@ -202,7 +191,7 @@ toxlsx <- function(object,
   if (isTRUE(automaticopen)) {
     openxlsx::openXL(file = file.path(
       path,
-      "Export.xlsx"
+      paste0(filename,".xlsx")
     ))
   }
 }

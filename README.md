@@ -75,7 +75,7 @@ Preview of the xlsx file in LibreOffice Calc :
 
 <img src="man/figures/preview_Calc_ex3.png" width="100%" />
 
-:four: Export a list of data frames to an xlsx file by specifying which data frame goes in which sheet, styling each column, giving a title and footnotes...
+:four: Export a list of data frames to an named xlsx file by specifying which data frame goes in which sheet, styling each column, giving a title and footnotes...
 
 ``` r
 iris <- iris %>% head()
@@ -101,6 +101,7 @@ list(iris,cars) %>%
                            "cars" = "Data recorded in the 1920s"),
          footnote3 = list("iris" = "Source : R.A. Fisher",
                            "cars" = "Source : M. Ezekiel"),
+         filename = "Results",
          path = mypath)
 ```
 
