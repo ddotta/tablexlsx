@@ -12,7 +12,7 @@
 #' @param HeightTableTitle : multiplier (if needed) for the height of the title line (by default 2)
 #' @param TableFootnote1 : string for TableFootnote1
 #' @param TableFootnote2 : string for TableFootnote2
-#' @param TableFootnote3 : string for TableFootnote1
+#' @param TableFootnote3 : string for TableFootnote3
 #'
 #' @return excel wb object
 #'
