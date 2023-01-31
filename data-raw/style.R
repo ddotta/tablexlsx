@@ -52,7 +52,16 @@ style <- list(
     border = c("top", "bottom", "left", "right"),
     borderStyle = "thin",
     halign = "center"
-  )
+  ),
+  mergedcell = openxlsx::createStyle(
+    fontSize = 12,
+    textDecoration = c("bold"),
+    border = c("top", "bottom", "left", "right"),
+    borderStyle = "thin",
+    wrapText = TRUE,
+    valign = "center,
+    halign = "center"
+  ),
 )
 
 
