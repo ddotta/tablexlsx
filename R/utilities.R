@@ -77,3 +77,23 @@ get_indices_of_identical_elements <- function(vector) {
   res <- c(res, paste(start, end, sep = ":"))
   res
 }
+
+#' @name convert_range_string
+#'
+#' @title Utility function that takes converts a string representing
+#' a range of numbers (e.g. "1:3") into a vector of numbers
+#'
+#' @param range_string A string representing a range of numbers
+#'
+#' @return A vector of numbers
+#'
+#' @examples
+#' convert_range_string("1:3")
+#' #' # Output:
+#' # [1] 1 2 3
+#'
+#' @keywords internal
+convert_range_string <- function(range_string) {
+  range <- as.numeric(unlist(strsplit(range_string, ":")))
+  seq(range[1], range[2])
+}
