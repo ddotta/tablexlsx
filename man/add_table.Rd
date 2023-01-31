@@ -39,7 +39,7 @@ add_table(
 
 \item{TableFootnote2}{: string for TableFootnote2}
 
-\item{TableFootnote3}{: string for TableFootnote1}
+\item{TableFootnote3}{: string for TableFootnote3}
 }
 \value{
 excel wb object
