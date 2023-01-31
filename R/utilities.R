@@ -9,7 +9,7 @@
 #' calcstartrow(2) # return 11
 #' calcstartrow(3) # return 21
 #'
-#' @noRd
+#' @keywords internal
 calcstartrow <- function(x) {
 
   if (x==1) {
@@ -36,7 +36,7 @@ calcstartrow <- function(x) {
 #' calcskippedrow(maliste=mydf,x=3) # return 200 (150 rows of iris + 50 of cars)
 #' calcskippedrow(maliste=mydf,x=4) # return 232
 #'
-#' @noRd
+#' @keywords internal
 calcskippedrow <- function(mylist,x) {
 
   res <- 0
@@ -47,4 +47,33 @@ calcskippedrow <- function(mylist,x) {
   }
   return(res)
 
+}
+
+#' @name get_indices_of_identical_elements
+#'
+#' @title Utility function that takes a vector as input and returns
+#' the indices of the elements in the vector that are identical.
+#'
+#' @param vector a vector
+#'
+#' @examples
+#' myvector <- c("momo","momo","momo","mumu","mumu")
+#' get_indices_of_identical_elements(myvector)
+#' #' # Output:
+#' # [1] "1:3" "4:5"
+#'
+#' @keywords internal
+get_indices_of_identical_elements <- function(vector) {
+  res <- c()
+  start <- 1
+  for (i in 2:length(vector)) {
+    if (vector[i] != vector[i-1]) {
+      end <- i - 1
+      res <- c(res, paste(start, end, sep = ":"))
+      start <- i
+    }
+  }
+  end <- length(vector)
+  res <- c(res, paste(start, end, sep = ":"))
+  res
 }
