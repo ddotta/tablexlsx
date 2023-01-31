@@ -55,13 +55,12 @@ style <- list(
   ),
   mergedcell = openxlsx::createStyle(
     fontSize = 12,
-    textDecoration = c("bold"),
     border = c("top", "bottom", "left", "right"),
     borderStyle = "thin",
     wrapText = TRUE,
-    valign = "center,
+    valign = "center",
     halign = "center"
-  ),
+  )
 )
 
 
