@@ -25,7 +25,7 @@
 #' @param automaticopen logical indicating if excel file should open automatically (FALSE by default)
 #'
 #' @importFrom stats setNames
-#' @importFrom openxlsx addStyle saveWorkbook openXL
+#' @importFrom openxlsx addStyle saveWorkbook openXL mergeCells
 #'
 #' @return an excel file
 #' @export
