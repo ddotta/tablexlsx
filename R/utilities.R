@@ -78,6 +78,25 @@ get_indices_of_identical_elements <- function(vector) {
   res
 }
 
+#' @name get_indices_from_vector
+#'
+#' @title Utility function that takes a vector as input and returns
+#' the indices of the first and last element.
+#'
+#' @param vector a vector
+#'
+#' @examples
+#' myvector <- c("momo","momo","momo","mumu","mumu")
+#' get_indices_from_vector(myvector)
+#' #' # Output:
+#' # [1] "1:5"
+#'
+#' @keywords internal
+get_indices_from_vector <- function(vector) {
+  res <- c(paste0("1:",as.character(length(vector))))
+  res
+}
+
 #' @name convert_range_string
 #'
 #' @title Utility function that takes converts a string representing
