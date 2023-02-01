@@ -25,6 +25,7 @@
 #' @param automaticopen logical indicating if excel file should open automatically (TRUE by default)
 #'
 #' @importFrom stats setNames
+#' @importFrom openxlsx addStyle saveWorkbook openXL
 #'
 #' @return an excel file
 #'
@@ -204,16 +205,8 @@ toxlsx <- function(object,
         # distinct_mergecol count the number of unique modalities for each column of mergecol
         distinct_mergecol <- length(unique(get(df)[[mycol]]))
 
-        print(distinct_mergecol)
-
         # loop on each modality of mycol
         for (i in (1:distinct_mergecol)) {
-
-          print(mycol)
-          print(get(df)[[mycol]])
-
-          print(which(names(get(df)) %in% mycol))
-          print(get_indices_of_identical_elements(get(df)[[mycol]]))
 
           mergeCells(wb = wb,
                      sheet = output[[df]][["sheet"]],
