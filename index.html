@@ -90,73 +90,13 @@
 <p>The goal is to get an API that is as simple as possible to use. The package will be improved over time and will include features such as the possibility to highlight in excel files some remarkable rows/columns (for example totals or coefficients…).</p>
 <p>Some advantages of using this package :</p>
 <ul>
-<li>A simpler syntax for common export operations of excel files (see examples below);<br>
+<li>A simpler syntax for common export operations of excel files;<br>
 </li>
-<li>The possibility to write several data frames in the same sheet one below the other;</li>
+<li>The possibility to write several data frames in the same sheet one below the other;<br>
+</li>
+<li>The possibility to merge modalities for one or several columns</li>
 </ul>
-</div>
-<div class="section level2">
-<h2 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a>
-</h2>
-<p>This package will allow you to make exports in xlsx format, whether they are simple or very customized :</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">mypath</span> <span class="op">&lt;-</span> <span class="st">"C:/Users/AQEW8W/Downloads"</span></span></code></pre></div>
-<p><span class="emoji" data-emoji="one">1️⃣</span> Simply export a data frame to an xlsx file</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">iris</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/toxlsx.html">toxlsx</a></span><span class="op">(</span>path <span class="op">=</span> <span class="va">mypath</span><span class="op">)</span></span></code></pre></div>
-<p><span class="emoji" data-emoji="two">2️⃣</span> Export a list of several data frames to an xlsx file (each data frame in a different sheet)</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">iris</span>,<span class="va">mtcars</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/toxlsx.html">toxlsx</a></span><span class="op">(</span>path <span class="op">=</span> <span class="va">mypath</span><span class="op">)</span></span></code></pre></div>
-<p><span class="emoji" data-emoji="three">3️⃣</span> Export a list of several data frames to an xlsx file (several data frames in a same sheet)</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">tb1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>tables <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="st">"iris"</span>,<span class="fl">5</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="st">"cars"</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span>,</span>
-<span>                  var <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">tb2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>tables <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"iris"</span>,<span class="st">"cars"</span>,<span class="st">"mtcars"</span><span class="op">)</span>,</span>
-<span>                  rownumber <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">150</span>,<span class="fl">50</span>,<span class="fl">32</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">tb1</span>,<span class="va">tb2</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu"><a href="reference/toxlsx.html">toxlsx</a></span><span class="op">(</span>tosheet <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"tb1"</span> <span class="op">=</span> <span class="st">"mydata"</span>,</span>
-<span>                        <span class="st">"tb2"</span> <span class="op">=</span> <span class="st">"mydata"</span><span class="op">)</span>,</span>
-<span>         footnote1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"tb1"</span> <span class="op">=</span> <span class="st">"The data set contains 3 classes of 50 instances each, where each class refers to a type of iris plant."</span>,</span>
-<span>                          <span class="st">"tb2"</span> <span class="op">=</span> <span class="st">"The data give the speed of cars and the distances taken to stop. Note that the data were recorded in the 1920s."</span><span class="op">)</span>,</span>
-<span>         footnote2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"tb1"</span> <span class="op">=</span> <span class="st">"Predicted attribute: class of iris plant."</span>,</span>
-<span>                          <span class="st">"tb2"</span> <span class="op">=</span> <span class="st">"Data recorded in the 1920s"</span><span class="op">)</span>,</span>
-<span>         footnote3 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"tb1"</span> <span class="op">=</span> <span class="st">"Source : R.A. Fisher"</span>,</span>
-<span>                          <span class="st">"tb2"</span> <span class="op">=</span> <span class="st">"Source : M. Ezekiel"</span><span class="op">)</span>,</span>
-<span>         path<span class="op">=</span><span class="va">mypath</span><span class="op">)</span></span></code></pre></div>
-<p>Preview of the xlsx file in LibreOffice Calc :</p>
-<p><img src="reference/figures/preview_Calc_ex3.png" width="100%"></p>
-<p><span class="emoji" data-emoji="four">4️⃣</span> Export a list of data frames to an named xlsx file by specifying which data frame goes in which sheet, styling each column, giving a title and footnotes…</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">iris</span> <span class="op">&lt;-</span> <span class="va">iris</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="va">cars</span> <span class="op">&lt;-</span> <span class="va">cars</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">iris</span>,<span class="va">cars</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu"><a href="reference/toxlsx.html">toxlsx</a></span><span class="op">(</span>tosheet <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"iris"</span> <span class="op">=</span> <span class="st">"first"</span>,</span>
-<span>                        <span class="st">"cars"</span> <span class="op">=</span> <span class="st">"second"</span><span class="op">)</span>,</span>
-<span>         title <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"iris"</span> <span class="op">=</span> <span class="st">"Head of iris"</span>,</span>
-<span>                      <span class="st">"cars"</span> <span class="op">=</span> <span class="st">"Head of cars"</span><span class="op">)</span>,</span>
-<span>         <span class="co"># The `columnstyle` argument is optional in toxlsx(). </span></span>
-<span>         <span class="co"># It is used only if you want to specify the format of each column</span></span>
-<span>         columnstyle <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"iris"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"c1"</span> <span class="op">=</span> <span class="st">"decimal"</span>,</span>
-<span>                                          <span class="st">"c2"</span> <span class="op">=</span> <span class="st">"decimal"</span>,</span>
-<span>                                          <span class="st">"c3"</span> <span class="op">=</span> <span class="st">"number"</span>,</span>
-<span>                                          <span class="st">"c4"</span> <span class="op">=</span> <span class="st">"number"</span>,</span>
-<span>                                          <span class="st">"c5"</span> <span class="op">=</span> <span class="st">"character"</span><span class="op">)</span>,</span>
-<span>                            <span class="st">"cars"</span> <span class="op">=</span>  <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"c1"</span> <span class="op">=</span> <span class="st">"number"</span>,</span>
-<span>                                           <span class="st">"c2"</span> <span class="op">=</span> <span class="st">"number"</span><span class="op">)</span><span class="op">)</span>,</span>
-<span>         footnote1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"iris"</span> <span class="op">=</span> <span class="st">"The data set contains 3 classes of 50 instances each, where each class refers to a type of iris plant."</span>,</span>
-<span>                           <span class="st">"cars"</span> <span class="op">=</span> <span class="st">"The data give the speed of cars and the distances taken to stop. Note that the data were recorded in the 1920s."</span><span class="op">)</span>,</span>
-<span>         footnote2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"iris"</span> <span class="op">=</span> <span class="st">"Predicted attribute: class of iris plant."</span>,</span>
-<span>                           <span class="st">"cars"</span> <span class="op">=</span> <span class="st">"Data recorded in the 1920s"</span><span class="op">)</span>,</span>
-<span>         footnote3 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"iris"</span> <span class="op">=</span> <span class="st">"Source : R.A. Fisher"</span>,</span>
-<span>                           <span class="st">"cars"</span> <span class="op">=</span> <span class="st">"Source : M. Ezekiel"</span><span class="op">)</span>,</span>
-<span>         filename <span class="op">=</span> <span class="st">"Results"</span>,</span>
-<span>         path <span class="op">=</span> <span class="va">mypath</span><span class="op">)</span></span></code></pre></div>
-<p>The equivalent with the {openxlsx} syntax would be much longer and more painful to write. See <a href="https://gist.github.com/ddotta/25ae0ec6c142dd7327057990ef955ae4" class="external-link">here</a> for the equivalent of the fourth example.</p>
-<p>Preview of the xlsx file in LibreOffice Calc :</p>
-<p><img src="reference/figures/preview_Calc_ex4.png" width="100%"></p>
+<p><span class="emoji" data-emoji="point_right">👉</span> <a href="https://ddotta.github.io/tablexlsx/articles/aa-examples.html" class="external-link">See examples gallery in vignette</a></p>
 </div>
 </div>
 
@@ -190,8 +130,8 @@
 <div class="dev-status">
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/ddotta/tablexlsx/actions" class="external-link"><img src="https://github.com/ddotta/tablexlsx/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
 <li><a href="https://github.com/ddotta/tablexlsx/actions/workflows/check-release.yaml" class="external-link"><img src="https://github.com/ddotta/tablexlsx/workflows/R-CMD-check/badge.svg" alt="R check status"></a></li>
+<li><a href="https://codecov.io/gh/ddotta/tablexlsx" class="external-link"><img src="https://codecov.io/gh/ddotta/tablexlsx/branch/main/graph/badge.svg?token=UWLXVupq1C" alt="codecov"></a></li>
 </ul>
 </div>
 

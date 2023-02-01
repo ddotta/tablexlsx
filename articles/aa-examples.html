@@ -80,38 +80,54 @@
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">tablexlsx</span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Attaching package: 'dplyr'</span></span>
-<span><span class="co">#&gt; The following objects are masked from 'package:stats':</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;     filter, lag</span></span>
-<span><span class="co">#&gt; The following objects are masked from 'package:base':</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;     intersect, setdiff, setequal, union</span></span></code></pre></div>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span>, warn.conflicts <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <div class="section level2">
 <h2 id="examples-gallery">Examples gallery<a class="anchor" aria-label="anchor" href="#examples-gallery"></a>
 </h2>
+<div class="section level3">
+<h3 id="table-of-contents">Table of Contents<a class="anchor" aria-label="anchor" href="#table-of-contents"></a>
+</h3>
+<ol style="list-style-type: decimal">
+<li><a href="#id_1-simply-export-a-data-frame-to-an-xlsx-file">Simply
+export a data frame to an xlsx file</a></li>
+<li><a href="#id_2-export-a-list-of-several-data-frames-to-an-xlsx-file-each-data-frame-in-a-different-sheet">Export
+a list of several data frames to an xlsx file (each data frame in a
+different sheet)</a></li>
+<li><a href="#id_3-export-a-data-frame-to-an-xlsx-file-merging-modalities-for-one-column">Export
+a data frame to an xlsx file (merging modalities for one
+column)</a></li>
+<li><a href="#id_4-export-a-data-frame-to-an-xlsx-file-merging-modalities-for-several-columns">Export
+a data frame to an xlsx file (merging modalities for several
+columns)</a></li>
+<li><a href="#id_5-export-a-list-of-several-data-frames-to-an-xlsx-file-several-data-frames-in-a-same-sheet">Export
+a list of several data frames to an xlsx file (several data frames in a
+same sheet)</a></li>
+<li><a href="#id_6-export-a-list-of-data-frames-to-an-named-xlsx-file-by-specifying-which-data-frame-goes-in-which-sheet-styling-each-column-giving-a-title-and-footnotes">Export
+a list of data frames to an named xlsx file by specifying which data
+frame goes in which sheet, styling each column, giving a title and
+footnotes…</a></li>
+</ol>
 <p>Let’s define an export folder that will be the same for all the
 examples on this page</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mypath</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+</div>
 <div class="section level3">
-<h3 id="one-simply-export-a-data-frame-to-an-xlsx-file">:one: Simply export a data frame to an xlsx file<a class="anchor" aria-label="anchor" href="#one-simply-export-a-data-frame-to-an-xlsx-file"></a>
+<h3 id="simply-export-a-data-frame-to-an-xlsx-file">1. Simply export a data frame to an xlsx file<a class="anchor" aria-label="anchor" href="#simply-export-a-data-frame-to-an-xlsx-file"></a>
 </h3>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">iris</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/toxlsx.html">toxlsx</a></span><span class="op">(</span>path <span class="op">=</span> <span class="va">mypath</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
-<h3 id="two-export-a-list-of-several-data-frames-to-an-xlsx-file-each-data-frame-in-a-different-sheet">:two: Export a list of several data frames to an xlsx file (each
-data frame in a different sheet)<a class="anchor" aria-label="anchor" href="#two-export-a-list-of-several-data-frames-to-an-xlsx-file-each-data-frame-in-a-different-sheet"></a>
+<h3 id="export-a-list-of-several-data-frames-to-an-xlsx-file-each-data-frame-in-a-different-sheet">2. Export a list of several data frames to an xlsx file (each data
+frame in a different sheet)<a class="anchor" aria-label="anchor" href="#export-a-list-of-several-data-frames-to-an-xlsx-file-each-data-frame-in-a-different-sheet"></a>
 </h3>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">iris</span>,<span class="va">mtcars</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/toxlsx.html">toxlsx</a></span><span class="op">(</span>path <span class="op">=</span> <span class="va">mypath</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
-<h3 id="three-export-a-data-frame-to-an-xlsx-file-merging-modalities-for-one-column">:three: Export a data frame to an xlsx file (merging modalities for
-one column)<a class="anchor" aria-label="anchor" href="#three-export-a-data-frame-to-an-xlsx-file-merging-modalities-for-one-column"></a>
+<h3 id="export-a-data-frame-to-an-xlsx-file-merging-modalities-for-one-column">3. Export a data frame to an xlsx file (merging modalities for one
+column)<a class="anchor" aria-label="anchor" href="#export-a-data-frame-to-an-xlsx-file-merging-modalities-for-one-column"></a>
 </h3>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Create df1</span></span>
@@ -124,8 +140,8 @@ one column)<a class="anchor" aria-label="anchor" href="#three-export-a-data-fram
 <span><span class="va">df1</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/toxlsx.html">toxlsx</a></span><span class="op">(</span>path <span class="op">=</span> <span class="va">mypath</span>, mergecol <span class="op">=</span> <span class="st">"group"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
-<h3 id="four-export-a-data-frame-to-an-xlsx-file-merging-modalities-for-several-columns">:four: Export a data frame to an xlsx file (merging modalities for
-several columns)<a class="anchor" aria-label="anchor" href="#four-export-a-data-frame-to-an-xlsx-file-merging-modalities-for-several-columns"></a>
+<h3 id="export-a-data-frame-to-an-xlsx-file-merging-modalities-for-several-columns">4. Export a data frame to an xlsx file (merging modalities for
+several columns)<a class="anchor" aria-label="anchor" href="#export-a-data-frame-to-an-xlsx-file-merging-modalities-for-several-columns"></a>
 </h3>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Create df2</span></span>
@@ -142,8 +158,8 @@ several columns)<a class="anchor" aria-label="anchor" href="#four-export-a-data-
 <span><span class="va">df2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/toxlsx.html">toxlsx</a></span><span class="op">(</span>path <span class="op">=</span> <span class="va">mypath</span>, mergecol <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"country"</span>,<span class="st">"group"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
-<h3 id="five-export-a-list-of-several-data-frames-to-an-xlsx-file-several-data-frames-in-a-same-sheet">:five: Export a list of several data frames to an xlsx file (several
-data frames in a same sheet)<a class="anchor" aria-label="anchor" href="#five-export-a-list-of-several-data-frames-to-an-xlsx-file-several-data-frames-in-a-same-sheet"></a>
+<h3 id="export-a-list-of-several-data-frames-to-an-xlsx-file-several-data-frames-in-a-same-sheet">5. Export a list of several data frames to an xlsx file (several
+data frames in a same sheet)<a class="anchor" aria-label="anchor" href="#export-a-list-of-several-data-frames-to-an-xlsx-file-several-data-frames-in-a-same-sheet"></a>
 </h3>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tb1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>tables <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="st">"iris"</span>,<span class="fl">5</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="st">"cars"</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span>,</span>
@@ -166,9 +182,9 @@ data frames in a same sheet)<a class="anchor" aria-label="anchor" href="#five-ex
 <p><img src="../reference/figures/preview_Calc_ex3.png" width="100%"></p>
 </div>
 <div class="section level3">
-<h3 id="six-export-a-list-of-data-frames-to-an-named-xlsx-file-by-specifying-which-data-frame-goes-in-which-sheet-styling-each-column-giving-a-title-and-footnotes">:six: Export a list of data frames to an named xlsx file by
-specifying which data frame goes in which sheet, styling each column,
-giving a title and footnotes…<a class="anchor" aria-label="anchor" href="#six-export-a-list-of-data-frames-to-an-named-xlsx-file-by-specifying-which-data-frame-goes-in-which-sheet-styling-each-column-giving-a-title-and-footnotes"></a>
+<h3 id="export-a-list-of-data-frames-to-an-named-xlsx-file-by-specifying-which-data-frame-goes-in-which-sheet-styling-each-column-giving-a-title-and-footnotes">6. Export a list of data frames to an named xlsx file by specifying
+which data frame goes in which sheet, styling each column, giving a
+title and footnotes…<a class="anchor" aria-label="anchor" href="#export-a-list-of-data-frames-to-an-named-xlsx-file-by-specifying-which-data-frame-goes-in-which-sheet-styling-each-column-giving-a-title-and-footnotes"></a>
 </h3>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">iris</span> <span class="op">&lt;-</span> <span class="va">iris</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span></span>
