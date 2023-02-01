@@ -17,7 +17,7 @@ options(rmarkdown.html_vignette.check_title = FALSE)
 
 ```{r setup}
 library(tablexlsx)
-library(dplyr)
+library(dplyr, warn.conflicts = FALSE)
 ```
 
 # Examples gallery
