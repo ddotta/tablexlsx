@@ -5,9 +5,11 @@
 #' @param x a number
 #'
 #' @examples
+#' \dontrun{
 #' calcstartrow(1) # return 1
 #' calcstartrow(2) # return 11
 #' calcstartrow(3) # return 21
+#' }
 #'
 #' @keywords internal
 calcstartrow <- function(x) {
@@ -59,10 +61,12 @@ calcskippedrow <- function(mylist,x) {
 #' @param vector a vector
 #'
 #' @examples
+#' \dontrun{
 #' myvector <- c("momo","momo","momo","mumu","mumu")
 #' get_indices_of_identical_elements(myvector)
 #' #' # Output:
 #' # [1] "1:3" "4:5"
+#' }
 #'
 #' @keywords internal
 get_indices_of_identical_elements <- function(vector) {
@@ -88,10 +92,12 @@ get_indices_of_identical_elements <- function(vector) {
 #' @param vector a vector
 #'
 #' @examples
+#' \dontrun{
 #' myvector <- c("momo","momo","momo","mumu","mumu")
 #' get_indices_from_vector(myvector)
 #' #' # Output:
 #' # [1] "1:5"
+#' }
 #'
 #' @keywords internal
 get_indices_from_vector <- function(vector) {
@@ -109,9 +115,11 @@ get_indices_from_vector <- function(vector) {
 #' @return A vector of numbers
 #'
 #' @examples
+#' \dontrun{
 #' convert_range_string("1:3")
 #' #' # Output:
 #' # [1] 1 2 3
+#' }
 #'
 #' @keywords internal
 convert_range_string <- function(range_string) {

@@ -15,10 +15,12 @@ Utility function that takes a vector as input and returns
 the indices of the elements in the vector that are identical.
 }
 \examples{
+\dontrun{
 myvector <- c("momo","momo","momo","mumu","mumu")
 get_indices_of_identical_elements(myvector)
 #' # Output:
 # [1] "1:3" "4:5"
+}
 
 }
 \keyword{internal}

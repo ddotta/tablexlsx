@@ -13,9 +13,11 @@ calcstartrow(x)
 Utility function that returns start row to correctly separate df written in a same sheet
 }
 \examples{
+\dontrun{
 calcstartrow(1) # return 1
 calcstartrow(2) # return 11
 calcstartrow(3) # return 21
+}
 
 }
 \keyword{internal}

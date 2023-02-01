@@ -15,10 +15,12 @@ Utility function that takes a vector as input and returns
 the indices of the first and last element.
 }
 \examples{
+\dontrun{
 myvector <- c("momo","momo","momo","mumu","mumu")
 get_indices_from_vector(myvector)
 #' # Output:
 # [1] "1:5"
+}
 
 }
 \keyword{internal}

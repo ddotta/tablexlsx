@@ -18,9 +18,11 @@ Utility function that takes converts a string representing
 a range of numbers (e.g. "1:3") into a vector of numbers
 }
 \examples{
+\dontrun{
 convert_range_string("1:3")
 #' # Output:
 # [1] 1 2 3
+}
 
 }
 \keyword{internal}
