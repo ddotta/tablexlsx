@@ -2,7 +2,7 @@
 title: "Examples gallery"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{aa-conversions}
+  %\VignetteIndexEntry{aa-examples}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 
 ```{r setup}
 library(tablexlsx)
+library(dplyr)
 ```
 
 # Examples gallery
