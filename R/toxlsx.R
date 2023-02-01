@@ -22,12 +22,13 @@
 #' @param mergecol character vector that indicates the columns for which we want to merge the modalities
 #' @param path path to save excel file
 #' @param filename name for the excel file ("Export" by default)
-#' @param automaticopen logical indicating if excel file should open automatically (TRUE by default)
+#' @param automaticopen logical indicating if excel file should open automatically (FALSE by default)
 #'
 #' @importFrom stats setNames
 #' @importFrom openxlsx addStyle saveWorkbook openXL
 #'
 #' @return an excel file
+#' @export
 #'
 toxlsx <- function(object,
                    tosheet = list(),
@@ -39,7 +40,7 @@ toxlsx <- function(object,
                    mergecol = NULL,
                    path,
                    filename = "Export",
-                   automaticopen = TRUE) {
+                   automaticopen = FALSE) {
 
   # check if object is a data frame or a list
   assert_class(object, c("data.frame", "list"))

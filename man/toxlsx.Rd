@@ -15,7 +15,7 @@ toxlsx(
   mergecol = NULL,
   path,
   filename = "Export",
-  automaticopen = TRUE
+  automaticopen = FALSE
 )
 }
 \arguments{
@@ -45,7 +45,7 @@ If omitted, no footnote3}
 
 \item{filename}{name for the excel file ("Export" by default)}
 
-\item{automaticopen}{logical indicating if excel file should open automatically (TRUE by default)}
+\item{automaticopen}{logical indicating if excel file should open automatically (FALSE by default)}
 }
 \value{
 an excel file
