@@ -18,10 +18,10 @@ to correctly account for previous data frames already present in the sheet
 }
 \examples{
 mydf <- list(iris,cars,mtcars)
-calcskippedrow(maliste=mydf,x=1) # return 0
-calcskippedrow(maliste=mydf,x=2) # return 150
-calcskippedrow(maliste=mydf,x=3) # return 200 (150 rows of iris + 50 of cars)
-calcskippedrow(maliste=mydf,x=4) # return 232
+calcskippedrow(mylist=mydf,x=1) # return 0
+calcskippedrow(mylist=mydf,x=2) # return 150
+calcskippedrow(mylist=mydf,x=3) # return 200 (150 rows of iris + 50 of cars)
+calcskippedrow(mylist=mydf,x=4) # return 232
 
 }
 \keyword{internal}
