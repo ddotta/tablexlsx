@@ -22,6 +22,14 @@ library(dplyr, warn.conflicts = FALSE)
 
 # Examples gallery
 
+## Table of Contents
+1. [Simply export a data frame to an xlsx file ](#1-simply-export-a-data-frame-to-an-xlsx-file)
+2. [Export a list of several data frames to an xlsx file (each data frame in a different sheet)](#2-export-a-list-of-several-data-frames-to-an-xlsx-file-each-data-frame-in-a-different-sheet)
+3. [Export a data frame to an xlsx file (merging modalities for one column)](#3-export-a-data-frame-to-an-xlsx-file-merging-modalities-for-one-column)
+4. [Export a data frame to an xlsx file (merging modalities for several columns)](#4-export-a-data-frame-to-an-xlsx-file-merging-modalities-for-several-columns)
+5. [Export a list of several data frames to an xlsx file (several data frames in a same sheet)](#5-export-a-list-of-several-data-frames-to-an-xlsx-file-several-data-frames-in-a-same-sheet)
+6. [Export a list of data frames to an named xlsx file by specifying which data frame goes in which sheet, styling each column, giving a title and footnotes...](#6-export-a-list-of-data-frames-to-an-named-xlsx-file-by-specifying-which-data-frame-goes-in-which-sheet-styling-each-column-giving-a-title-and-footnotes)
+
 
 Let's define an export folder that will be the same for all the examples on this page
 
@@ -29,19 +37,19 @@ Let's define an export folder that will be the same for all the examples on this
 mypath <- tempdir()
 ```
 
-## :one: Simply export a data frame to an xlsx file 
+## 1. Simply export a data frame to an xlsx file 
 
 ```{r first-export}
 iris %>% toxlsx(path = mypath)
 ```
 
-## :two: Export a list of several data frames to an xlsx file (each data frame in a different sheet)
+## 2. Export a list of several data frames to an xlsx file (each data frame in a different sheet)
 
 ```{r list-export}
 list(iris,mtcars) %>% toxlsx(path = mypath)
 ```
 
-## :three: Export a data frame to an xlsx file (merging modalities for one column)
+## 3. Export a data frame to an xlsx file (merging modalities for one column)
 
 ```{r df-export-merge-one}
 # Create df1
@@ -54,7 +62,7 @@ df1 <- data.frame(
 df1 %>% toxlsx(path = mypath, mergecol = "group")
 ```
 
-## :four: Export a data frame to an xlsx file (merging modalities for several columns)
+## 4. Export a data frame to an xlsx file (merging modalities for several columns)
 
 ```{r df-export-merge-several}
 # Create df2
@@ -71,7 +79,7 @@ df2 <- data.frame(
 df2 %>% toxlsx(path = mypath, mergecol = c("country","group"))
 ```
 
-## :five: Export a list of several data frames to an xlsx file (several data frames in a same sheet)
+## 5. Export a list of several data frames to an xlsx file (several data frames in a same sheet)
 
 ```{r list-export-same-sheet}
 tb1 <- data.frame(tables = c(rep("iris",5),rep("cars",2)),
@@ -96,7 +104,7 @@ Preview of the xlsx file in LibreOffice Calc :
 
 <img src="../man/figures/preview_Calc_ex3.png" width="100%" />
 
-## :six: Export a list of data frames to an named xlsx file by specifying which data frame goes in which sheet, styling each column, giving a title and footnotes...
+## 6. Export a list of data frames to an named xlsx file by specifying which data frame goes in which sheet, styling each column, giving a title and footnotes...
 
 ```{r list-export-complicated}
 iris <- iris %>% head()
