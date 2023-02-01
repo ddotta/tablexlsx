@@ -12,6 +12,7 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
+options(rmarkdown.html_vignette.check_title = FALSE)
 ```
 
 ```{r setup}
@@ -93,7 +94,7 @@ list(tb1,tb2) %>%
 
 Preview of the xlsx file in LibreOffice Calc :  
 
-<img src="./man/figures/preview_Calc_ex3.png" width="100%" />
+<img src="../man/figures/preview_Calc_ex3.png" width="100%" />
 
 ## :six: Export a list of data frames to an named xlsx file by specifying which data frame goes in which sheet, styling each column, giving a title and footnotes...
 
@@ -129,4 +130,4 @@ The equivalent with the {openxlsx} syntax would be much longer and more painful 
 
 Preview of the xlsx file in LibreOffice Calc :  
 
-<img src="./man/figures/preview_Calc_ex4.png" width="100%" />
+<img src="../man/figures/preview_Calc_ex4.png" width="100%" />
