@@ -48,7 +48,7 @@ usethis::use_github_action(name = "check-release")
 usethis::use_data_raw("style_guide")
 
 # Creation des vignettes
-usethis::use_vignette("aa-conversions")
+usethis::use_vignette("aa-examples")
 
 # Creation du repertoire testthat
 usethis::use_testthat()
