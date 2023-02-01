@@ -10,7 +10,7 @@ Author: c(
     )
 Maintainer: Damien Dotta <damien.dotta@live.fr>
 Description: This package contains functions that allow to export data frames to xlsx workbook.
-License: MIT + LICENSE
+License: MIT
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.2.2
