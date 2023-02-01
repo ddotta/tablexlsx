@@ -23,12 +23,12 @@ library(dplyr, warn.conflicts = FALSE)
 # Examples gallery
 
 ## Table of Contents
-1. [Simply export a data frame to an xlsx file ](#1-simply-export-a-data-frame-to-an-xlsx-file)
-2. [Export a list of several data frames to an xlsx file (each data frame in a different sheet)](#2-export-a-list-of-several-data-frames-to-an-xlsx-file-each-data-frame-in-a-different-sheet)
-3. [Export a data frame to an xlsx file (merging modalities for one column)](#3-export-a-data-frame-to-an-xlsx-file-merging-modalities-for-one-column)
-4. [Export a data frame to an xlsx file (merging modalities for several columns)](#4-export-a-data-frame-to-an-xlsx-file-merging-modalities-for-several-columns)
-5. [Export a list of several data frames to an xlsx file (several data frames in a same sheet)](#5-export-a-list-of-several-data-frames-to-an-xlsx-file-several-data-frames-in-a-same-sheet)
-6. [Export a list of data frames to an named xlsx file by specifying which data frame goes in which sheet, styling each column, giving a title and footnotes...](#6-export-a-list-of-data-frames-to-an-named-xlsx-file-by-specifying-which-data-frame-goes-in-which-sheet-styling-each-column-giving-a-title-and-footnotes)
+1. [Simply export a data frame to an xlsx file ](#simply-export-a-data-frame-to-an-xlsx-file)
+2. [Export a list of several data frames to an xlsx file (each data frame in a different sheet)](#export-a-list-of-several-data-frames-to-an-xlsx-file-each-data-frame-in-a-different-sheet)
+3. [Export a data frame to an xlsx file (merging modalities for one column)](#export-a-data-frame-to-an-xlsx-file-merging-modalities-for-one-column)
+4. [Export a data frame to an xlsx file (merging modalities for several columns)](#export-a-data-frame-to-an-xlsx-file-merging-modalities-for-several-columns)
+5. [Export a list of several data frames to an xlsx file (several data frames in a same sheet)](#export-a-list-of-several-data-frames-to-an-xlsx-file-several-data-frames-in-a-same-sheet)
+6. [Export a list of data frames to an named xlsx file by specifying which data frame goes in which sheet, styling each column, giving a title and footnotes...](#export-a-list-of-data-frames-to-an-named-xlsx-file-by-specifying-which-data-frame-goes-in-which-sheet-styling-each-column-giving-a-title-and-footnotes)
 
 
 Let's define an export folder that will be the same for all the examples on this page
