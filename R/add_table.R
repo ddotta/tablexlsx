@@ -28,7 +28,6 @@ add_table <- function(
     StartRow = 1,
     StartCol = 1,
     FormatList = list(),
-    MergedCol = NULL,
     HeightTableTitle = 2,
     TableFootnote1 = list(),
     TableFootnote2 = list(),
