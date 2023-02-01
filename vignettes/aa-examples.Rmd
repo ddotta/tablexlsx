@@ -24,7 +24,7 @@ library(tablexlsx)
 Let's define an export folder that will be the same for all the examples on this page
 
 ```{r define-export-folder}
-mypath <- temdir()
+mypath <- tempdir()
 ```
 
 ## :one: Simply export a data frame to an xlsx file 
