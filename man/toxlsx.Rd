@@ -12,6 +12,7 @@ toxlsx(
   footnote1 = list(),
   footnote2 = list(),
   footnote3 = list(),
+  mergecol = NULL,
   path,
   filename = "Export",
   automaticopen = TRUE
@@ -37,6 +38,8 @@ If omitted, no footnote2}
 
 \item{footnote3}{list of footnote3 for each element of object
 If omitted, no footnote3}
+
+\item{mergecol}{character vector that indicates the columns for which we want to merge the modalities}
 
 \item{path}{path to save excel file}
 
