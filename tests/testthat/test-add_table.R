@@ -196,6 +196,7 @@ test_that("add_table function writes footnotes in correct locations", {
   WbTitle <- wb
   SheetTitle <- "Sheet1"
   TableTitle <- "Test Table"
+  FormatList <- list()
 
   add_table(Table, WbTitle, SheetTitle, TableTitle, FormatList,
             StartRow=1, StartCol = 1,
