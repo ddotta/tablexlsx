@@ -19,6 +19,7 @@
 #'   If omitted, no footnote2
 #' @param footnote3 list of footnote3 for each element of object
 #'   If omitted, no footnote3
+#' @param mergecol character vector that indicates the columns for which we want to merge the modalities
 #' @param path path to save excel file
 #' @param filename name for the excel file ("Export" by default)
 #' @param automaticopen logical indicating if excel file should open automatically (TRUE by default)
@@ -34,6 +35,7 @@ toxlsx <- function(object,
                    footnote1 = list(),
                    footnote2 = list(),
                    footnote3 = list(),
+                   mergecol = NULL,
                    path,
                    filename = "Export",
                    automaticopen = TRUE) {
@@ -108,8 +110,11 @@ toxlsx <- function(object,
   # Creation empty workbook
   wb <- openxlsx::createWorkbook()
 
-  # Fill workbook
+  ### Fill workbook
+
+  # loop for each df in output_name
   for (df in output_name) {
+
     # If argument columnstyle is not filled in the function
     if (paste(names(columnstyle), collapse = "") %in% c("default")) {
       # Initialize empty named list to format columns (ColumnList)
@@ -122,6 +127,7 @@ toxlsx <- function(object,
       for (i in 1:length(ColumnList)) {
         ColumnList[[i]] <- style[[ColumnList[[paste0("c", i)]]]]
       }
+
     # Else if argument columnstyle is filled in the function
     } else {
       # Initialize empty named list to format columns (ColumnList)
@@ -134,6 +140,7 @@ toxlsx <- function(object,
       for (i in 1:length(output[[df]][["column"]])) {
         ColumnList[[i]] <- style[[output[[df]][["column"]][[paste0("c", i)]]]]
       }
+
     }
 
     # If at least two sheets are filled in tosheet argument
@@ -187,6 +194,53 @@ toxlsx <- function(object,
       TableFootnote2 = output[[df]][["footnote2"]],
       TableFootnote3 = output[[df]][["footnote3"]]
     )
+
+    # If mergecol is filled in
+    if(!is.null(mergecol)) {
+
+      # loop on each column of mergecol
+      for (mycol in mergecol) {
+
+        # distinct_mergecol count the number of unique modalities for each column of mergecol
+        distinct_mergecol <- length(unique(get(df)[[mycol]]))
+
+        print(distinct_mergecol)
+
+        # loop on each modality of mycol
+        for (i in (1:distinct_mergecol)) {
+
+          print(mycol)
+          print(get(df)[[mycol]])
+
+          print(which(names(get(df)) %in% mycol))
+          print(get_indices_of_identical_elements(get(df)[[mycol]]))
+
+          mergeCells(wb = wb,
+                     sheet = output[[df]][["sheet"]],
+                     # here we add 1 because the table starts to be written from col 2 in workbook
+                     cols = which(names(get(df)) %in% mycol)+1,
+                     rows = convert_range_string(
+                       range_string = get_indices_of_identical_elements(get(df)[[mycol]])[i]
+                     ) + 3 # here we add 3 because the table starts to be written from line 3 in workbook
+          )
+
+        }
+
+        openxlsx::addStyle(
+          wb,
+          sheet = output[[df]][["sheet"]],
+          cols =  which(names(get(df)) %in% mycol)+1,
+          rows = convert_range_string(
+            get_indices_from_vector(get(df)[[mycol]])
+          )  + 3,
+          style = style$mergedcell
+        )
+
+      }
+
+
+    }
+
   }
 
   # Save workbook
