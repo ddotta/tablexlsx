@@ -62,6 +62,10 @@ df1 <- data.frame(
 df1 %>% toxlsx(path = mypath, mergecol = "group")
 ```
 
+Preview of the xlsx file in LibreOffice Calc :  
+
+<img src="../man/figures/preview_Calc_ex3.png" width="100%" />
+
 ## 4. Export a data frame to an xlsx file (merging modalities for several columns)
 
 ```{r df-export-merge-several}
@@ -78,6 +82,9 @@ df2 <- data.frame(
 #  Export
 df2 %>% toxlsx(path = mypath, mergecol = c("country","group"))
 ```
+Preview of the xlsx file in LibreOffice Calc :  
+
+<img src="../man/figures/preview_Calc_ex4.png" width="100%" />
 
 ## 5. Export a list of several data frames to an xlsx file (several data frames in a same sheet)
 
@@ -102,7 +109,7 @@ list(tb1,tb2) %>%
 
 Preview of the xlsx file in LibreOffice Calc :  
 
-<img src="../man/figures/preview_Calc_ex3.png" width="100%" />
+<img src="../man/figures/preview_Calc_ex5.png" width="100%" />
 
 ## 6. Export a list of data frames to an named xlsx file by specifying which data frame goes in which sheet, styling each column, giving a title and footnotes...
 
@@ -134,8 +141,8 @@ list(iris,cars) %>%
          path = mypath)
 ```
 
-The equivalent with the {openxlsx} syntax would be much longer and more painful to write. See [here](https://gist.github.com/ddotta/25ae0ec6c142dd7327057990ef955ae4) for the equivalent of the fourth example.  
+The equivalent with the {openxlsx} syntax would be much longer and more painful to write. See [here](https://gist.github.com/ddotta/25ae0ec6c142dd7327057990ef955ae4) for the equivalent of the sixth example.  
 
 Preview of the xlsx file in LibreOffice Calc :  
 
-<img src="../man/figures/preview_Calc_ex4.png" width="100%" />
+<img src="../man/figures/preview_Calc_ex6.png" width="100%" />
