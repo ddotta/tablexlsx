@@ -47,14 +47,23 @@ test_that("assert_numeric1 function works as expected", {
   assert_numeric1(1)
   expect_true(TRUE)
 
-  # Test 2: assert_numeric1 returns an error with numeric vector and several elements
+  # Test 2: Input is of correct class for numeric input and scalar as true
+  assert_numeric1(1, scalar = TRUE)
+  expect_true(TRUE)
+
+  # Test 3: assert_numeric1 returns an error with numeric vector and several elements
   expect_snapshot(
     assert_numeric1(c(1,2)),
     error = TRUE)
 
-  # Test 3: assert_numeric1 returns an error with character input
+  # Test 4: assert_numeric1 returns an error with character input
   expect_snapshot(
     assert_numeric1("1"),
+    error = TRUE)
+
+  # Test 5: assert_numeric1 returns an error with numeric vector and several elements and scalar as true
+  expect_snapshot(
+    assert_numeric1(c(1,2),scalar = TRUE),
     error = TRUE)
 })
 

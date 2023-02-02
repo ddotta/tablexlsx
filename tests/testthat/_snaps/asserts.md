@@ -33,6 +33,13 @@
     Error <simpleError>
       1 must be a numeric vector of length 1L
 
+---
+
+    Code
+      assert_numeric1(c(1, 2), scalar = TRUE)
+    Error <simpleError>
+      c must be a single number1 must be a single number2 must be a single number
+
 # assert_named_list function works as expected
 
     Code

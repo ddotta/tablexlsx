@@ -139,7 +139,7 @@ test_that("add_table function throws error when passing invalid data type for Ta
   )
 })
 
-test_that("add_table function creates a new sheet in the workbook if the sheet name does not exist", {
+test_that("add_table function creates the correct sheet name in the workbook", {
   wb <- openxlsx::createWorkbook()
   Table <- data.frame(x = 1:10, y = 11:20)
   WbTitle <- wb
@@ -147,8 +147,8 @@ test_that("add_table function creates a new sheet in the workbook if the sheet n
   TableTitle <- "Test Table"
   FormatList <- list()
 
-  add_table(Table, WbTitle, SheetTitle, TableTitle, FormatList,
-            StartRow=1, StartCol = 1,
+  add_table(Table = Table, WbTitle = WbTitle, SheetTitle = SheetTitle, TableTitle = TableTitle,
+            FormatList = FormatList, StartRow = 1, StartCol = 1,
             TableFootnote1 = "note1",TableFootnote2 = "note2",TableFootnote3 = "note3")
 
   openxlsx::saveWorkbook(
