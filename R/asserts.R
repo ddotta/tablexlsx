@@ -67,7 +67,6 @@ assert_numeric1 <- function(x, scalar = FALSE) {
 #'
 #' @param x Object
 #'
-#' @importFrom methods allNames
 #'
 #' @noRd
 assert_named_list <- function(x) {
@@ -81,6 +80,8 @@ assert_named_list <- function(x) {
 #' @name assert_named_list_in_list
 #'
 #' @param x Object
+#'
+#' @importFrom methods allNames
 #'
 #' @noRd
 assert_named_list_in_list <- function(x) {
