@@ -1,5 +1,3 @@
-library(testthat)
-
 test_that("add_table function throws error when passing invalid data type for Table parameter", {
   wb <- openxlsx::createWorkbook()
   Table <- "invalid_data_type"

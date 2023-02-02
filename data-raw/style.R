@@ -9,9 +9,9 @@ style <- list(
   # For footnote1
   footnote1 = openxlsx::createStyle(fontSize = 12),
   # For footnote2
-  footnote2 = openxlsx::createStyle(fontSize = 12, textDecoration = c("bold")),
+  footnote2 = openxlsx::createStyle(fontSize = 12, textDecoration = "bold"),
   # For footnote3
-  footnote3 = openxlsx::createStyle(fontSize = 12, textDecoration = c("bold")),
+  footnote3 = openxlsx::createStyle(fontSize = 12, textDecoration = "bold"),
   # For column headers
   col_header = openxlsx::createStyle(
     fontSize = 12,

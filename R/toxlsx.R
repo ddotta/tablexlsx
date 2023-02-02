@@ -103,7 +103,7 @@ toxlsx <- function(object,
       }
     Sheetslist[which(output_name == df)] <- output[[df]][["sheet"]]
     output[[df]][["title"]] <- if (length(title) == 0) df else title[[df]]
-    output[[df]][["column"]] <- if (paste(names(columnstyle), collapse = "") %in% c("default")) list() else columnstyle[[df]]
+    output[[df]][["column"]] <- if (paste(names(columnstyle), collapse = "") %in% "default") list() else columnstyle[[df]]
     output[[df]][["footnote1"]] <- if (length(footnote1) == 0) "" else footnote1[[df]]
     output[[df]][["footnote2"]] <- if (length(footnote2) == 0) "" else footnote2[[df]]
     output[[df]][["footnote3"]] <- if (length(footnote3) == 0) "" else footnote3[[df]]
@@ -118,15 +118,15 @@ toxlsx <- function(object,
   for (df in output_name) {
 
     # If argument columnstyle is not filled in the function
-    if (paste(names(columnstyle), collapse = "") %in% c("default")) {
+    if (paste(names(columnstyle), collapse = "") %in% "default") {
       # Initialize empty named list to format columns (ColumnList)
       ColumnList <- as.list(setNames(
         rep("character", length(names(get(df)))),
-        paste0("c", 1:length(names(get(df))))
+        paste0("c", seq_along(names(get(df))))
       ))
 
       # Fill ColumnList
-      for (i in 1:length(ColumnList)) {
+      for (i in seq_along(ColumnList)) {
         ColumnList[[i]] <- style[[ColumnList[[paste0("c", i)]]]]
       }
 
@@ -139,7 +139,7 @@ toxlsx <- function(object,
       )
 
       # Fill ColumnList
-      for (i in 1:length(output[[df]][["column"]])) {
+      for (i in seq_along(output[[df]][["column"]])) {
         ColumnList[[i]] <- style[[output[[df]][["column"]][[paste0("c", i)]]]]
       }
 

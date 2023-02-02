@@ -70,7 +70,7 @@ calcskippedrow <- function(mylist,x) {
 #'
 #' @keywords internal
 get_indices_of_identical_elements <- function(vector) {
-  res <- c()
+  res <- vector()
   start <- 1
   for (i in 2:length(vector)) {
     if (vector[i] != vector[i-1]) {
