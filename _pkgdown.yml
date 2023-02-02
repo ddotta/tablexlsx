@@ -1,0 +1,18 @@
+template:
+  bootstrap: 5
+  bootswatch: minty
+
+navbar:
+  right:
+    - text: Contribute
+      icon: fab fa-github fa-lg
+      href: https://github.com/ddotta/tablexlsx
+
+reference:
+  - title: Functions
+    contents:
+      - toxlsx
+      - add_table
+  - title: Styles
+    contents:
+      - style
