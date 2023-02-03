@@ -26,6 +26,7 @@
 #'
 #' @importFrom stats setNames
 #' @importFrom openxlsx addStyle saveWorkbook openXL mergeCells
+#' @importFrom magrittr "%>%"
 #'
 #' @examples
 #' \dontrun{
