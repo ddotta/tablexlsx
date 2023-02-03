@@ -41,7 +41,7 @@ Some advantages of using this package :
 - It can merge modalities for one or several columns;  
 - It can automatically open files as soon as they are created so you can inspect your workbook. 
 - Data frames to be exported in `xlsx` files can be passed as an argument in functions as simple tables or list of tables.  
-- The main function of the package [toxlsx()](https://ddotta.github.io/tablexlsx/reference/toxlsx.html) works interchangeably with `%>%` and `|>` operators andthese 3 syntaxes below are equivalent :  
+- The main function of the package [toxlsx()](https://ddotta.github.io/tablexlsx/reference/toxlsx.html) works interchangeably with `%>%` and `|>` operators and these 3 syntaxes below are equivalent :  
 
   
 ```
