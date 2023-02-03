@@ -28,12 +28,15 @@ This package is a  wrapper of some functions from the great [openxlsx](https://g
 
 The purpose of this package is to meet the needs of R users who want to export data frames in `xlsx` files to share their data and results with other users not necessarily R users.  
 
-The goal is to get an API that is as simple as possible to use. The package will be improved over time and will include features such as the possibility to highlight in excel files some remarkable rows/columns (for example totals or coefficients...).
+The goal is to get an API that is as simple as possible to use. **It's intended to meet the needs of users who want to create clean, well-documented xlsx files (with a title and footnotes)**.  
+
+The package will be improved over time and will include new features based on the needs expressed by users. To do so, feel free to open an issue [here](https://github.com/ddotta/tablexlsx/issues).  
 
 Some advantages of using this package :  
 
 - A simpler syntax for common export operations of excel files;  
-- The possibility to write several data frames in the same sheet one below the other;  
-- The possibility to merge modalities for one or several columns
+- It can write several data frames in the same sheet one below the other;  
+- It can merge modalities for one or several columns;  
+- It can automatically open files as soon as they are created so you can inspect your workbook.  
 
 :point_right: [See examples gallery in vignette](https://ddotta.github.io/tablexlsx/articles/aa-examples.html)
