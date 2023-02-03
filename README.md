@@ -10,7 +10,7 @@ status](https://github.com/ddotta/tablexlsx/workflows/R-CMD-check/badge.svg)](ht
 :package: Package `tablexlsx` <img src="man/figures/hex_tablexlsx.png" width=110 align="right"/>
 ======================================
 
-R package that allows to export data frames from R to xslx workbooks
+R package that allows to export data frames from R to xslx workbooks.
 
 ## Installation
 
