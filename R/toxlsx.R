@@ -59,26 +59,24 @@ toxlsx <- function(object,
   # check if footnote3 is a list
   assert_class(footnote3, "list")
 
-  # Get the function call of the last function call
-  sc <- sys.calls()
-  caller <- sc[[length(sc) - 1]]
-  # Convert the function call to a character vector
-  output_char <- lapply(as.list(caller), deparse)[[2]]
+  parents <- lapply(sys.frames(), parent.env)
+  is_magrittr_env <- vapply(parents, identical, logical(1), y = environment(`%>%`))
+  magrittr_pipe <- any(is_magrittr_env)
+  is_list <- inherits(object, "list")
 
-  # Check if the output_char contains the word "list"
-  if (grepl("list", output_char)) {
-    # Remove all whitespace from output_char
-    output_char <- gsub(" ", "", output_char, fixed = TRUE)
-    # Extract string within parenthesis
-    matches <- gsub(
-      "[\\(\\)]",
-      "",
-      regmatches(output_char, gregexpr("\\(.*?\\)", output_char))[[1]]
-    )
-    # Separate the elements of the extracted string by a comma
-    output_name <- unlist(strsplit(matches, ","))
+  if (magrittr_pipe) {
+    object <- get("lhs", sys.frames()[[max(which(is_magrittr_env))]])
   } else {
-    output_name <- output_char
+    object <- substitute(object)
+  }
+
+  if (is_list) {
+    if (magrittr_pipe) {
+      object <- parse(text = object)
+    }
+    output_name <- unlist(lapply(substitute(object), deparse)[-1])
+  } else {
+    output_name <- deparse(object)
   }
 
   # Initialize an empty list for output
