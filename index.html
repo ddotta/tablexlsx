@@ -86,16 +86,29 @@
 </h2>
 <p>This package is a wrapper of some functions from the great <a href="https://github.com/ycphs/openxlsx" class="external-link">openxlsx</a> package.</p>
 <p>The purpose of this package is to meet the needs of R users who want to export data frames in <code>xlsx</code> files to share their data and results with other users not necessarily R users.</p>
-<p>The goal is to get an API that is as simple as possible to use. The package will be improved over time and will include features such as the possibility to highlight in excel files some remarkable rows/columns (for example totals or coefficients…).</p>
+<p>The goal is to get an API that is as simple as possible to use. <strong>It’s intended to meet the needs of users who want to create clean, well-documented <code>xlsx</code> files (with a title and footnotes)</strong>.</p>
+<p>The package will be improved over time and will include new features based on the needs expressed by users. To do so, feel free to open an issue <a href="https://github.com/ddotta/tablexlsx/issues" class="external-link">here</a>.</p>
+</div>
+<div class="section level2">
+<h2 id="advantages">Advantages<a class="anchor" aria-label="anchor" href="#advantages"></a>
+</h2>
 <p>Some advantages of using this package :</p>
 <ul>
 <li>A simpler syntax for common export operations of excel files;<br>
 </li>
-<li>The possibility to write several data frames in the same sheet one below the other;<br>
+<li>It can write several data frames in the same sheet one below the other;<br>
 </li>
-<li>The possibility to merge modalities for one or several columns</li>
+<li>It can merge modalities for one or several columns;<br>
+</li>
+<li>It can automatically open files as soon as they are created so you can inspect your workbook.</li>
+<li>Data frames to be exported in <code>xlsx</code> files can be passed as an argument in functions as simple tables or list of tables.<br>
+</li>
+<li>The main function of the package <a href="https://ddotta.github.io/tablexlsx/reference/toxlsx.html" class="external-link">toxlsx()</a> works interchangeably with <code>%&gt;%</code> and <code>|&gt;</code> operators andthese 3 syntaxes below are equivalent :</li>
 </ul>
-<p><span class="emoji" data-emoji="point_right">👉</span> <a href="https://ddotta.github.io/tablexlsx/articles/aa-examples.html" class="external-link">See examples gallery in vignette</a></p>
+<pre><code><span><span class="fu"><a href="reference/toxlsx.html">toxlsx</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">iris</span>, path <span class="op">=</span> <span class="va">mypath</span><span class="op">)</span></span>
+<span><span class="va">iris</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/toxlsx.html">toxlsx</a></span><span class="op">(</span>path <span class="op">=</span> <span class="va">mypath</span><span class="op">)</span></span>
+<span><span class="va">iris</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/toxlsx.html">toxlsx</a></span><span class="op">(</span>path <span class="op">=</span> <span class="va">mypath</span><span class="op">)</span></span></code></pre>
+<p><span class="emoji" data-emoji="point_right">👉</span> For more, <a href="https://ddotta.github.io/tablexlsx/articles/aa-examples.html" class="external-link">see examples gallery in vignette</a></p>
 </div>
 </div>
 

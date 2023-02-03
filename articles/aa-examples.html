@@ -114,11 +114,20 @@ footnotes…</a></li>
 examples on this page</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mypath</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<blockquote>
+<p>Important : in this vignette, all examples use <code>%&gt;%</code> to
+pass the <code>object</code> argument in the <code><a href="../reference/toxlsx.html">toxlsx()</a></code>
+function, but it works interchangeably with these 3 syntaxes below :</p>
+</blockquote>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/toxlsx.html">toxlsx</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">iris</span>, path <span class="op">=</span> <span class="va">mypath</span><span class="op">)</span></span>
+<span><span class="va">iris</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/toxlsx.html">toxlsx</a></span><span class="op">(</span>path <span class="op">=</span> <span class="va">mypath</span><span class="op">)</span></span>
+<span><span class="va">iris</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/toxlsx.html">toxlsx</a></span><span class="op">(</span>path <span class="op">=</span> <span class="va">mypath</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="simply-export-a-data-frame-to-an-xlsx-file">1. Simply export a data frame to an xlsx file<a class="anchor" aria-label="anchor" href="#simply-export-a-data-frame-to-an-xlsx-file"></a>
 </h3>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">iris</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/toxlsx.html">toxlsx</a></span><span class="op">(</span>path <span class="op">=</span> <span class="va">mypath</span><span class="op">)</span></span></code></pre></div>
 <p>Preview of the xlsx file in LibreOffice Calc :</p>
 <p><img src="../reference/figures/preview_Calc_ex1.png" width="100%"></p>
@@ -127,8 +136,8 @@ examples on this page</p>
 <h3 id="export-a-list-of-several-data-frames-to-an-xlsx-file-each-data-frame-in-a-different-sheet">2. Export a list of several data frames to an xlsx file (each data
 frame in a different sheet)<a class="anchor" aria-label="anchor" href="#export-a-list-of-several-data-frames-to-an-xlsx-file-each-data-frame-in-a-different-sheet"></a>
 </h3>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">iris</span>,<span class="va">mtcars</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/toxlsx.html">toxlsx</a></span><span class="op">(</span>path <span class="op">=</span> <span class="va">mypath</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">iris</span>,<span class="va">cars</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/toxlsx.html">toxlsx</a></span><span class="op">(</span>path <span class="op">=</span> <span class="va">mypath</span><span class="op">)</span></span></code></pre></div>
 <p>Preview of the xlsx file in LibreOffice Calc :</p>
 <p><img src="../reference/figures/preview_Calc_ex2.png" width="100%"></p>
 </div>
@@ -136,7 +145,7 @@ frame in a different sheet)<a class="anchor" aria-label="anchor" href="#export-a
 <h3 id="export-a-data-frame-to-an-xlsx-file-merging-modalities-for-one-column">3. Export a data frame to an xlsx file (merging modalities for one
 column)<a class="anchor" aria-label="anchor" href="#export-a-data-frame-to-an-xlsx-file-merging-modalities-for-one-column"></a>
 </h3>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Create df1</span></span>
 <span><span class="va">df1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
 <span>  group <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"dupont"</span>,<span class="st">"dupont"</span>,<span class="st">"arnold"</span>,<span class="st">"arnold"</span><span class="op">)</span>,</span>
@@ -152,7 +161,7 @@ column)<a class="anchor" aria-label="anchor" href="#export-a-data-frame-to-an-xl
 <h3 id="export-a-data-frame-to-an-xlsx-file-merging-modalities-for-several-columns">4. Export a data frame to an xlsx file (merging modalities for
 several columns)<a class="anchor" aria-label="anchor" href="#export-a-data-frame-to-an-xlsx-file-merging-modalities-for-several-columns"></a>
 </h3>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Create df2</span></span>
 <span><span class="va">df2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
 <span>  country <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="st">"france"</span>,<span class="fl">4</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="st">"england"</span>,<span class="fl">4</span><span class="op">)</span><span class="op">)</span>,</span>
@@ -172,11 +181,11 @@ several columns)<a class="anchor" aria-label="anchor" href="#export-a-data-frame
 <h3 id="export-a-list-of-several-data-frames-to-an-xlsx-file-several-data-frames-in-a-same-sheet">5. Export a list of several data frames to an xlsx file (several
 data frames in a same sheet)<a class="anchor" aria-label="anchor" href="#export-a-list-of-several-data-frames-to-an-xlsx-file-several-data-frames-in-a-same-sheet"></a>
 </h3>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tb1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>tables <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="st">"iris"</span>,<span class="fl">5</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="st">"cars"</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>                  var <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">tb2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>tables <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"iris"</span>,<span class="st">"cars"</span>,<span class="st">"mtcars"</span><span class="op">)</span>,</span>
+<span><span class="va">tb2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>tables <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"iris"</span>,<span class="st">"cars"</span>,<span class="st">"cars"</span><span class="op">)</span>,</span>
 <span>                  rownumber <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">150</span>,<span class="fl">50</span>,<span class="fl">32</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">tb1</span>,<span class="va">tb2</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
@@ -197,7 +206,7 @@ data frames in a same sheet)<a class="anchor" aria-label="anchor" href="#export-
 which data frame goes in which sheet, styling each column, giving a
 title and footnotes…<a class="anchor" aria-label="anchor" href="#export-a-list-of-data-frames-to-an-named-xlsx-file-by-specifying-which-data-frame-goes-in-which-sheet-styling-each-column-giving-a-title-and-footnotes"></a>
 </h3>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">iris</span> <span class="op">&lt;-</span> <span class="va">iris</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">cars</span> <span class="op">&lt;-</span> <span class="va">cars</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
