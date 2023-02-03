@@ -59,6 +59,7 @@ toxlsx <- function(object,
   # check if footnote3 is a list
   assert_class(footnote3, "list")
 
+  # Code to make the function works with both %>% and |> operators
   parents <- lapply(sys.frames(), parent.env)
   is_magrittr_env <- vapply(parents, identical, logical(1), y = environment(`%>%`))
   magrittr_pipe <- any(is_magrittr_env)
@@ -70,6 +71,7 @@ toxlsx <- function(object,
     object <- substitute(object)
   }
 
+  # output_name is a string vector containing the name of all data frames passed in the object argument
   if (is_list) {
     if (magrittr_pipe) {
       object <- parse(text = object)
