@@ -51,7 +51,7 @@ Preview of the xlsx file in LibreOffice Calc :
 ## 2. Export a list of several data frames to an xlsx file (each data frame in a different sheet)
 
 ```{r list-export}
-list(iris,mtcars) %>% toxlsx(path = mypath)
+list(iris,cars) %>% toxlsx(path = mypath)
 ```
 
 Preview of the xlsx file in LibreOffice Calc :  
@@ -102,7 +102,7 @@ Preview of the xlsx file in LibreOffice Calc :
 tb1 <- data.frame(tables = c(rep("iris",5),rep("cars",2)),
                   var = c(names(iris),names(cars)))
 
-tb2 <- data.frame(tables = c("iris","cars","mtcars"),
+tb2 <- data.frame(tables = c("iris","cars","cars"),
                   rownumber = c(150,50,32))
 
 list(tb1,tb2) %>%
