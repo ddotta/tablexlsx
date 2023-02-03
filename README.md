@@ -30,7 +30,9 @@ The purpose of this package is to meet the needs of R users who want to export d
 
 The goal is to get an API that is as simple as possible to use. **It's intended to meet the needs of users who want to create clean, well-documented xlsx files (with a title and footnotes)**.  
 
-The package will be improved over time and will include new features based on the needs expressed by users. To do so, feel free to open an issue [here](https://github.com/ddotta/tablexlsx/issues).  
+The package will be improved over time and will include new features based on the needs expressed by users. To do so, feel free to open an issue [here](https://github.com/ddotta/tablexlsx/issues). 
+
+## Advantages
 
 Some advantages of using this package :  
 
