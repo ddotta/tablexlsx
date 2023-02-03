@@ -65,6 +65,9 @@ toxlsx <- function(object,
   magrittr_pipe <- any(is_magrittr_env)
   is_list <- inherits(object, "list")
 
+  # Before conversion to string, we store object in get_object
+  get_object <- object
+
   if (magrittr_pipe) {
     object <- get("lhs", sys.frames()[[max(which(is_magrittr_env))]])
   } else {
@@ -187,7 +190,7 @@ toxlsx <- function(object,
           # StartRow is equal to 1 for first df
           # StartRow is equal to 11 + nrow(first df) for second df
           # StartRow is equal to 21 + nrow(first df) + nrow(second df) for third df
-          calcstartrow(which(namecurrentsheet == df)) + calcskippedrow(mylist = object, x = which(namecurrentsheet == df))
+          calcstartrow(which(namecurrentsheet == df)) + calcskippedrow(mylist = get_object, x = which(namecurrentsheet == df))
         },
       StartCol = 1,
       FormatList = ColumnList,
