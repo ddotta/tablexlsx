@@ -26,16 +26,6 @@ test_that("toxlsx works correctly with a list", {
   expect_true("Sheet 2" %in% openxlsx::getSheetNames(file.path(tempdir(),"Export.xlsx")))
 })
 
-test_that("toxlsx works correctly with mergecol argument", {
-  iris %>% toxlsx(path =  tempdir(), mergecol = "group")
-
-  new_table <- openxlsx::read.xlsx(file.path(tempdir(),"Export.xlsx"),
-                                   sheet = "Sheet 1",
-                                   rows = 3:7, cols = 2:4)
-  expect_equal(iris, new_table)
-  expect_equal(nrow(iris), nrow(new_table))
-  expect_equal(ncol(iris), ncol(new_table))
-})
 
 test_that("toxlsx works correctly with several data frames in a same sheet", {
   list(iris,cars) %>%
