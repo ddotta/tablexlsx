@@ -27,6 +27,11 @@
 #' @importFrom stats setNames
 #' @importFrom openxlsx addStyle saveWorkbook openXL mergeCells
 #'
+#' @examples
+#' \dontrun{
+#' Many examples can be seen in this gallery <https://ddotta.github.io/tablexlsx/articles/aa-examples.html>
+#' }
+#'
 #' @return an excel file
 #' @export
 #'
