@@ -30,11 +30,18 @@ library(dplyr, warn.conflicts = FALSE)
 5. [Export a list of several data frames to an xlsx file (several data frames in a same sheet)](#export-a-list-of-several-data-frames-to-an-xlsx-file-several-data-frames-in-a-same-sheet)
 6. [Export a list of data frames to an named xlsx file by specifying which data frame goes in which sheet, styling each column, giving a title and footnotes...](#export-a-list-of-data-frames-to-an-named-xlsx-file-by-specifying-which-data-frame-goes-in-which-sheet-styling-each-column-giving-a-title-and-footnotes)
 
-
 Let's define an export folder that will be the same for all the examples on this page
 
 ```{r define-export-folder}
 mypath <- tempdir()
+```
+
+> Important : in this vignette, all examples use `%>%` to pass the `object` argument in the `toxlsx()` function, but it works interchangeably with these 3 syntaxes below :  
+
+```{r define-export-folder, eval = FALSE}
+toxlsx(object = iris, path = mypath)
+iris |> toxlsx(path = mypath)
+iris %>% toxlsx(path = mypath)
 ```
 
 ## 1. Simply export a data frame to an xlsx file 
