@@ -43,11 +43,21 @@ mypath <- tempdir()
 iris %>% toxlsx(path = mypath)
 ```
 
+Preview of the xlsx file in LibreOffice Calc :  
+
+<img src="../man/figures/preview_Calc_ex1.png" width="100%" />
+
+
 ## 2. Export a list of several data frames to an xlsx file (each data frame in a different sheet)
 
 ```{r list-export}
 list(iris,mtcars) %>% toxlsx(path = mypath)
 ```
+
+Preview of the xlsx file in LibreOffice Calc :  
+
+<img src="../man/figures/preview_Calc_ex2.png" width="100%" />
+
 
 ## 3. Export a data frame to an xlsx file (merging modalities for one column)
 
