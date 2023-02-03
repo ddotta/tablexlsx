@@ -30,7 +30,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' Many examples can be seen in this gallery <https://ddotta.github.io/tablexlsx/articles/aa-examples.html>
+#' See examples gallery : <https://ddotta.github.io/tablexlsx/articles/aa-examples.html>
 #' }
 #'
 #' @return an excel file

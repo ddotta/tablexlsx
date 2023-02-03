@@ -55,3 +55,9 @@ This function allows you to write R data frames given
 in the `object` argument to excel files located in the `path` directory.
 The function takes several arguments but the only two required are `object` and `path`.
 }
+\examples{
+\dontrun{
+See examples gallery : <https://ddotta.github.io/tablexlsx/articles/aa-examples.html>
+}
+
+}

@@ -1,62 +1,37 @@
-# Creation of data frames
-x <- iris
-x$Species <- as.character(x$Species)
-y <- cars
-
-df1 <- data.frame(
-  group = c("dupont","dupont","arnold","arnold"),
-  name = c("toto","tata","tutu","tete"),
-  volume = c(10,8,12,15)
-)
-df2 <- data.frame(
-  country = c(rep("france",4),rep("england",4)),
-  group = c(rep("dupont",2),rep("martin",2),
-            rep("arnold",2),rep("harry",2)),
-  name = c("toto","tata","tutu","tete",
-           "momo","mama","mumu","meme"),
-  volume = c(10,8,12,15,
-             14,10,5,12)
-)
-
-ext_iris <- iris %>% head()
-ext_iris$Species <- as.character(ext_iris$Species)
-ext_cars <- cars %>% head()
-
-tb1 <- data.frame(tables = c(rep("iris",5),rep("cars",2)),
-                  var = c(names(iris),names(cars)))
-tb2 <- data.frame(tables = c("iris","cars","cars"),
-                  rownumber = c(150,50,32))
-# Tests
 test_that("toxlsx works correctly with a simple data frame", {
-  x %>% toxlsx(path = tempdir())
+  iris %>% toxlsx(path = tempdir())
   new_table <- openxlsx::read.xlsx(file.path(tempdir(),"Export.xlsx"),
                                    sheet = "Sheet 1",
                                    rows = 3:153, cols = 2:6)
-  expect_equal(x, new_table)
-  expect_equal(nrow(x), nrow(new_table))
-  expect_equal(ncol(x), ncol(new_table))
+  expect_equal(nrow(iris), nrow(new_table))
+  expect_equal(ncol(iris), ncol(new_table))
   expect_true("Sheet 1" %in% openxlsx::getSheetNames(file.path(tempdir(),"Export.xlsx")))
 })
 
 test_that("toxlsx works correctly with a list", {
-  list(x,y) |> toxlsx(path = tempdir())
-  new_table_x <- openxlsx::read.xlsx(file.path(tempdir(),"Export.xlsx"),
-                                   sheet = "Sheet 1",
-                                   rows = 3:153, cols = 2:6)
-  expect_equal(x, new_table_x)
-  expect_equal(nrow(x), nrow(new_table_x))
-  expect_equal(ncol(x), ncol(new_table_x))
-  new_table_y <- openxlsx::read.xlsx(file.path(tempdir(),"Export.xlsx"),
-                                   sheet = "Sheet 2",
-                                   rows = 3:53, cols = 2:12)
-  expect_equal(y, new_table_y)
-  expect_equal(nrow(y), nrow(new_table_y))
-  expect_equal(ncol(y), ncol(new_table_y))
+  list(iris,cars) |> toxlsx(path = tempdir())
+  new_table_iris <- openxlsx::read.xlsx(file.path(tempdir(),"Export.xlsx"),
+                                        sheet = "Sheet 1",
+                                        rows = 3:153, cols = 2:6)
+  expect_equal(nrow(iris), nrow(new_table_iris))
+  expect_equal(ncol(iris), ncol(new_table_iris))
+
+  new_table_cars <- openxlsx::read.xlsx(file.path(tempdir(),"Export.xlsx"),
+                                        sheet = "Sheet 2",
+                                        rows = 3:53, cols = 2:12)
+  expect_equal(cars, new_table_cars)
+  expect_equal(nrow(cars), nrow(new_table_cars))
+  expect_equal(ncol(cars), ncol(new_table_cars))
   expect_true("Sheet 1" %in% openxlsx::getSheetNames(file.path(tempdir(),"Export.xlsx")))
   expect_true("Sheet 2" %in% openxlsx::getSheetNames(file.path(tempdir(),"Export.xlsx")))
 })
 
 test_that("toxlsx works correctly with mergecol argument", {
+  df1 <- data.frame(
+    group = c("dupont","dupont","arnold","arnold"),
+    name = c("toto","tata","tutu","tete"),
+    volume = c(10,8,12,15)
+  )
   df1 %>% toxlsx(path =  tempdir(), mergecol = "group")
 
   new_table <- openxlsx::read.xlsx(file.path(tempdir(),"Export.xlsx"),
@@ -68,6 +43,15 @@ test_that("toxlsx works correctly with mergecol argument", {
 })
 
 test_that("toxlsx works correctly while merging several columns", {
+  df2 <- data.frame(
+    country = c(rep("france",4),rep("england",4)),
+    group = c(rep("dupont",2),rep("martin",2),
+              rep("arnold",2),rep("harry",2)),
+    name = c("toto","tata","tutu","tete",
+             "momo","mama","mumu","meme"),
+    volume = c(10,8,12,15,
+               14,10,5,12)
+  )
   df2 %>% toxlsx(path = tempdir(), mergecol = c("country","group"))
 
   new_table <- openxlsx::read.xlsx(file.path(tempdir(),"Export.xlsx"),
@@ -79,6 +63,11 @@ test_that("toxlsx works correctly while merging several columns", {
 })
 
 test_that("toxlsx works correctly with several data frames in a same sheet", {
+  tb1 <- data.frame(tables = c(rep("iris",5),rep("cars",2)),
+                    var = c(names(iris),names(cars)))
+  tb2 <- data.frame(tables = c("iris","cars","cars"),
+                    rownumber = c(150,50,32))
+
   list(tb1,tb2) %>%
     toxlsx(tosheet = list("tb1" = "mydata",
                           "tb2" = "mydata"),
@@ -106,7 +95,11 @@ test_that("toxlsx works correctly with several data frames in a same sheet", {
 })
 
 test_that("toxlsx works correctly with a lot of specifications", {
-  list(iris,cars) %>%
+  ext_iris <- iris %>% head()
+  ext_iris$Species <- as.character(ext_iris$Species)
+  ext_cars <- cars %>% head()
+
+  list(ext_iris,ext_cars) %>%
     toxlsx(tosheet = list("ext_iris" = "first",
                           "ext_cars" = "second"),
            title = list("ext_iris" = "Head of iris",
