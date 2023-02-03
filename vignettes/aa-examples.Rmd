@@ -38,7 +38,7 @@ mypath <- tempdir()
 
 > Important : in this vignette, all examples use `%>%` to pass the `object` argument in the `toxlsx()` function, but it works interchangeably with these 3 syntaxes below :  
 
-```{r define-export-folder, eval = FALSE}
+```{r equivalent-syntaxes, eval = FALSE}
 toxlsx(object = iris, path = mypath)
 iris |> toxlsx(path = mypath)
 iris %>% toxlsx(path = mypath)
