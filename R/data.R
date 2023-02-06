@@ -12,6 +12,5 @@
 #' \item{decimal}{Style for columns in character format with decimals}
 #' \item{percent}{Style for columns in percent format}
 #' }
-#' @noRd
 "style"
 
