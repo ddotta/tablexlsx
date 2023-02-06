@@ -4,3 +4,5 @@
 ^\.github$
 ^_pkgdown.yml
 ^dev$
+^doc$
+^Meta$
