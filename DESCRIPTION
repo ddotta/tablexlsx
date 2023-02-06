@@ -1,6 +1,6 @@
 Package: tablexlsx
 Type: Package
-Title: Export Data Frames to excel Workbook
+Title: Export Data Frames to Excel Workbook
 Version: 0.1.0
 Authors@R:
     c(person(given = "Damien",
