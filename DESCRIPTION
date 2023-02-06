@@ -1,14 +1,12 @@
 Package: tablexlsx
 Type: Package
-Title: Export data frames to xlsx workbook
+Title: Export Data Frames to xlsx Workbook
 Version: 0.1.0
-Author: c(
-    person(
-      "Damien", "Dotta",
-      email = "damien.dotta@live.fr",
-      role = c("aut", "cre")
-    )
-Maintainer: Damien Dotta <damien.dotta@live.fr>
+Authors@R:
+    c(person(given = "Damien",
+             family = "Dotta",
+             role = c("aut", "cre"),
+             email = "damien.dotta@live.fr"))
 Description: Collection of functions that allow to export data frames to xlsx workbook.
 License: MIT + file LICENSE
 Encoding: UTF-8
