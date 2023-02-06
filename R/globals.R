@@ -1,2 +1,9 @@
+#' @name .onLoad
 #' @import utils
-utils::globalVariables(c("style"))
+#' @noRd
+.onLoad <- function(libname, pkgname) {
+  # set global variables in order to avoid CHECK notes
+  utils::globalVariables(c("style"))
+
+  invisible()
+}

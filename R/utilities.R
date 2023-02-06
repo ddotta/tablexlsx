@@ -12,6 +12,7 @@
 #' }
 #'
 #' @keywords internal
+#' @noRd
 calcstartrow <- function(x) {
 
   if (x==1) {
@@ -41,6 +42,7 @@ calcstartrow <- function(x) {
 #' }
 #'
 #' @keywords internal
+#' @noRd
 calcskippedrow <- function(mylist,x) {
 
   res <- 0
@@ -69,6 +71,7 @@ calcskippedrow <- function(mylist,x) {
 #' }
 #'
 #' @keywords internal
+#' @noRd
 get_indices_of_identical_elements <- function(vector) {
   res <- vector()
   start <- 1
@@ -100,6 +103,7 @@ get_indices_of_identical_elements <- function(vector) {
 #' }
 #'
 #' @keywords internal
+#' @noRd
 get_indices_from_vector <- function(vector) {
   res <- c(paste0("1:",as.character(length(vector))))
   res
@@ -122,6 +126,7 @@ get_indices_from_vector <- function(vector) {
 #' }
 #'
 #' @keywords internal
+#' @noRd
 convert_range_string <- function(range_string) {
   range <- as.numeric(unlist(strsplit(range_string, ":")))
   seq(range[1], range[2])
