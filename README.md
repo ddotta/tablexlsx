@@ -3,7 +3,7 @@
 language](https://img.shields.io/github/languages/top/ddotta/tablexlsx)
 [![R check
 status](https://github.com/ddotta/tablexlsx/workflows/R-CMD-check/badge.svg)](https://github.com/ddotta/tablexlsx/actions/workflows/check-release.yaml)
-[![codecov](https://codecov.io/gh/ddotta/tablexlsx/branch/main/graph/badge.svg?token=UWLXVupq1C)](https://codecov.io/gh/ddotta/tablexlsx)
+[![codecov](https://codecov.io/gh/ddotta/tablexlsx/branch/main/graph/badge.svg?token=UWLXVupq1C)](https://app.codecov.io/gh/ddotta/tablexlsx)
 [![CodeFactor](https://www.codefactor.io/repository/github/ddotta/tablexlsx/badge)](https://www.codefactor.io/repository/github/ddotta/tablexlsx)
 <!-- badges: end -->
 
