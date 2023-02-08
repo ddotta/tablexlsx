@@ -31,10 +31,9 @@
 #'
 #' @examples
 #' # Simply export a data frame to an xlsx file
-#' # For more examples, see examples gallery : https://ddotta.github.io/tablexlsx/articles/aa-examples.html
+#' # For more examples, see examples gallery :
+#' # https://ddotta.github.io/tablexlsx/articles/aa-examples.html
 #' toxlsx(object = iris, path = tempdir())
-#' iris |> toxlsx(path = tempdir())
-#' iris %>% toxlsx(path = tempdir())
 #'
 #' @return an excel file
 #' @export
