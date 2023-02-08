@@ -53,11 +53,14 @@ an excel file
 \description{
 This function allows you to write R data frames given
 in the `object` argument to excel files located in the `path` directory.
-The function takes several arguments but the only two required are `object` and `path`.
-}
-\examples{
-\dontrun{
+The function takes several arguments but the only two required are `object` and `path`. \cr
 See examples gallery : <https://ddotta.github.io/tablexlsx/articles/aa-examples.html>
 }
+\examples{
+# Simply export a data frame to an xlsx file
+# For more examples, see examples gallery : https://ddotta.github.io/tablexlsx/articles/aa-examples.html
+toxlsx(object = iris, path = tempdir())
+iris |> toxlsx(path = tempdir())
+iris \%>\% toxlsx(path = tempdir())
 
 }
