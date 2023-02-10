@@ -61,9 +61,5 @@ See examples gallery : <https://ddotta.github.io/tablexlsx/articles/aa-examples.
 # For more examples, see examples gallery :
 # https://ddotta.github.io/tablexlsx/articles/aa-examples.html
 toxlsx(object = iris, path = tempdir())
-# You can use \%>\%
-# iris \%>\% toxlsx(path = tempdir())
-# You can even use |>
-# iris |> toxlsx(path = tempdir())
 
 }
