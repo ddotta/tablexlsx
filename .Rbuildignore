@@ -3,6 +3,7 @@
 ^data-raw$
 ^\.github$
 ^_pkgdown.yml
+^CONTRIBUTING.md
 ^dev$
 ^doc$
 ^Meta$
