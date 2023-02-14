@@ -1,6 +1,8 @@
 <!-- badges: start -->
 ![GitHub top
 language](https://img.shields.io/github/languages/top/ddotta/tablexlsx)
+[![version](http://www.r-pkg.org/badges/version/tablexlsx)](https://CRAN.R-project.org/package=tablexlsx)
+[![cranlogs](http://cranlogs.r-pkg.org/badges/tablexlsx)](https://CRAN.R-project.org/package=tablexlsx)
 [![R check
 status](https://github.com/ddotta/tablexlsx/workflows/R-CMD-check/badge.svg)](https://github.com/ddotta/tablexlsx/actions/workflows/check-release.yaml)
 [![codecov](https://codecov.io/gh/ddotta/tablexlsx/branch/main/graph/badge.svg?token=UWLXVupq1C)](https://app.codecov.io/gh/ddotta/tablexlsx)
@@ -14,9 +16,19 @@ R package that allows to export data frames from R to xslx workbooks.
 
 ## Installation
 
+To install `tablexlsx` from CRAN :  
+
+``` r
+install.packages("tablexlsx")
+```
+
+Or alternatively to install the development version from GitHub :  
+
 ``` r
 remotes::install_github("ddotta/tablexlsx")
 ```
+
+Then to load it :  
 
 ``` r
 library(tablexlsx)
