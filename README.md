@@ -1,6 +1,4 @@
 <!-- badges: start -->
-![GitHub top
-language](https://img.shields.io/github/languages/top/ddotta/tablexlsx)
 [![version](http://www.r-pkg.org/badges/version/tablexlsx)](https://CRAN.R-project.org/package=tablexlsx)
 [![cranlogs](http://cranlogs.r-pkg.org/badges/tablexlsx)](https://CRAN.R-project.org/package=tablexlsx)
 [![R check
