@@ -1,6 +1,7 @@
 <!-- badges: start -->
 [![version](http://www.r-pkg.org/badges/version/tablexlsx)](https://CRAN.R-project.org/package=tablexlsx)
 [![cranlogs](http://cranlogs.r-pkg.org/badges/tablexlsx)](https://CRAN.R-project.org/package=tablexlsx)
+[![Downloads](https://cranlogs.r-pkg.org/badges/grand-total/tablexlsx?color=brightgreen)](https://cran.r-project.org/package=tablexlsx)
 [![R check
 status](https://github.com/ddotta/tablexlsx/workflows/R-CMD-check/badge.svg)](https://github.com/ddotta/tablexlsx/actions/workflows/check-release.yaml)
 [![codecov](https://codecov.io/gh/ddotta/tablexlsx/branch/main/graph/badge.svg?token=UWLXVupq1C)](https://app.codecov.io/gh/ddotta/tablexlsx)
