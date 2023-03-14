@@ -1,7 +1,7 @@
 Package: tablexlsx
 Type: Package
 Title: Export Data Frames to Excel Workbook
-Version: 0.1.0
+Version: 0.2.0
 Authors@R:
     c(person(given = "Damien",
              family = "Dotta",
@@ -14,7 +14,7 @@ LazyData: true
 URL: https://ddotta.github.io/tablexlsx/,
     https://github.com/ddotta/tablexlsx
 BugReports: https://github.com/ddotta/tablexlsx/issues
-RoxygenNote: 7.2.2
+RoxygenNote: 7.2.3
 Depends: 
     R (>= 2.10)
 Suggests: 

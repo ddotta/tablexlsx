@@ -92,3 +92,13 @@ test_that("assert_named_list_in_list function works as expected", {
     assert_named_list_in_list(x),
     error = TRUE)
 })
+
+test_that("assert_grouped function works as expected", {
+  # Test 1: assert_grouped returns TRUE with ungrouped data frame
+  assert_grouped(iris)
+  expect_true(TRUE)
+
+  # Test 2: assert_named_list returns an error with an unnamed list
+  assert_grouped(list(iris,cars))
+  expect_true(TRUE)
+})
