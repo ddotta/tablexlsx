@@ -52,6 +52,8 @@ toxlsx <- function(object,
 
   # check if object is a data frame or a list
   assert_class(object, c("data.frame", "list"))
+  # check if object is grouped or not
+  assert_grouped(object)
   # check if tosheet is a list
   assert_class(tosheet, "list")
   # check if title is a list
