@@ -1,3 +1,7 @@
+# tablexlsx 0.2.0
+
+* Add a test to check if the data frames to be exported are grouped or not #12
+
 # tablexlsx 0.1.0
 
 * Setting up pkgdown website with first vignette
