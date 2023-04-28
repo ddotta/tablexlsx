@@ -1,6 +1,11 @@
 # tablexlsx 0.2.0
 
+This release includes :
+
 * Add a test to check if the data frames to be exported are grouped or not #12
+* Improves unit tests for function `toxlsx()`
+* `@importFrom` statements are now grouped in a single `package-tablexlsx` file
+for easier maintenance
 
 # tablexlsx 0.1.0
 
