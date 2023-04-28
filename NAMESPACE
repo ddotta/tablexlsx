@@ -3,6 +3,7 @@
 export(add_table)
 export(toxlsx)
 import(utils)
+importFrom(cli,cli_alert_success)
 importFrom(magrittr,"%>%")
 importFrom(methods,allNames)
 importFrom(openxlsx,addStyle)

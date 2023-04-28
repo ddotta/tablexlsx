@@ -256,6 +256,9 @@ toxlsx <- function(object,
     overwrite = TRUE
   )
 
+  Sys.sleep(0.01)
+  cli_alert_success("\nYour Excel file '{filename}.xlsx' is available in the folder '{path}'")
+
   # Open workbook automatically if automaticopen is TRUE
   if (isTRUE(automaticopen)) {
     openxlsx::openXL(file = file.path(
