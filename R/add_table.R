@@ -16,10 +16,7 @@
 #'
 #' @return excel wb object
 #'
-#' @importFrom openxlsx addWorksheet setColWidths setRowHeights writeData addStyle writeDataTable
 #' @export
-
-
 add_table <- function(
     Table,
     WbTitle,

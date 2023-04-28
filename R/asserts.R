@@ -81,8 +81,6 @@ assert_named_list <- function(x) {
 #'
 #' @param x Object
 #'
-#' @importFrom methods allNames
-#'
 #' @noRd
 assert_named_list_in_list <- function(x) {
   ok <- sapply(x, function(y) {
@@ -97,8 +95,6 @@ assert_named_list_in_list <- function(x) {
 #' @name assert_named_list
 #'
 #' @param x Object
-#'
-#' @importFrom dplyr is.grouped_df
 #'
 #' @noRd
 assert_grouped <- function(x) {
