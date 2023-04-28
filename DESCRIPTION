@@ -26,5 +26,6 @@ Imports:
     magrittr,
     dplyr,
     methods,
-    openxlsx
+    openxlsx,
+    cli
 VignetteBuilder: knitr
