@@ -3,7 +3,6 @@
 export(add_table)
 export(toxlsx)
 import(utils)
-importFrom(dplyr,is.grouped_df)
 importFrom(magrittr,"%>%")
 importFrom(methods,allNames)
 importFrom(openxlsx,addStyle)

@@ -25,10 +25,6 @@
 #' @param filename name for the excel file ("Export" by default)
 #' @param automaticopen logical indicating if excel file should open automatically (FALSE by default)
 #'
-#' @importFrom stats setNames
-#' @importFrom openxlsx addStyle saveWorkbook openXL mergeCells
-#' @importFrom magrittr "%>%"
-#'
 #' @examples
 #' # Simply export a data frame to an xlsx file
 #' # For more examples, see examples gallery :
