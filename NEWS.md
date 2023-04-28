@@ -1,3 +1,9 @@
+# tablexlsx 0.2.1
+
+This release includes :
+
+* Use of {cli} for alert messages to users in case of success
+
 # tablexlsx 0.2.0
 
 This release includes :
