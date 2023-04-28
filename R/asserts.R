@@ -99,9 +99,11 @@ assert_named_list_in_list <- function(x) {
 #' @noRd
 assert_grouped <- function(x) {
   if (is.data.frame(x)) {
-    ok <- !is.grouped_df(x)
+    ok <- isFALSE("groups" %in% names(attributes(x)))
   } else {
-    ok <- !any(sapply(x,is.grouped_df))
+    ok <- !any(sapply(x, function(df) {
+      "groups" %in% names(attributes(df))
+    }))
   }
 
   if (!ok) {
