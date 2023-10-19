@@ -61,4 +61,4 @@ iris |> toxlsx(path = mypath)
 iris %>% toxlsx(path = mypath)
 ```
   
-:point_right: For more, [see examples gallery in vignette](https://ddotta.github.io/tablexlsx/articles/aa-examples.html) :mag_right:
+:point_right: For more, [see examples gallery in this vignette](https://ddotta.github.io/tablexlsx/articles/aa-examples.html) :mag_right:
