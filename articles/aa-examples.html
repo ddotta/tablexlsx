@@ -129,7 +129,7 @@ function, but it works interchangeably with these 3 syntaxes below :</p>
 </h3>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">iris</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/toxlsx.html">toxlsx</a></span><span class="op">(</span>path <span class="op">=</span> <span class="va">mypath</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Your Excel file 'Export.xlsx' is available in the folder '/tmp/RtmpEaogXo'</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Your Excel file 'Export.xlsx' is available in the folder '/tmp/RtmpwGb35s'</span></span></code></pre></div>
 <p>Preview of the xlsx file in LibreOffice Calc :</p>
 <p><img src="../reference/figures/preview_Calc_ex1.png" width="100%"></p>
 </div>
@@ -139,7 +139,7 @@ frame in a different sheet)<a class="anchor" aria-label="anchor" href="#export-a
 </h3>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">iris</span>,<span class="va">cars</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/toxlsx.html">toxlsx</a></span><span class="op">(</span>path <span class="op">=</span> <span class="va">mypath</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Your Excel file 'Export.xlsx' is available in the folder '/tmp/RtmpEaogXo'</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Your Excel file 'Export.xlsx' is available in the folder '/tmp/RtmpwGb35s'</span></span></code></pre></div>
 <p>Preview of the xlsx file in LibreOffice Calc :</p>
 <p><img src="../reference/figures/preview_Calc_ex2.png" width="100%"></p>
 </div>
@@ -156,7 +156,7 @@ column)<a class="anchor" aria-label="anchor" href="#export-a-data-frame-to-an-xl
 <span><span class="op">)</span></span>
 <span><span class="co">#  Export</span></span>
 <span><span class="va">df1</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/toxlsx.html">toxlsx</a></span><span class="op">(</span>path <span class="op">=</span> <span class="va">mypath</span>, mergecol <span class="op">=</span> <span class="st">"group"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Your Excel file 'Export.xlsx' is available in the folder '/tmp/RtmpEaogXo'</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Your Excel file 'Export.xlsx' is available in the folder '/tmp/RtmpwGb35s'</span></span></code></pre></div>
 <p>Preview of the xlsx file in LibreOffice Calc :</p>
 <p><img src="../reference/figures/preview_Calc_ex3.png" width="100%"></p>
 </div>
@@ -177,7 +177,7 @@ several columns)<a class="anchor" aria-label="anchor" href="#export-a-data-frame
 <span><span class="op">)</span></span>
 <span><span class="co">#  Export</span></span>
 <span><span class="va">df2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/toxlsx.html">toxlsx</a></span><span class="op">(</span>path <span class="op">=</span> <span class="va">mypath</span>, mergecol <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"country"</span>,<span class="st">"group"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Your Excel file 'Export.xlsx' is available in the folder '/tmp/RtmpEaogXo'</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Your Excel file 'Export.xlsx' is available in the folder '/tmp/RtmpwGb35s'</span></span></code></pre></div>
 <p>Preview of the xlsx file in LibreOffice Calc :</p>
 <p><img src="../reference/figures/preview_Calc_ex4.png" width="100%"></p>
 </div>
@@ -202,7 +202,7 @@ data frames in a same sheet)<a class="anchor" aria-label="anchor" href="#export-
 <span>         footnote3 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"tb1"</span> <span class="op">=</span> <span class="st">"Source : R.A. Fisher"</span>,</span>
 <span>                          <span class="st">"tb2"</span> <span class="op">=</span> <span class="st">"Source : M. Ezekiel"</span><span class="op">)</span>,</span>
 <span>         path<span class="op">=</span><span class="va">mypath</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Your Excel file 'Export.xlsx' is available in the folder '/tmp/RtmpEaogXo'</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Your Excel file 'Export.xlsx' is available in the folder '/tmp/RtmpwGb35s'</span></span></code></pre></div>
 <p>Preview of the xlsx file in LibreOffice Calc :</p>
 <p><img src="../reference/figures/preview_Calc_ex5.png" width="100%"></p>
 </div>
@@ -237,7 +237,7 @@ title and footnotes…<a class="anchor" aria-label="anchor" href="#export-a-list
 <span>                           <span class="st">"cars"</span> <span class="op">=</span> <span class="st">"Source : M. Ezekiel"</span><span class="op">)</span>,</span>
 <span>         filename <span class="op">=</span> <span class="st">"Results"</span>,</span>
 <span>         path <span class="op">=</span> <span class="va">mypath</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Your Excel file 'Results.xlsx' is available in the folder '/tmp/RtmpEaogXo'</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Your Excel file 'Results.xlsx' is available in the folder '/tmp/RtmpwGb35s'</span></span></code></pre></div>
 <p>The equivalent with the {openxlsx} syntax would be much longer and
 more painful to write. See <a href="https://gist.github.com/ddotta/25ae0ec6c142dd7327057990ef955ae4" class="external-link">here</a>
 for the equivalent of the sixth example.</p>
