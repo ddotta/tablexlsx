@@ -35,7 +35,7 @@ library(tablexlsx)
 
 ## Why this package ?
 
-This package is a  wrapper of some functions from the great [openxlsx](https://github.com/ycphs/openxlsx) package.  
+This package is a  wrapper of some functions from the great [openxlsx](https://github.com/ycphs/openxlsx) package  
 
 The purpose of this package is to meet the needs of R users who want to export data frames in `xlsx` files to share their data and results with other users not necessarily R users.  
 
