@@ -67,6 +67,10 @@ toxlsx <- function(object,
   # check if footnote3 is a list
   assert_class(footnote3, "list")
 
+  if (isTRUE(asTable) & !is.null(mergecol)) {
+    stop("mergecol cannot be defined when asTable is TRUE")
+  }
+
   # Code to make the function works with both %>% and |> operators
   parents <- lapply(sys.frames(), parent.env)
   is_magrittr_env <- vapply(parents, identical, logical(1), y = environment(`%>%`))
