@@ -13,6 +13,7 @@
 #' @param TableFootnote1 : string for TableFootnote1
 #' @param TableFootnote2 : string for TableFootnote2
 #' @param TableFootnote3 : string for TableFootnote3
+#' @param asTable logical indicating if data should be written as an Excel Table (FALSE by default)
 #'
 #' @return excel wb object
 #'
@@ -28,7 +29,8 @@ add_table <- function(
     HeightTableTitle = 2,
     TableFootnote1 = list(),
     TableFootnote2 = list(),
-    TableFootnote3 = list()) {
+    TableFootnote3 = list(),
+    asTable = FALSE) {
 
   # Assert parameters
   assert_class(Table, "data.frame")
@@ -81,15 +83,28 @@ add_table <- function(
 
 
   # Add a table
-  openxlsx::writeDataTable(
-    wb = WbTitle,
-    sheet = mysheet,
-    x = Table,
-    startRow = StartRow + 2,
-    startCol = StartCol + 1,
-    rowNames = FALSE,
-    headerStyle = style$col_header
-  )
+  if (isTRUE(asTable)) {
+    openxlsx::writeDataTable(
+      wb = WbTitle,
+      sheet = mysheet,
+      x = Table,
+      startRow = StartRow + 2,
+      startCol = StartCol + 1,
+      rowNames = FALSE,
+      headerStyle = style$col_header
+    )
+  } else {
+    openxlsx::writeData(
+      wb = WbTitle,
+      sheet = mysheet,
+      x = Table,
+      startRow = StartRow + 2,
+      startCol = StartCol + 1,
+      rowNames = FALSE,
+      headerStyle = style$col_header
+    )
+  }
+
 
   # Format of the table's columns
   sapply(seq_len(length(FormatList)), function(i) {

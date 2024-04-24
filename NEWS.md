@@ -1,3 +1,9 @@
+# tablexlsx (WIP)
+
+This release includes :
+
+* `asTable` argument is now set to FALSE in function `add_table()` and `toxlsx()` #24
+
 # tablexlsx 0.2.1
 
 This release includes :

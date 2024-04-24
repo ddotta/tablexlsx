@@ -23,6 +23,7 @@
 #' @param mergecol character vector that indicates the columns for which we want to merge the modalities
 #' @param path path to save excel file
 #' @param filename name for the excel file ("Export" by default)
+#' @param asTable logical indicating if data should be written as an Excel Table (FALSE by default)
 #' @param automaticopen logical indicating if excel file should open automatically (FALSE by default)
 #'
 #' @examples
@@ -44,6 +45,7 @@ toxlsx <- function(object,
                    mergecol = NULL,
                    path,
                    filename = "Export",
+                   asTable = FALSE,
                    automaticopen = FALSE) {
 
   # check if object is a data frame or a list
@@ -64,6 +66,10 @@ toxlsx <- function(object,
   assert_class(footnote2, "list")
   # check if footnote3 is a list
   assert_class(footnote3, "list")
+
+  if (isTRUE(asTable) & !is.null(mergecol)) {
+    stop("mergecol cannot be defined when asTable is TRUE")
+  }
 
   # Code to make the function works with both %>% and |> operators
   parents <- lapply(sys.frames(), parent.env)
@@ -203,7 +209,8 @@ toxlsx <- function(object,
       HeightTableTitle = 2,
       TableFootnote1 = output[[df]][["footnote1"]],
       TableFootnote2 = output[[df]][["footnote2"]],
-      TableFootnote3 = output[[df]][["footnote3"]]
+      TableFootnote3 = output[[df]][["footnote3"]],
+      asTable = asTable
     )
 
     # If mergecol is filled in
