@@ -48,28 +48,14 @@ toxlsx <- function(object,
                    asTable = FALSE,
                    automaticopen = FALSE) {
 
+  if (isTRUE(asTable) & !is.null(mergecol)) {
+    stop("mergecol cannot be defined when asTable is TRUE")
+  }
+
   # check if object is a data frame or a list
   assert_class(object, c("data.frame", "list"))
   # check if object is grouped or not
   assert_grouped(object)
-  # check if tosheet is a list
-  assert_class(tosheet, "list")
-  # check if title is a list
-  assert_class(title, "list")
-  # check if columnstyle is a list
-  assert_class(columnstyle, "list")
-  # check if columnstyle is a named list
-  assert_named_list(columnstyle)
-  # check if footnote1 is a list
-  assert_class(footnote1, "list")
-  # check if footnote2 is a list
-  assert_class(footnote2, "list")
-  # check if footnote3 is a list
-  assert_class(footnote3, "list")
-
-  if (isTRUE(asTable) & !is.null(mergecol)) {
-    stop("mergecol cannot be defined when asTable is TRUE")
-  }
 
   # Code to make the function works with both %>% and |> operators
   parents <- lapply(sys.frames(), parent.env)
@@ -95,6 +81,29 @@ toxlsx <- function(object,
   } else {
     output_name <- deparse(object)
   }
+
+  if (!is_list) tosheet <- if_atomic_to_list(tosheet, output_name)
+  title <- if_atomic_to_list(title, output_name)
+  footnote1 <- if_atomic_to_list(footnote1, output_name)
+  footnote2 <- if_atomic_to_list(footnote2, output_name)
+  footnote3 <- if_atomic_to_list(footnote3, output_name)
+  mergecol <- if_atomic_to_list(mergecol, output_name)
+
+  # check if tosheet is a list
+  assert_class(tosheet, "list")
+  # check if title is a list
+  assert_class(title, "list")
+  # check if columnstyle is a list
+  assert_class(columnstyle, "list")
+  # check if columnstyle is a named list
+  assert_named_list(columnstyle)
+  # check if footnote1 is a list
+  assert_class(footnote1, "list")
+  # check if footnote2 is a list
+  assert_class(footnote2, "list")
+  # check if footnote3 is a list
+  assert_class(footnote3, "list")
+
 
   # Initialize an empty list for output
   # and name the elements of the output list with output_name

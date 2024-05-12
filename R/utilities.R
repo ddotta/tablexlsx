@@ -131,3 +131,25 @@ convert_range_string <- function(range_string) {
   range <- as.numeric(unlist(strsplit(range_string, ":")))
   seq(range[1], range[2])
 }
+
+#' @name if_atomic_to_list
+#'
+#' @title Utility function that converts the input to a list if an atomic vector,
+#' repeating it if necessary. Returns the input if not an atomic vector.
+#'
+#' @param x An object to convert
+#' @param new_names The names to give to the resulting list
+#'
+#' @return Returns a list if input is an atomic vector, and the input otherwise
+#'
+#' @keywords internal
+#' @noRd
+if_atomic_to_list <- function(x, new_names) {
+  if (is.atomic(x)) {
+    l <- rep(list(x), length(new_names))
+    names(l) <- new_names
+  } else {
+    l <- x
+  }
+  return(l)
+}
