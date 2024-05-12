@@ -13,6 +13,7 @@
 #' @param TableFootnote1 : string for TableFootnote1
 #' @param TableFootnote2 : string for TableFootnote2
 #' @param TableFootnote3 : string for TableFootnote3
+#' @param MergeCol : character vector that indicates the columns for which to merge the modalities
 #' @param asTable logical indicating if data should be written as an Excel Table (FALSE by default)
 #'
 #' @return excel wb object
@@ -30,6 +31,7 @@ add_table <- function(
     TableFootnote1 = list(),
     TableFootnote2 = list(),
     TableFootnote3 = list(),
+    MergeCol = NULL,
     asTable = FALSE) {
 
   # Assert parameters
@@ -153,4 +155,41 @@ add_table <- function(
     cols = StartCol, rows = StartRow + nrow(Table) + 6,
     style = style$footnote3
   )
+
+  # If mergecol is filled in
+  if(!is.null(MergeCol)) {
+
+    # loop on each column of mergecol
+    for (mycol in MergeCol) {
+
+      # distinct_mergecol count the number of unique modalities for each column of mergecol
+      distinct_mergecol <- length(unique(Table[[mycol]]))
+
+      # loop on each modality of mycol
+      for (i in (1:distinct_mergecol)) {
+
+        mergeCells(wb = WbTitle,
+                   sheet = mysheet,
+                   # here we add 1 because the table starts to be written from col 2 in workbook
+                   cols = which(names(Table) %in% mycol)+1,
+                   rows = convert_range_string(
+                     range_string = get_indices_of_identical_elements(Table[[mycol]])[i]
+                   ) + 3 # here we add 3 because the table starts to be written from line 3 in workbook
+        )
+
+      }
+
+      openxlsx::addStyle(
+        WbTitle,
+        sheet = mysheet,
+        cols =  which(names(Table) %in% mycol)+1,
+        rows = convert_range_string(
+          get_indices_from_vector(Table[[mycol]])
+        )  + 3,
+        style = style$mergedcell
+      )
+
+    }
+
+  }
 }

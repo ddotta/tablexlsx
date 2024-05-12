@@ -20,7 +20,7 @@
 #'   If omitted, no footnote2
 #' @param footnote3 list of footnote3 for each element of object
 #'   If omitted, no footnote3
-#' @param mergecol character vector that indicates the columns for which we want to merge the modalities
+#' @param mergecol list of character vectors that indicate the columns for which we want to merge the modalities
 #' @param path path to save excel file
 #' @param filename name for the excel file ("Export" by default)
 #' @param asTable logical indicating if data should be written as an Excel Table (FALSE by default)
@@ -122,6 +122,7 @@ toxlsx <- function(object,
     output[[df]][["footnote1"]] <- if (length(footnote1) == 0) "" else footnote1[[df]]
     output[[df]][["footnote2"]] <- if (length(footnote2) == 0) "" else footnote2[[df]]
     output[[df]][["footnote3"]] <- if (length(footnote3) == 0) "" else footnote3[[df]]
+    output[[df]][["mergecol"]] <- if (length(mergecol) == 0) character(0) else mergecol[[df]]
   }
 
   # Creation empty workbook
@@ -210,46 +211,9 @@ toxlsx <- function(object,
       TableFootnote1 = output[[df]][["footnote1"]],
       TableFootnote2 = output[[df]][["footnote2"]],
       TableFootnote3 = output[[df]][["footnote3"]],
+      MergeCol = output[[df]][["mergecol"]],
       asTable = asTable
     )
-
-    # If mergecol is filled in
-    if(!is.null(mergecol)) {
-
-      # loop on each column of mergecol
-      for (mycol in mergecol) {
-
-        # distinct_mergecol count the number of unique modalities for each column of mergecol
-        distinct_mergecol <- length(unique(get(df)[[mycol]]))
-
-        # loop on each modality of mycol
-        for (i in (1:distinct_mergecol)) {
-
-          mergeCells(wb = wb,
-                     sheet = output[[df]][["sheet"]],
-                     # here we add 1 because the table starts to be written from col 2 in workbook
-                     cols = which(names(get(df)) %in% mycol)+1,
-                     rows = convert_range_string(
-                       range_string = get_indices_of_identical_elements(get(df)[[mycol]])[i]
-                     ) + 3 # here we add 3 because the table starts to be written from line 3 in workbook
-          )
-
-        }
-
-        openxlsx::addStyle(
-          wb,
-          sheet = output[[df]][["sheet"]],
-          cols =  which(names(get(df)) %in% mycol)+1,
-          rows = convert_range_string(
-            get_indices_from_vector(get(df)[[mycol]])
-          )  + 3,
-          style = style$mergedcell
-        )
-
-      }
-
-
-    }
 
   }
 
