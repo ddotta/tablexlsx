@@ -174,7 +174,7 @@ add_table <- function(
                    cols = which(names(Table) %in% mycol)+1,
                    rows = convert_range_string(
                      range_string = get_indices_of_identical_elements(Table[[mycol]])[i]
-                   ) + 3 # here we add 3 because the table starts to be written from line 3 in workbook
+                   ) + StartRow + 2
         )
 
       }
@@ -185,7 +185,7 @@ add_table <- function(
         cols =  which(names(Table) %in% mycol)+1,
         rows = convert_range_string(
           get_indices_from_vector(Table[[mycol]])
-        )  + 3,
+        )  + StartRow + 2,
         style = style$mergedcell
       )
 
