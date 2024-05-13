@@ -82,7 +82,7 @@ toxlsx <- function(object,
     output_name <- deparse(object)
   }
 
-  if (!is_list) tosheet <- if_atomic_to_list(tosheet, output_name)
+tosheet <- if_atomic_to_list(tosheet, output_name)
   title <- if_atomic_to_list(title, output_name)
   footnote1 <- if_atomic_to_list(footnote1, output_name)
   footnote2 <- if_atomic_to_list(footnote2, output_name)
