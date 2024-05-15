@@ -21,6 +21,8 @@
 #' @param footnote3 list of footnote3 for each element of object
 #'   If omitted, no footnote3
 #' @param mergecol list of character vectors that indicate the columns for which we want to merge the modalities
+#' @param bygroup list of character vectors indicating the names of the columns by which to group
+#' @param groupname list of booleans indicating whether the names of the grouping variables should be written
 #' @param path path to save excel file
 #' @param filename name for the excel file ("Export" by default)
 #' @param asTable logical indicating if data should be written as an Excel Table (FALSE by default)
@@ -43,6 +45,8 @@ toxlsx <- function(object,
                    footnote2 = list(),
                    footnote3 = list(),
                    mergecol = NULL,
+                   bygroup = NULL,
+                   groupname = FALSE,
                    path,
                    filename = "Export",
                    asTable = FALSE,
@@ -82,12 +86,14 @@ toxlsx <- function(object,
     output_name <- deparse(object)
   }
 
-tosheet <- if_atomic_to_list(tosheet, output_name)
+  tosheet <- if_atomic_to_list(tosheet, output_name)
   title <- if_atomic_to_list(title, output_name)
   footnote1 <- if_atomic_to_list(footnote1, output_name)
   footnote2 <- if_atomic_to_list(footnote2, output_name)
   footnote3 <- if_atomic_to_list(footnote3, output_name)
   mergecol <- if_atomic_to_list(mergecol, output_name)
+  bygroup <- if_atomic_to_list(bygroup, output_name)
+  groupname <- if_atomic_to_list(groupname, output_name)
 
   # check if tosheet is a list
   assert_class(tosheet, "list")
@@ -132,6 +138,8 @@ tosheet <- if_atomic_to_list(tosheet, output_name)
     output[[df]][["footnote2"]] <- if (length(footnote2) == 0) "" else footnote2[[df]]
     output[[df]][["footnote3"]] <- if (length(footnote3) == 0) "" else footnote3[[df]]
     output[[df]][["mergecol"]] <- if (length(mergecol) == 0) character(0) else mergecol[[df]]
+    output[[df]][["bygroup"]] <- if (length(bygroup) == 0) character(0) else bygroup[[df]]
+    output[[df]][["groupname"]] <- if (length(groupname) == 0) logical(0) else groupname[[df]]
   }
 
   # Creation empty workbook
@@ -221,6 +229,8 @@ tosheet <- if_atomic_to_list(tosheet, output_name)
       TableFootnote2 = output[[df]][["footnote2"]],
       TableFootnote3 = output[[df]][["footnote3"]],
       MergeCol = output[[df]][["mergecol"]],
+      ByGroup = output[[df]][["bygroup"]],
+      GroupName = output[[df]][["groupname"]],
       asTable = asTable
     )
 
