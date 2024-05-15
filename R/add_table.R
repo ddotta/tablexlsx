@@ -107,6 +107,7 @@ add_table <- function(
     )
   }
 
+  lastrowtable <- StartRow + 2 + nrow(Table)
 
   # Format of the table's columns
   sapply(seq_len(length(FormatList)), function(i) {
@@ -114,7 +115,7 @@ add_table <- function(
       WbTitle,
       sheet = mysheet,
       cols = i + StartCol,
-      rows = ((StartRow + 3):(StartRow + 2 + nrow(Table))),
+      rows = ((StartRow + 3):lastrowtable),
       style = FormatList[[i]]
     )
   })
@@ -123,36 +124,36 @@ add_table <- function(
   openxlsx::writeData(
     WbTitle,
     sheet = mysheet, x = TableFootnote1,
-    startCol = StartCol, startRow = StartRow + nrow(Table) + 4
+    startCol = StartCol, startRow = lastrowtable + 2
   )
   openxlsx::addStyle(
     WbTitle,
     sheet = mysheet,
-    cols = StartCol, rows = StartRow + nrow(Table) + 4,
+    cols = StartCol, rows = lastrowtable + 2,
     style = style$footnote1
   )
 
   openxlsx::writeData(
     WbTitle,
     sheet = mysheet, x = TableFootnote2,
-    startCol = StartCol, startRow = StartRow + nrow(Table) + 5
+    startCol = StartCol, startRow = lastrowtable + 3
   )
   openxlsx::addStyle(
     WbTitle,
     sheet = mysheet,
-    cols = StartCol, rows = StartRow + nrow(Table) + 5,
+    cols = StartCol, rows = lastrowtable + 3,
     style = style$footnote2
   )
 
   openxlsx::writeData(
     WbTitle,
     sheet = mysheet, x = TableFootnote3,
-    startCol = StartCol, startRow = StartRow + nrow(Table) + 6
+    startCol = StartCol, startRow = lastrowtable + 4
   )
   openxlsx::addStyle(
     WbTitle,
     sheet = mysheet,
-    cols = StartCol, rows = StartRow + nrow(Table) + 6,
+    cols = StartCol, rows = lastrowtable + 4,
     style = style$footnote3
   )
 
