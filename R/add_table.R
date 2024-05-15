@@ -83,29 +83,22 @@ add_table <- function(
     style = style$title
   )
 
+  if (isTRUE(asTable)) {
+    writeDataFunction <- openxlsx::writeDataTable
+  } else {
+    writeDataFunction <- openxlsx::writeData
+  }
 
   # Add a table
-  if (isTRUE(asTable)) {
-    openxlsx::writeDataTable(
-      wb = WbTitle,
-      sheet = mysheet,
-      x = Table,
-      startRow = StartRow + 2,
-      startCol = StartCol + 1,
-      rowNames = FALSE,
-      headerStyle = style$col_header
-    )
-  } else {
-    openxlsx::writeData(
-      wb = WbTitle,
-      sheet = mysheet,
-      x = Table,
-      startRow = StartRow + 2,
-      startCol = StartCol + 1,
-      rowNames = FALSE,
-      headerStyle = style$col_header
-    )
-  }
+  writeDataFunction(
+    wb = WbTitle,
+    sheet = mysheet,
+    x = Table,
+    startRow = StartRow + 2,
+    startCol = StartCol + 1,
+    rowNames = FALSE,
+    headerStyle = style$col_header
+  )
 
   lastrowtable <- StartRow + 2 + nrow(Table)
 
