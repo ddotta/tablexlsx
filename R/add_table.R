@@ -14,6 +14,8 @@
 #' @param TableFootnote2 : string for TableFootnote2
 #' @param TableFootnote3 : string for TableFootnote3
 #' @param MergeCol : character vector that indicates the columns for which to merge the modalities
+#' @param ByGroup character vector indicating the name of the columns by which to group
+#' @param GroupName boolean indicating whether the name of the grouping variable should be written
 #' @param asTable logical indicating if data should be written as an Excel Table (FALSE by default)
 #'
 #' @return excel wb object
@@ -32,6 +34,8 @@ add_table <- function(
     TableFootnote2 = "",
     TableFootnote3 = "",
     MergeCol = NULL,
+    ByGroup = NULL,
+    GroupName = FALSE,
     asTable = FALSE) {
 
   # Assert parameters
@@ -46,6 +50,10 @@ add_table <- function(
   assert_character1(TableFootnote1)
   assert_character1(TableFootnote2)
   assert_character1(TableFootnote3)
+
+  if (asTable & !is.null(ByGroup)) {
+    stop("asTable cannot be TRUE if ByGroup is defined")
+  }
 
   # If the sheet does not exist in the Excel file, we create it; otherwise, we invoke it
   if (!(SheetTitle %in% names(WbTitle))) {
@@ -90,17 +98,31 @@ add_table <- function(
   }
 
   # Add a table
-  writeDataFunction(
-    wb = WbTitle,
-    sheet = mysheet,
-    x = Table,
-    startRow = StartRow + 2,
-    startCol = StartCol + 1,
-    rowNames = FALSE,
-    headerStyle = style$col_header
-  )
-
-  lastrowtable <- StartRow + 2 + nrow(Table)
+  if (is.null(ByGroup)) {
+    writeDataFunction(
+      wb = WbTitle,
+      sheet = mysheet,
+      x = Table,
+      startRow = StartRow + 2,
+      startCol = StartCol + 1,
+      rowNames = FALSE,
+      headerStyle = style$col_header
+    )
+    lastrowtable <- StartRow + 2 + nrow(Table)
+  } else {
+    WbTitle <- writeDataByGroup(
+      wb = WbTitle,
+      sheet = mysheet,
+      x = Table,
+      startRow = StartRow + 2,
+      startCol = StartCol + 1,
+      rowNames = FALSE,
+      headerStyle = style$col_header,
+      group = ByGroup,
+      groupname = GroupName,
+    )
+    lastrowtable <- StartRow + 2 + nrow(Table) + nrow(unique(Table[ByGroup]))
+  }
 
   # Format of the table's columns
   sapply(seq_len(length(FormatList)), function(i) {
