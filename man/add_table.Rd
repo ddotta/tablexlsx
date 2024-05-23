@@ -13,9 +13,13 @@ add_table(
   StartCol = 1,
   FormatList = list(),
   HeightTableTitle = 2,
-  TableFootnote1 = list(),
-  TableFootnote2 = list(),
-  TableFootnote3 = list()
+  TableFootnote1 = "",
+  TableFootnote2 = "",
+  TableFootnote3 = "",
+  MergeCol = NULL,
+  ByGroup = NULL,
+  GroupName = FALSE,
+  asTable = FALSE
 )
 }
 \arguments{
@@ -40,6 +44,14 @@ add_table(
 \item{TableFootnote2}{: string for TableFootnote2}
 
 \item{TableFootnote3}{: string for TableFootnote3}
+
+\item{MergeCol}{: character vector that indicates the columns for which to merge the modalities}
+
+\item{ByGroup}{character vector indicating the name of the columns by which to group}
+
+\item{GroupName}{boolean indicating whether the name of the grouping variable should be written}
+
+\item{asTable}{logical indicating if data should be written as an Excel Table (FALSE by default)}
 }
 \value{
 excel wb object

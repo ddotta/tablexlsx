@@ -54,7 +54,7 @@
       add_table(Table, WbTitle, SheetTitle, TableTitle, StartRow, StartCol,
         FormatList, TableFootnote2 = TableFootnote2)
     Error <simpleError>
-      TableFootnote1 must be a character vector of length 1L
+      TableFootnote2 must be a character vector of length 1L
 
 # add_table function throws error when passing invalid data type for TableFootnote3 parameter
 
@@ -62,5 +62,5 @@
       add_table(Table, WbTitle, SheetTitle, TableTitle, StartRow, StartCol,
         FormatList, TableFootnote3 = TableFootnote3)
     Error <simpleError>
-      TableFootnote1 must be a character vector of length 1L
+      TableFootnote3 must be a character vector of length 1L
 

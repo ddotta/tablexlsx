@@ -13,8 +13,11 @@ toxlsx(
   footnote2 = list(),
   footnote3 = list(),
   mergecol = NULL,
+  bygroup = NULL,
+  groupname = FALSE,
   path,
   filename = "Export",
+  asTable = FALSE,
   automaticopen = FALSE
 )
 }
@@ -39,11 +42,17 @@ If omitted, no footnote2}
 \item{footnote3}{list of footnote3 for each element of object
 If omitted, no footnote3}
 
-\item{mergecol}{character vector that indicates the columns for which we want to merge the modalities}
+\item{mergecol}{list of character vectors that indicate the columns for which we want to merge the modalities}
+
+\item{bygroup}{list of character vectors indicating the names of the columns by which to group}
+
+\item{groupname}{list of booleans indicating whether the names of the grouping variables should be written}
 
 \item{path}{path to save excel file}
 
 \item{filename}{name for the excel file ("Export" by default)}
+
+\item{asTable}{logical indicating if data should be written as an Excel Table (FALSE by default)}
 
 \item{automaticopen}{logical indicating if excel file should open automatically (FALSE by default)}
 }
