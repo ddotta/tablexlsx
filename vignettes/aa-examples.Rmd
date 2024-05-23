@@ -47,7 +47,7 @@ iris %>% toxlsx(path = mypath)
 ## 1. Simply export a data frame to an xlsx file 
 
 ```{r first-export}
-iris %>% toxlsx(path = mypath)
+iris |> toxlsx(path = mypath)
 ```
 
 Preview of the xlsx file in LibreOffice Calc :  
@@ -58,7 +58,7 @@ Preview of the xlsx file in LibreOffice Calc :
 ## 2. Export a list of several data frames to an xlsx file (each data frame in a different sheet)
 
 ```{r list-export}
-list(iris,cars) %>% toxlsx(path = mypath)
+list(iris,cars) |> toxlsx(path = mypath)
 ```
 
 Preview of the xlsx file in LibreOffice Calc :  
@@ -76,7 +76,7 @@ df1 <- data.frame(
   volume = c(10,8,12,15)
 )
 #  Export
-df1 %>% toxlsx(path = mypath, mergecol = "group")
+df1 |> toxlsx(path = mypath, mergecol = "group")
 ```
 
 Preview of the xlsx file in LibreOffice Calc :  
@@ -97,7 +97,7 @@ df2 <- data.frame(
              14,10,5,12)
 )
 #  Export
-df2 %>% toxlsx(path = mypath, mergecol = c("country","group"))
+df2 |> toxlsx(path = mypath, mergecol = c("country","group"))
 ```
 Preview of the xlsx file in LibreOffice Calc :  
 
@@ -112,7 +112,7 @@ tb1 <- data.frame(tables = c(rep("iris",5),rep("cars",2)),
 tb2 <- data.frame(tables = c("iris","cars","cars"),
                   rownumber = c(150,50,32))
 
-list(tb1,tb2) %>%
+list(tb1,tb2) |>
   toxlsx(tosheet = list("tb1" = "mydata",
                         "tb2" = "mydata"),
          footnote1 = list("tb1" = "The data set contains 3 classes of 50 instances each, where each class refers to a type of iris plant.",
@@ -134,7 +134,7 @@ Preview of the xlsx file in LibreOffice Calc :
 iris <- iris %>% head()
 cars <- cars %>% head()
 
-list(iris,cars) %>%
+list(iris,cars) |>
   toxlsx(tosheet = list("iris" = "first",
                         "cars" = "second"),
          title = list("iris" = "Head of iris",
