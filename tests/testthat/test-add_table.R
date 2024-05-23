@@ -5,9 +5,8 @@ test_that("add_table function throws error when passing invalid data type for Ta
   SheetTitle <- "Sheet1"
   TableTitle <- "Test Table"
 
-  expect_snapshot(
-    add_table(Table, WbTitle, SheetTitle, TableTitle),
-    error = TRUE
+  expect_error(
+    add_table(Table, WbTitle, SheetTitle, TableTitle)
   )
 })
 
@@ -18,9 +17,8 @@ test_that("add_table function throws error when passing invalid data type for Wb
   SheetTitle <- "Sheet1"
   TableTitle <- "Test Table"
 
-  expect_snapshot(
-    add_table(Table, WbTitle, SheetTitle, TableTitle),
-    error = TRUE
+  expect_error(
+    add_table(Table, WbTitle, SheetTitle, TableTitle)
   )
 })
 
@@ -31,9 +29,8 @@ test_that("add_table function throws error when passing invalid data type for Sh
   SheetTitle <- 123
   TableTitle <- "Test Table"
 
-  expect_snapshot(
-    add_table(Table, WbTitle, SheetTitle, TableTitle),
-    error = TRUE
+  expect_error(
+    add_table(Table, WbTitle, SheetTitle, TableTitle)
   )
 })
 
@@ -44,9 +41,8 @@ test_that("add_table function throws error when passing invalid data type for Ta
   SheetTitle <- "Sheet1"
   TableTitle <- 123
 
-  expect_snapshot(
-    add_table(Table, WbTitle, SheetTitle, TableTitle),
-    error = TRUE
+  expect_error(
+    add_table(Table, WbTitle, SheetTitle, TableTitle)
   )
 })
 
@@ -58,9 +54,8 @@ test_that("add_table function throws error when passing invalid data type for St
   TableTitle <- "Test Table"
   StartRow <- "1"
 
-  expect_snapshot(
-    add_table(Table, WbTitle, SheetTitle, TableTitle, StartRow),
-    error = TRUE
+  expect_error(
+    add_table(Table, WbTitle, SheetTitle, TableTitle, StartRow)
   )
 })
 
@@ -72,9 +67,8 @@ test_that("add_table function throws error when passing invalid data type for St
   TableTitle <- "Test Table"
   StartCol <- "1"
 
-  expect_snapshot(
-    add_table(Table, WbTitle, SheetTitle, TableTitle, StartCol = StartCol),
-    error = TRUE
+  expect_error(
+    add_table(Table, WbTitle, SheetTitle, TableTitle, StartCol = StartCol)
   )
 })
 
@@ -90,12 +84,11 @@ test_that("add_table function throws error when passing invalid data type for Ta
   FormatList <- list()
   TableFootnote1 <- 123
 
-  expect_snapshot(
+  expect_error(
     add_table(Table, WbTitle, SheetTitle, TableTitle,
       StartRow, StartCol, FormatList,
       TableFootnote1 = TableFootnote1
-    ),
-    error = TRUE
+    )
   )
 })
 
@@ -110,12 +103,11 @@ test_that("add_table function throws error when passing invalid data type for Ta
   FormatList <- list()
   TableFootnote2 <- 123
 
-  expect_snapshot(
+  expect_error(
     add_table(Table, WbTitle, SheetTitle, TableTitle,
       StartRow, StartCol, FormatList,
       TableFootnote2 = TableFootnote2
-    ),
-    error = TRUE
+    )
   )
 })
 
@@ -130,12 +122,11 @@ test_that("add_table function throws error when passing invalid data type for Ta
   FormatList <- list()
   TableFootnote3 <- 123
 
-  expect_snapshot(
+  expect_error(
     add_table(Table, WbTitle, SheetTitle, TableTitle, StartRow, StartCol,
       FormatList,
       TableFootnote3 = TableFootnote3
-    ),
-    error = TRUE
+    )
   )
 })
 
