@@ -11,6 +11,7 @@ usethis::use_test("add_table")
 # # Pour mettre à jour la documentation et le NAMESPACE
 # devtools::document()
 roxygen2::roxygenise()
+
 # écrire les tests
 # exécuter les tests
 devtools::test()
