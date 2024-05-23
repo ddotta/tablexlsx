@@ -20,5 +20,10 @@ Useful links:
 \author{
 \strong{Maintainer}: Damien Dotta \email{damien.dotta@live.fr}
 
+Authors:
+\itemize{
+  \item Julien Blasco \email{julien.blasco@mailbox.org}
+}
+
 }
 \keyword{internal}
