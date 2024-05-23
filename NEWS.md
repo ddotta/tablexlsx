@@ -3,6 +3,11 @@
 This release includes :
 
 * `asTable` argument is now set to FALSE in function `add_table()` and `toxlsx()` #24
+* Slight changes to API in order to solve #19, #21 and #26 
+
+The main changes are that `mergecol` can now be used with multiple data frames, and that we can only supply character arguments instead of lists in the following cases:
+1. There is only one data.frame
+2. The value of the argument is to be the same for all data frames (e.g. same footnote)
 
 # tablexlsx 0.2.1
 
