@@ -46,7 +46,7 @@ iris %>% toxlsx(path = mypath)
 
 ## 1. Simply export a data frame to an xlsx file 
 
-```{r first-export}
+```{r first-export, eval = FALSE}
 iris |> toxlsx(path = mypath)
 ```
 
@@ -57,7 +57,7 @@ Preview of the xlsx file in LibreOffice Calc :
 
 ## 2. Export a list of several data frames to an xlsx file (each data frame in a different sheet)
 
-```{r list-export}
+```{r list-export, eval = FALSE}
 list(iris,cars) |> toxlsx(path = mypath)
 ```
 
@@ -68,7 +68,7 @@ Preview of the xlsx file in LibreOffice Calc :
 
 ## 3. Export a data frame to an xlsx file (merging modalities for one column)
 
-```{r df-export-merge-one}
+```{r df-export-merge-one, eval = FALSE}
 # Create df1
 df1 <- data.frame(
   group = c("dupont","dupont","arnold","arnold"),
@@ -85,27 +85,7 @@ Preview of the xlsx file in LibreOffice Calc :
 
 ## 4. Export a data frame to an xlsx file (merging modalities for several columns)
 
-```{r df-export-merge-several}
-# Create df2
-df2 <- data.frame(
-  country = c(rep("france",4),rep("england",4)),
-  group = c(rep("dupont",2),rep("martin",2),
-            rep("arnold",2),rep("harry",2)),
-  name = c("toto","tata","tutu","tete",
-           "momo","mama","mumu","meme"),
-  volume = c(10,8,12,15,
-             14,10,5,12)
-)
-#  Export
-df2 |> toxlsx(path = mypath, mergecol = c("country","group"))
-```
-Preview of the xlsx file in LibreOffice Calc :  
-
-<img src="../man/figures/preview_Calc_ex4.png" width="100%" />
-
-## 5. Export a list of several data frames to an xlsx file (several data frames in a same sheet)
-
-```{r list-export-same-sheet}
+```{r df-export-merge-, eval = FALSE}
 tb1 <- data.frame(tables = c(rep("iris",5),rep("cars",2)),
                   var = c(names(iris),names(cars)))
 
@@ -130,7 +110,7 @@ Preview of the xlsx file in LibreOffice Calc :
 
 ## 6. Export a list of data frames to an named xlsx file by specifying which data frame goes in which sheet, styling each column, giving a title and footnotes...
 
-```{r list-export-complicated}
+```{r list-export-complicated, eval = FALSE}
 iris <- iris %>% head()
 cars <- cars %>% head()
 
