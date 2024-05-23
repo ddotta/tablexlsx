@@ -32,7 +32,9 @@
 #' # Simply export a data frame to an xlsx file
 #' # For more examples, see examples gallery :
 #' # https://ddotta.github.io/tablexlsx/articles/aa-examples.html
+#' \dontrun{
 #' toxlsx(object = iris, path = tempdir())
+#' }
 #'
 #' @return an excel file
 #' @export
