@@ -12,6 +12,8 @@
 #'
 #' @return A Workbook in which data has been written by group
 #'
+#' @keywords internal
+#'
 writeDataByGroup <- function(
     wb,
     sheet,
