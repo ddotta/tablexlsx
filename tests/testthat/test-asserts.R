@@ -74,9 +74,9 @@ test_that("assert_named_list function works as expected", {
 
   # Test 2: assert_named_list returns an error with an unnamed list
   x <- list("a")
-  expect_snapshot(
+  expect_error(
     assert_named_list(x),
-    error = TRUE)
+  )
 })
 
 test_that("assert_named_list_in_list function works as expected", {

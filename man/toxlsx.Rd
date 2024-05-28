@@ -13,7 +13,7 @@ toxlsx(
   footnote2 = list(),
   footnote3 = list(),
   mergecol = NULL,
-  bygroup = NULL,
+  bygroup = list(),
   groupname = FALSE,
   path,
   filename = "Export",

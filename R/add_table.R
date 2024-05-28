@@ -34,7 +34,7 @@ add_table <- function(
     TableFootnote2 = "",
     TableFootnote3 = "",
     MergeCol = NULL,
-    ByGroup = NULL,
+    ByGroup = character(0),
     GroupName = FALSE,
     asTable = FALSE) {
 
@@ -51,7 +51,7 @@ add_table <- function(
   assert_character1(TableFootnote2)
   assert_character1(TableFootnote3)
 
-  if (asTable & !is.null(ByGroup)) {
+  if (asTable & length(ByGroup) > 0L) {
     stop("asTable cannot be TRUE if ByGroup is defined")
   }
 
@@ -98,7 +98,7 @@ add_table <- function(
   }
 
   # Add a table
-  if (is.null(ByGroup)) {
+  if (length(ByGroup) == 0L) {
     writeDataFunction(
       wb = WbTitle,
       sheet = mysheet,

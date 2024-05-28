@@ -17,7 +17,7 @@ add_table(
   TableFootnote2 = "",
   TableFootnote3 = "",
   MergeCol = NULL,
-  ByGroup = NULL,
+  ByGroup = character(0),
   GroupName = FALSE,
   asTable = FALSE
 )

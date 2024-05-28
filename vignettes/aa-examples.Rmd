@@ -2,7 +2,7 @@
 title: "Examples gallery"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{aa-examples}
+  %\VignetteIndexEntry{Examples gallery}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
