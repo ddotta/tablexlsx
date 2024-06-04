@@ -109,8 +109,8 @@ tb2 <- data.frame(tables = c("iris","cars","cars"),
                   rownumber = c(150,50,32))
 
 list(tb1,tb2) |>
-  toxlsx(tosheet = list("tb1" = "mydata",
-                        "tb2" = "mydata"),
+  toxlsx(tosheet = "mydata",
+         mergecol = "tables",
          footnote1 = list("tb1" = "The data set contains 3 classes of 50 instances each, where each class refers to a type of iris plant.",
                           "tb2" = "The data give the speed of cars and the distances taken to stop. Note that the data were recorded in the 1920s."),
          footnote2 = list("tb1" = "Predicted attribute: class of iris plant.",
@@ -119,6 +119,8 @@ list(tb1,tb2) |>
                           "tb2" = "Source : M. Ezekiel"),
          path=mypath)
 ```
+
+Note that the arguments `tosheet` and `mergecol`, being length-one character vectors, are recycled for all data frames of the list.
 
 Preview of the xlsx file in LibreOffice Calc :  
 
@@ -135,6 +137,8 @@ list(iris,cars) |>
                         "cars" = "second"),
          title = list("iris" = "Head of iris",
                       "cars" = "Head of cars"),
+         mergecol = list("iris" = "Species",
+                         "cars" = "speed"),
          # The `columnstyle` argument is optional in toxlsx(). 
          # It is used only if you want to specify the format of each column
          columnstyle = list("iris" = list("c1" = "decimal",
