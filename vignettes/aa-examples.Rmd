@@ -85,7 +85,23 @@ Preview of the xlsx file in LibreOffice Calc :
 
 ## 4. Export a data frame to an xlsx file (merging modalities for several columns)
 
-```{r df-export-merge-, eval = FALSE}
+```{r df-export-merge-multiple, eval = FALSE}
+sorted_mtcars <- mtcars[
+  order(mtcars$gear, mtcars$am),
+  c("gear", "am", setdiff(names(mtcars), c("gear", "am")))
+  ]
+
+sorted_mtcars |>
+  toxlsx(path = mypath, mergecol = c("gear", "am"))
+```
+
+Preview of the xlsx file in LibreOffice Calc :  
+
+<img src="../man/figures/preview_Calc_ex4.png" width="100%" />
+
+## 5. Export a list of several data frames to an xlsx file (several data frames in a same sheet)
+
+```{r list-export-same, eval = FALSE}
 tb1 <- data.frame(tables = c(rep("iris",5),rep("cars",2)),
                   var = c(names(iris),names(cars)))
 
