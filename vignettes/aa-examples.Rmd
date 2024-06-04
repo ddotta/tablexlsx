@@ -27,8 +27,9 @@ library(magrittr)
 2. [Export a list of several data frames to an xlsx file (each data frame in a different sheet)](#export-a-list-of-several-data-frames-to-an-xlsx-file-each-data-frame-in-a-different-sheet)
 3. [Export a data frame to an xlsx file (merging modalities for one column)](#export-a-data-frame-to-an-xlsx-file-merging-modalities-for-one-column)
 4. [Export a data frame to an xlsx file (merging modalities for several columns)](#export-a-data-frame-to-an-xlsx-file-merging-modalities-for-several-columns)
-5. [Export a list of several data frames to an xlsx file (several data frames in a same sheet)](#export-a-list-of-several-data-frames-to-an-xlsx-file-several-data-frames-in-a-same-sheet)
-6. [Export a list of data frames to an named xlsx file by specifying which data frame goes in which sheet, styling each column, giving a title and footnotes...](#export-a-list-of-data-frames-to-an-named-xlsx-file-by-specifying-which-data-frame-goes-in-which-sheet-styling-each-column-giving-a-title-and-footnotes)
+5. [Export a data frame to an xlsx file (splitting the data frame into groups)](#export-a-data-frame-to-an-xlsx-file-splitting-the-data-frame-into-groups)
+6. [Export a list of several data frames to an xlsx file (several data frames in a same sheet)](#export-a-list-of-several-data-frames-to-an-xlsx-file-several-data-frames-in-a-same-sheet)
+7. [Export a list of data frames to an named xlsx file by specifying which data frame goes in which sheet, styling each column, giving a title and footnotes...](#export-a-list-of-data-frames-to-an-named-xlsx-file-by-specifying-which-data-frame-goes-in-which-sheet-styling-each-column-giving-a-title-and-footnotes)
 
 Let's define an export folder that will be the same for all the examples on this page
 
@@ -99,7 +100,15 @@ Preview of the xlsx file in LibreOffice Calc :
 
 <img src="../man/figures/preview_Calc_ex4.png" width="100%" />
 
-## 5. Export a list of several data frames to an xlsx file (several data frames in a same sheet)
+## 5. Export a data frame to an xlsx file (splitting the data frame into groups)
+
+```{r df-export-split, eval = FALSE}
+df1 |> toxlsx(path = mypath, bygroup= "group", groupname=TRUE)
+```
+
+<img src="../man/figures/preview_Calc_exsplit.png" width="100%" />
+
+## 6. Export a list of several data frames to an xlsx file (several data frames in a same sheet)
 
 ```{r list-export-same, eval = FALSE}
 tb1 <- data.frame(tables = c(rep("iris",5),rep("cars",2)),
@@ -126,7 +135,7 @@ Preview of the xlsx file in LibreOffice Calc :
 
 <img src="../man/figures/preview_Calc_ex5.png" width="100%" />
 
-## 6. Export a list of data frames to an named xlsx file by specifying which data frame goes in which sheet, styling each column, giving a title and footnotes...
+## 7. Export a list of data frames to an named xlsx file by specifying which data frame goes in which sheet, styling each column, giving a title and footnotes...
 
 ```{r list-export-complicated, eval = FALSE}
 iris <- iris %>% head()
