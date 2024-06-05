@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">tablexlsx</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,6 +51,17 @@
       <small>Source: <a href="https://github.com/ddotta/tablexlsx/blob/HEAD/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="1.0.0" id="tablexlsx-100">tablexlsx 1.0.0<a class="anchor" aria-label="anchor" href="#tablexlsx-100"></a></h2>
+<p>This release includes :</p>
+<ul><li>
+<code><a href="../reference/add_table.html">add_table()</a></code> and <code><a href="../reference/toxlsx.html">toxlsx()</a></code> now accept a <code>bygroup</code> argument that splits the table into groups before writing to the sheet <a href="https://github.com/ddotta/tablexlsx/issues/23" class="external-link">#23</a></li>
+<li>most arguments to <code><a href="../reference/add_table.html">add_table()</a></code> and <code><a href="../reference/toxlsx.html">toxlsx()</a></code> can now be passed as atomic vectors. If the first argument is a single <code>data.frame</code>, the behavior is the same as for a lenght-one list. If the first argument is a list of <code>data.frame</code>s, those arguments are recycled in order to match the length of the list. This change applies to the arguments <code>tosheet</code>, <code>title</code>, <code>footnoteX</code>, <code>mergecol</code>, <code>bygroup</code>, <code>groupname</code> <a href="https://github.com/ddotta/tablexlsx/issues/19" class="external-link">#19</a></li>
+<li>when a list is passed to <code><a href="../reference/toxlsx.html">toxlsx()</a></code>, the <code>mergecol</code> argument can now be specified for each data.frame of the list <a href="https://github.com/ddotta/tablexlsx/issues/21" class="external-link">#21</a></li>
+<li>
+<code>asTable</code> argument is now set to FALSE in functions <code><a href="../reference/add_table.html">add_table()</a></code> and <code><a href="../reference/toxlsx.html">toxlsx()</a></code> <a href="https://github.com/ddotta/tablexlsx/issues/24" class="external-link">#24</a></li>
+<li>Slight changes to API in order to solve <a href="https://github.com/ddotta/tablexlsx/issues/16" class="external-link">#16</a> and <a href="https://github.com/ddotta/tablexlsx/issues/21" class="external-link">#21</a></li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.1" id="tablexlsx-021">tablexlsx 0.2.1<a class="anchor" aria-label="anchor" href="#tablexlsx-021"></a></h2>
 <p>This release includes :</p>
