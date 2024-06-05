@@ -1,13 +1,12 @@
-# tablexlsx (WIP)
+# tablexlsx 1.0.0
 
 This release includes :
 
-* `asTable` argument is now set to FALSE in function `add_table()` and `toxlsx()` #24
-* Slight changes to API in order to solve #19, #21 and #26 
-
-The main changes are that `mergecol` can now be used with multiple data frames, and that we can only supply character arguments instead of lists in the following cases:
-1. There is only one data.frame
-2. The value of the argument is to be the same for all data frames (e.g. same footnote)
+* `add_table()` and `toxlsx()` now accept a `bygroup` argument that splits the table into groups before writing to the sheet #23
+* most arguments to `add_table()` and `toxlsx()` can now be passed as atomic vectors. If the first argument is a single `data.frame`, the behavior is the same as for a lenght-one list. If the first argument is a list of `data.frame`s, those arguments are recycled in order to match the length of the list. This change applies to the arguments `tosheet`, `title`, `footnoteX`, `mergecol`, `bygroup`, `groupname` #19
+* when a list is passed to `toxlsx()`, the `mergecol` argument can now be specified for each data.frame of the list #21
+* `asTable` argument is now set to FALSE in functions `add_table()` and `toxlsx()` #24
+* Slight changes to API in order to solve #16 and #21 
 
 # tablexlsx 0.2.1
 
