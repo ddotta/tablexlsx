@@ -33,7 +33,7 @@ add_table <- function(
     TableFootnote1 = "",
     TableFootnote2 = "",
     TableFootnote3 = "",
-    MergeCol = NULL,
+    MergeCol = character(0),
     ByGroup = character(0),
     GroupName = FALSE,
     asTable = FALSE) {
@@ -53,6 +53,10 @@ add_table <- function(
 
   if (asTable & length(ByGroup) > 0L) {
     stop("asTable cannot be TRUE if ByGroup is defined")
+  }
+
+  if (!all(MergeCol %in% colnames(Table))) {
+    stop("All elements of MergeCol must be existing column names of Table")
   }
 
   # If the sheet does not exist in the Excel file, we create it; otherwise, we invoke it
@@ -173,7 +177,7 @@ add_table <- function(
   )
 
   # If mergecol is filled in
-  if(!is.null(MergeCol)) {
+  if(length(MergeCol)>0) {
 
     # loop on each column of mergecol
     for (mycol in MergeCol) {
