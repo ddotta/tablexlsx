@@ -69,23 +69,36 @@ toxlsx <- function(object,
   magrittr_pipe <- any(is_magrittr_env)
   is_list <- inherits(object, "list")
 
-  # Before conversion to string, we store object in get_object
-  get_object <- object
-
+  # object_name is a string containing the name of the first argument
   if (magrittr_pipe) {
-    object <- get("lhs", sys.frames()[[max(which(is_magrittr_env))]])
+    object_name <- get("lhs", sys.frames()[[max(which(is_magrittr_env))]])
   } else {
-    object <- substitute(object)
+    object_name <- substitute(object)
   }
 
-  # output_name is a string vector containing the name of all data frames passed in the object argument
   if (is_list) {
-    if (magrittr_pipe) {
-      object <- parse(text = object)
+    if (!is.null(names(object))) {
+      # First case: object is a named list -> we use those as output names
+      if (any(duplicated(names(object)))) {
+        stop("The names of the list must be unique.")
+      } else {
+        output_name <- names(object)
+        get_object <- object
+      }
+    } else if (is.call(object_name) && identical(object_name[[1]], as.name("list"))) {
+      # Second case: object is a call to the "list" function
+      output_name <- unlist(lapply(substitute(object_name), deparse)[-1])
+      get_object <- object
+      names(get_object) <- output_name
+    } else {
+      # Third case: object is neither a named list nor a call to the "list" function
+      output_name <- paste("Table", seq_along(object))
+      get_object <- object
+      names(get_object) <- output_name
     }
-    output_name <- unlist(lapply(substitute(object), deparse)[-1])
   } else {
-    output_name <- deparse(object)
+    output_name <- deparse(object_name)
+    get_object <- object
   }
 
   tosheet <- if_atomic_to_list(tosheet, output_name)
@@ -224,7 +237,8 @@ toxlsx <- function(object,
           # StartRow is equal to 1 for first df
           # StartRow is equal to 11 + nrow(first df) for second df
           # StartRow is equal to 21 + nrow(first df) + nrow(second df) for third df
-          calcstartrow(which(namecurrentsheet == df_name)) + calcskippedrow(mylist = get_object, x = which(namecurrentsheet == df_name))
+          calcstartrow(which(namecurrentsheet == df_name)) +
+            calcskippedrow(mylist = get_object, x = which(namecurrentsheet == df_name))
         },
       StartCol = 1,
       FormatList = ColumnList,
