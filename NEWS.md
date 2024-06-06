@@ -1,3 +1,7 @@
+# tablexlsx (WIP)
+
+* (fix) `toxlsx()` no longer fails when the `object` argument is the result of a computation #18
+
 # tablexlsx 1.0.0
 
 This release includes :
