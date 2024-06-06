@@ -124,24 +124,24 @@ toxlsx <- function(object,
   Sheetslist <- output
 
   # Loop through each element in output_name
-  for (df in output_name) {
-    output[[df]][["sheet"]] <-
+  for (df_name in output_name) {
+    output[[df_name]][["sheet"]] <-
       if (length(tosheet) == 0) {
         # If tosheet is not provided, use "Sheet #" as the sheet name
-        paste0("Sheet ", as.character(which(output_name == df)))
+        paste0("Sheet ", as.character(which(output_name == df_name)))
       } else {
         # Else use df as the sheet name
-        tosheet[[df]]
+        tosheet[[df_name]]
       }
-    Sheetslist[which(output_name == df)] <- output[[df]][["sheet"]]
-    output[[df]][["title"]] <- if (length(title) == 0) df else title[[df]]
-    output[[df]][["column"]] <- if (paste(names(columnstyle), collapse = "") %in% "default") list() else columnstyle[[df]]
-    output[[df]][["footnote1"]] <- if (length(footnote1) == 0) "" else footnote1[[df]]
-    output[[df]][["footnote2"]] <- if (length(footnote2) == 0) "" else footnote2[[df]]
-    output[[df]][["footnote3"]] <- if (length(footnote3) == 0) "" else footnote3[[df]]
-    output[[df]][["mergecol"]] <- if (length(mergecol) == 0) character(0) else mergecol[[df]]
-    output[[df]][["bygroup"]] <- if (length(bygroup) == 0) character(0) else bygroup[[df]]
-    output[[df]][["groupname"]] <- if (length(groupname) == 0) logical(0) else groupname[[df]]
+    Sheetslist[which(output_name == df_name)] <- output[[df_name]][["sheet"]]
+    output[[df_name]][["title"]] <- if (length(title) == 0) df_name else title[[df_name]]
+    output[[df_name]][["column"]] <- if (paste(names(columnstyle), collapse = "") %in% "default") list() else columnstyle[[df_name]]
+    output[[df_name]][["footnote1"]] <- if (length(footnote1) == 0) "" else footnote1[[df_name]]
+    output[[df_name]][["footnote2"]] <- if (length(footnote2) == 0) "" else footnote2[[df_name]]
+    output[[df_name]][["footnote3"]] <- if (length(footnote3) == 0) "" else footnote3[[df_name]]
+    output[[df_name]][["mergecol"]] <- if (length(mergecol) == 0) character(0) else mergecol[[df_name]]
+    output[[df_name]][["bygroup"]] <- if (length(bygroup) == 0) character(0) else bygroup[[df_name]]
+    output[[df_name]][["groupname"]] <- if (length(groupname) == 0) logical(0) else groupname[[df_name]]
   }
 
   # Creation empty workbook
@@ -150,14 +150,16 @@ toxlsx <- function(object,
   ### Fill workbook
 
   # loop for each df in output_name
-  for (df in output_name) {
+  for (i in seq_along(output_name)) {
+    df <- if (is_list) get_object[[i]] else get_object
+    df_name <- output_name[i]
 
     # If argument columnstyle is not filled in the function
     if (paste(names(columnstyle), collapse = "") %in% "default") {
       # Initialize empty named list to format columns (ColumnList)
       ColumnList <- as.list(setNames(
-        rep("character", length(names(get(df)))),
-        paste0("c", seq_along(names(get(df))))
+        rep("character", length(names(df))),
+        paste0("c", seq_along(names(df)))
       ))
 
       # Fill ColumnList
@@ -169,13 +171,13 @@ toxlsx <- function(object,
     } else {
       # Initialize empty named list to format columns (ColumnList)
       ColumnList <- setNames(
-        vector("list", length = length(output[[df]][["column"]])),
-        names(output[[df]][["column"]])
+        vector("list", length = length(output[[df_name]][["column"]])),
+        names(output[[df_name]][["column"]])
       )
 
       # Fill ColumnList
-      for (i in seq_along(output[[df]][["column"]])) {
-        ColumnList[[i]] <- style[[output[[df]][["column"]][[paste0("c", i)]]]]
+      for (i in seq_along(output[[df_name]][["column"]])) {
+        ColumnList[[i]] <- style[[output[[df_name]][["column"]][[paste0("c", i)]]]]
       }
 
     }
@@ -188,7 +190,7 @@ toxlsx <- function(object,
       listsplitted <- setNames(listsplitted,
                                unique(unlist(tosheet)))
       # We create namecurrentsheet as the name where df must be written
-      namecurrentsheet <- names(listsplitted[[tosheet[[df]]]])
+      namecurrentsheet <- names(listsplitted[[tosheet[[df_name]]]])
       # We create multipledfinsheet of the same length as listsplitted
       #  made up of booleans that indicate whether several df are in the same sheet
       multipledfinsheet <- lapply(listsplitted, function(x) length(x)>1)
@@ -202,10 +204,10 @@ toxlsx <- function(object,
 
     # Use add_table() function to add each df in workbook
     add_table(
-      Table = get(df),
+      Table = df,
       WbTitle = wb,
-      SheetTitle = output[[df]][["sheet"]],
-      TableTitle = output[[df]][["title"]],
+      SheetTitle = output[[df_name]][["sheet"]],
+      TableTitle = output[[df_name]][["title"]],
       StartRow =
         # If the "tosheet" argument is not filled in
         # or if only one sheet is filled in "tosheet",
@@ -214,25 +216,25 @@ toxlsx <- function(object,
           1
           # Else if at least two sheets are filled in "tosheet" argument
           # and each df must be in different sheets
-        } else if (length(tosheet) > 1 & isFALSE(multipledfinsheet[[tosheet[[df]]]])) {
+        } else if (length(tosheet) > 1 & isFALSE(multipledfinsheet[[tosheet[[df_name]]]])) {
           1
           # Else if at least two sheets are filled in "tosheet" argument
           # and at least two df must be in a same sheet
-        } else if (length(tosheet) > 1 & isTRUE(multipledfinsheet[[tosheet[[df]]]])) {
+        } else if (length(tosheet) > 1 & isTRUE(multipledfinsheet[[tosheet[[df_name]]]])) {
           # StartRow is equal to 1 for first df
           # StartRow is equal to 11 + nrow(first df) for second df
           # StartRow is equal to 21 + nrow(first df) + nrow(second df) for third df
-          calcstartrow(which(namecurrentsheet == df)) + calcskippedrow(mylist = get_object, x = which(namecurrentsheet == df))
+          calcstartrow(which(namecurrentsheet == df_name)) + calcskippedrow(mylist = get_object, x = which(namecurrentsheet == df_name))
         },
       StartCol = 1,
       FormatList = ColumnList,
       HeightTableTitle = 2,
-      TableFootnote1 = output[[df]][["footnote1"]],
-      TableFootnote2 = output[[df]][["footnote2"]],
-      TableFootnote3 = output[[df]][["footnote3"]],
-      MergeCol = output[[df]][["mergecol"]],
-      ByGroup = output[[df]][["bygroup"]],
-      GroupName = output[[df]][["groupname"]],
+      TableFootnote1 = output[[df_name]][["footnote1"]],
+      TableFootnote2 = output[[df_name]][["footnote2"]],
+      TableFootnote3 = output[[df_name]][["footnote3"]],
+      MergeCol = output[[df_name]][["mergecol"]],
+      ByGroup = output[[df_name]][["bygroup"]],
+      GroupName = output[[df_name]][["groupname"]],
       asTable = asTable
     )
 
