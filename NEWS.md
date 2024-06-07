@@ -1,10 +1,12 @@
 # tablexlsx (WIP)
 
 * (fix) `toxlsx()` no longer fails when the `object` argument is the result of a computation #18
+* provide meaningful error message if merge cols don't exist #20
 
 # tablexlsx 1.0.0
 
 This release includes :
+
 
 * `add_table()` and `toxlsx()` now accept a `bygroup` argument that splits the table into groups before writing to the sheet #23
 * most arguments to `add_table()` and `toxlsx()` can now be passed as atomic vectors. If the first argument is a single `data.frame`, the behavior is the same as for a lenght-one list. If the first argument is a list of `data.frame`s, those arguments are recycled in order to match the length of the list. This change applies to the arguments `tosheet`, `title`, `footnoteX`, `mergecol`, `bygroup`, `groupname` #19
