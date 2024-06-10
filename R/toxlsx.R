@@ -8,7 +8,7 @@
 #' See examples gallery : <https://ddotta.github.io/tablexlsx/articles/aa-examples.html>
 #'
 #' @param object data.frame to be converted to excel
-#' @param path path to save excel file
+#' @param path path to save excel file (either a directory name or a file name with full path)
 #' @param tosheet list of sheet names for each element of object.
 #'   If omitted, sheets are named by default "Sheet 1", "Sheet 2"...
 #' @param title list of title for each element of object
@@ -24,7 +24,7 @@
 #' @param mergecol list of character vectors that indicate the columns for which we want to merge the modalities
 #' @param bygroup list of character vectors indicating the names of the columns by which to group
 #' @param groupname list of booleans indicating whether the names of the grouping variables should be written
-#' @param filename name for the excel file ("Export" by default)
+#' @param filename name for the excel file ("Export" by default). Ignored if `path` is a file name.
 #' @param asTable logical indicating if data should be written as an Excel Table (FALSE by default)
 #' @param automaticopen logical indicating if excel file should open automatically (FALSE by default)
 #'
