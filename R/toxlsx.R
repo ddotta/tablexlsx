@@ -254,18 +254,22 @@ toxlsx <- function(object,
 
   }
 
+  if (dir.exists(path)) {
+    full_path <- file.path(path, paste0(filename,".xlsx"))
+  } else {
+    full_path <- path
+    if (filename != "Export") warning("The supplied filename was overriden by the supplied path.")
+  }
+
   # Save workbook
   openxlsx::saveWorkbook(
     wb,
-    file.path(
-      path,
-      paste0(filename,".xlsx")
-    ),
+    full_path,
     overwrite = TRUE
   )
 
   Sys.sleep(0.01)
-  cli_alert_success("\nYour Excel file '{filename}.xlsx' is available in the folder '{path}'")
+  cli_alert_success("\nYour Excel file '{basename(full_path)}' is available in the folder '{dirname(full_path)}'")
 
   # Open workbook automatically if automaticopen is TRUE
   if (isTRUE(automaticopen)) {
