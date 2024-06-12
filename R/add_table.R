@@ -9,6 +9,7 @@
 #' @param StartRow : export start line number in the sheet (by default 1)
 #' @param StartCol : export start column number in the sheet (by default 1)
 #' @param FormatList : list that indicates the format of each column of the data frame
+#' @param Theme : styling theme, a named list of `openxlsx` Styles
 #' @param HeightTableTitle : multiplier (if needed) for the height of the title line (by default 2)
 #' @param TableFootnote1 : string for TableFootnote1
 #' @param TableFootnote2 : string for TableFootnote2
@@ -29,6 +30,7 @@ add_table <- function(
     StartRow = 1,
     StartCol = 1,
     FormatList = list(),
+    Theme = xls_theme_default(),
     HeightTableTitle = 2,
     TableFootnote1 = "",
     TableFootnote2 = "",
@@ -92,7 +94,7 @@ add_table <- function(
     sheet = mysheet,
     cols = StartCol,
     rows = StartRow,
-    style = style$title
+    style = Theme$title
   )
 
   if (isTRUE(asTable)) {
@@ -110,7 +112,7 @@ add_table <- function(
       startRow = StartRow + 2,
       startCol = StartCol + 1,
       rowNames = FALSE,
-      headerStyle = style$col_header
+      headerStyle = Theme$col_header
     )
     lastrowtable <- StartRow + 2 + nrow(Table)
   } else {
@@ -121,7 +123,7 @@ add_table <- function(
       startRow = StartRow + 2,
       startCol = StartCol + 1,
       rowNames = FALSE,
-      headerStyle = style$col_header,
+      headerStyle = Theme$col_header,
       group = ByGroup,
       groupname = GroupName,
     )
@@ -149,7 +151,7 @@ add_table <- function(
     WbTitle,
     sheet = mysheet,
     cols = StartCol, rows = lastrowtable + 2,
-    style = style$footnote1
+    style = Theme$footnote1
   )
 
   openxlsx::writeData(
@@ -161,7 +163,7 @@ add_table <- function(
     WbTitle,
     sheet = mysheet,
     cols = StartCol, rows = lastrowtable + 3,
-    style = style$footnote2
+    style = Theme$footnote2
   )
 
   openxlsx::writeData(
@@ -173,7 +175,7 @@ add_table <- function(
     WbTitle,
     sheet = mysheet,
     cols = StartCol, rows = lastrowtable + 4,
-    style = style$footnote3
+    style = Theme$footnote3
   )
 
   # If mergecol is filled in
@@ -206,7 +208,7 @@ add_table <- function(
         rows = convert_range_string(
           get_indices_from_vector(Table[[mycol]])
         )  + StartRow + 2,
-        style = style$mergedcell
+        style = Theme$mergedcell
       )
 
     }
