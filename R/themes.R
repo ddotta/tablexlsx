@@ -1,3 +1,40 @@
+#' @name xls_theme
+#'
+#' @title Constructor function for xls themes
+#'
+#' @description
+#' This function creates an xls theme for styling exported tables.
+#' All its arguments must be `openxlsx` Style objects.
+#'
+#' @param title Style for the title
+#' @param col_header Style for the columns header
+#' @param character Default style for data cells
+#' @param footnote1 Style for footnote1
+#' @param footnote2 Style for footnote2
+#' @param footnote3 Style for footnote3
+#' @param mergedcell Style for merged cells
+#' @param ... Other (named) custom styles
+#'
+#' @return a named list of class xls_theme, whose elements are `openxlsx` Style objects.
+#' @export
+#'
+#' @seealso \code{\link[tablexlsx:xls_theme_plain]{xls_theme_plain()}},
+#' \code{\link[tablexlsx:xls_theme_default]{xls_theme_default()}}
+#'
+#' @examples
+#' my_theme <- xls_theme(
+#'   title = openxlsx::createStyle(),
+#'   col_header = openxlsx::createStyle(),
+#'   character = openxlsx::createStyle(),
+#'   footnote1 = openxlsx::createStyle(),
+#'   footnote2 = openxlsx::createStyle(),
+#'   footnote3 = openxlsx::createStyle(),
+#'   mergedcell = openxlsx::createStyle()
+#' )
+#'
+#' \dontrun{
+#' toxlsx(object = iris, path = tempdir(), theme = my_theme)
+#' }
 xls_theme <- function(title,
                       col_header,
                       character,
@@ -19,6 +56,40 @@ xls_theme <- function(title,
   return(theme)
 }
 
+#' @name xls_theme_plain
+#'
+#' @title Constructor function for a plain xls theme
+#'
+#' @description
+#' This function is a wrapper around [xls_theme()] that creates an xls theme for styling exported tables.
+#' It defines a simple theme whith no special formatting.
+#' All its arguments must be `openxlsx` Style objects.
+#'
+#' @param title Style for the title
+#' @param col_header Style for the columns header
+#' @param character Default style for data cells
+#' @param footnote1 Style for footnote1
+#' @param footnote2 Style for footnote2
+#' @param footnote3 Style for footnote3
+#' @param mergedcell Style for merged cells
+#' @param ... Other (named) custom styles
+#'
+#' @return a named list of class xls_theme, whose elements are `openxlsx` Style objects.
+#' @export
+#'
+#' @seealso \code{\link[tablexlsx:xls_theme]{xls_theme()}},
+#' \code{\link[tablexlsx:xls_theme_default]{xls_theme_default()}}
+#'
+#' @examples
+#' # plain theme
+#' xls_theme_plain()
+#'
+#' # plain theme with title in bold
+#' my_theme <- xls_theme_plain(title = openxlsx::createStyle(textDecoration = "bold"))
+#'
+#' \dontrun{
+#' toxlsx(object = iris, path = tempdir(), theme = my_theme)
+#' }
 xls_theme_plain = function(
     title = openxlsx::createStyle(),
     col_header = openxlsx::createStyle(),
@@ -41,6 +112,44 @@ xls_theme_plain = function(
   )
 }
 
+#' @name xls_theme_default
+#'
+#' @title Constructor function for the default xls theme
+#'
+#' @description
+#' This function is a wrapper around [xls_theme()] that creates an xls theme for styling exported tables.
+#' It defines a theme whith sensible default formatting values.
+#' It also defines custom styles for "number", "decimal" and "percent column types.
+#' All its arguments must be `openxlsx` Style objects.
+#'
+#' @param title Style for the title
+#' @param col_header Style for the columns header
+#' @param character Default style for data cells
+#' @param number Style for columns in number format
+#' @param decimal Style for columns in decimal format
+#' @param percent Style for columns in percent format
+#' @param footnote1 Style for footnote1
+#' @param footnote2 Style for footnote2
+#' @param footnote3 Style for footnote3
+#' @param mergedcell Style for merged cells
+#' @param ... Other (named) custom styles
+#'
+#' @return a named list of class xls_theme, whose elements are `openxlsx` Style objects.
+#' @export
+#'
+#' @seealso \code{\link[tablexlsx:xls_theme]{xls_theme()}},
+#' \code{\link[tablexlsx:xls_theme_plain]{xls_theme_plain()}}
+#'
+#' @examples
+#' # default theme
+#' xls_theme_default()
+#'
+#' # default theme with title in italic
+#' my_theme <- xls_theme_default(title = openxlsx::createStyle(textDecoration = "italic"))
+#'
+#' \dontrun{
+#' toxlsx(object = iris, path = tempdir(), theme = my_theme)
+#' }
 xls_theme_default = function(
     title = openxlsx::createStyle(fontSize = 16, textDecoration = c("bold")),
     # For footnote1
