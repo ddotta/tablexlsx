@@ -43,17 +43,17 @@ xls_theme <- function(title,
                       footnote3,
                       mergedcell,
                       ...) {
-  theme <- structure(list(title = title,
+  theme <- list(title = title,
                 col_header = col_header,
                 character = character,
                 footnote1 = footnote1,
                 footnote2 = footnote2,
                 footnote3 = footnote3,
                 mergedcell = mergedcell,
-                ...),
-                class = "xls_theme")
+                ...)
+  class(theme) <- "xls_theme"
   assert_xls_theme(theme)
-  return(theme)
+  theme
 }
 
 #' @name xls_theme_plain
@@ -151,7 +151,7 @@ xls_theme_plain = function(
 #' toxlsx(object = iris, path = tempdir(), theme = my_theme)
 #' }
 xls_theme_default = function(
-    title = openxlsx::createStyle(fontSize = 16, textDecoration = c("bold")),
+    title = openxlsx::createStyle(fontSize = 16, textDecoration = "bold"),
     # For footnote1
     footnote1 = openxlsx::createStyle(fontSize = 12),
     # For footnote2
@@ -161,7 +161,7 @@ xls_theme_default = function(
     # For column headers
     col_header = openxlsx::createStyle(
       fontSize = 12,
-      textDecoration = c("bold"),
+      textDecoration = "bold",
       border = c("top", "bottom", "left", "right"),
       borderStyle = "thin",
       wrapText = TRUE,
