@@ -5,11 +5,11 @@
 \title{Constructor function for the default xls theme}
 \usage{
 xls_theme_default(
-  title = openxlsx::createStyle(fontSize = 16, textDecoration = c("bold")),
+  title = openxlsx::createStyle(fontSize = 16, textDecoration = "bold"),
   footnote1 = openxlsx::createStyle(fontSize = 12),
   footnote2 = openxlsx::createStyle(fontSize = 12, textDecoration = "bold"),
   footnote3 = openxlsx::createStyle(fontSize = 12, textDecoration = "bold"),
-  col_header = openxlsx::createStyle(fontSize = 12, textDecoration = c("bold"), border =
+  col_header = openxlsx::createStyle(fontSize = 12, textDecoration = "bold", border =
     c("top", "bottom", "left", "right"), borderStyle = "thin", wrapText = TRUE, halign =
     "center"),
   character = openxlsx::createStyle(fontSize = 12, border = c("top", "bottom", "left",
