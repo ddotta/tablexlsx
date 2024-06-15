@@ -17,7 +17,7 @@ reference:
     contents:
       - style
   - title: Themes
-      contents:
+    contents:
       - xls_theme
       - xls_theme_plain
       - xls_theme_default
