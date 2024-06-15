@@ -128,6 +128,9 @@ add_table <- function(
     lastrowtable <- StartRow + 2 + nrow(Table) + nrow(unique(Table[ByGroup]))
   }
 
+  # Remove grouping columns from the list of formats
+  FormatList[colnames(Table) %in% ByGroup] <- NULL
+
   # Format of the table's columns
   sapply(seq_len(length(FormatList)), function(i) {
     openxlsx::addStyle(
