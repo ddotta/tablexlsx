@@ -70,9 +70,7 @@ add_table <- function(
 
 
   # Adjusting the size of columns and rows
-  openxlsx::setColWidths(WbTitle, sheet = mysheet, cols = StartCol + 1, widths = 45)
-  openxlsx::setColWidths(WbTitle, sheet = mysheet, cols = StartCol + 2, widths = 30)
-  openxlsx::setColWidths(WbTitle, sheet = mysheet, cols = c(StartCol + 3:38), widths = 20)
+  openxlsx::setColWidths(WbTitle, sheet = mysheet, cols = StartCol + 1:(ncol(Table)-length(ByGroup)), widths = 20)
 
   # Size of column headers
   openxlsx::setRowHeights(WbTitle, sheet = mysheet, rows = StartRow + 2, heights = 20 * HeightTableTitle)
