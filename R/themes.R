@@ -155,9 +155,9 @@ xls_theme_default = function(
     # For footnote1
     footnote1 = openxlsx::createStyle(fontSize = 12),
     # For footnote2
-    footnote2 = openxlsx::createStyle(fontSize = 12, textDecoration = "bold"),
+    footnote2 = openxlsx::createStyle(fontSize = 12),
     # For footnote3
-    footnote3 = openxlsx::createStyle(fontSize = 12, textDecoration = "bold"),
+    footnote3 = openxlsx::createStyle(fontSize = 12),
     # For column headers
     col_header = openxlsx::createStyle(
       fontSize = 12,
