@@ -10,6 +10,7 @@ toxlsx(
   tosheet = list(),
   title = list(),
   columnstyle = list(default = NULL),
+  theme = xls_theme_default(),
   footnote1 = list(),
   footnote2 = list(),
   footnote3 = list(),
@@ -34,6 +35,8 @@ If omitted, title takes the name of the dataframe in `object`}
 
 \item{columnstyle}{list of style for columns of each element of object
 Only useful if you want to customise the style of each column `}
+
+\item{theme}{styling theme, a named list of `openxlsx` Styles}
 
 \item{footnote1}{list of footnote1 for each element of object
 If omitted, no footnote1}

@@ -110,3 +110,19 @@ assert_grouped <- function(x) {
     stop(substitute(x), " must not be grouped", call. = FALSE)
   }
 }
+
+#' @name assert_xls_theme
+#'
+#' @param x Object
+#'
+#' @noRd
+assert_xls_theme <- function(x) {
+  if (!all(vapply(x, FUN = inherits, FUN.VALUE = logical(1L), "Style"))) {
+    stop(substitute(x), " must be a list of elements of class Style", call. = FALSE)
+  }
+  necessary_elements <- c("title", "col_header", "character", "footnote1", "footnote2", "footnote3", "mergedcell")
+  missing_elements <- setdiff(necessary_elements, names(x))
+  if (length(missing_elements) > 0) {
+    stop(substitute(x), " must contain styles for elements ", paste(missing_elements, collapse=" "), call. = FALSE)
+  }
+}

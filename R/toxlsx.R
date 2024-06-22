@@ -15,6 +15,7 @@
 #'   If omitted, title takes the name of the dataframe in `object`
 #' @param columnstyle list of style for columns of each element of object
 #'   Only useful if you want to customise the style of each column `
+#' @param theme styling theme, a named list of `openxlsx` Styles
 #' @param footnote1 list of footnote1 for each element of object
 #'   If omitted, no footnote1
 #' @param footnote2 list of footnote2 for each element of object
@@ -44,6 +45,7 @@ toxlsx <- function(object,
                    tosheet = list(),
                    title = list(),
                    columnstyle = list("default" = NULL),
+                   theme = xls_theme_default(),
                    footnote1 = list(),
                    footnote2 = list(),
                    footnote3 = list(),
@@ -177,7 +179,7 @@ toxlsx <- function(object,
 
       # Fill ColumnList
       for (i in seq_along(ColumnList)) {
-        ColumnList[[i]] <- style[[ColumnList[[paste0("c", i)]]]]
+        ColumnList[[i]] <- theme[[ColumnList[[paste0("c", i)]]]]
       }
 
     # Else if argument columnstyle is filled in the function
@@ -190,7 +192,7 @@ toxlsx <- function(object,
 
       # Fill ColumnList
       for (i in seq_along(output[[df_name]][["column"]])) {
-        ColumnList[[i]] <- style[[output[[df_name]][["column"]][[paste0("c", i)]]]]
+        ColumnList[[i]] <- theme[[output[[df_name]][["column"]][[paste0("c", i)]]]]
       }
 
     }
@@ -242,6 +244,7 @@ toxlsx <- function(object,
         },
       StartCol = 1,
       FormatList = ColumnList,
+      Theme = theme,
       HeightTableTitle = 2,
       TableFootnote1 = output[[df_name]][["footnote1"]],
       TableFootnote2 = output[[df_name]][["footnote2"]],

@@ -2,6 +2,9 @@
 
 export(add_table)
 export(toxlsx)
+export(xls_theme)
+export(xls_theme_default)
+export(xls_theme_plain)
 import(utils)
 importFrom(cli,cli_alert_success)
 importFrom(magrittr,"%>%")

@@ -81,12 +81,11 @@ test_that("add_table function throws error when passing invalid data type for Ta
   TableTitle <- "Test Table"
   StartRow <- 1
   StartCol <- 1
-  FormatList <- list()
   TableFootnote1 <- 123
 
   expect_error(
     add_table(Table, WbTitle, SheetTitle, TableTitle,
-      StartRow, StartCol, FormatList,
+      StartRow, StartCol,
       TableFootnote1 = TableFootnote1
     )
   )
@@ -100,12 +99,11 @@ test_that("add_table function throws error when passing invalid data type for Ta
   TableTitle <- "Test Table"
   StartRow <- 1
   StartCol <- 1
-  FormatList <- list()
   TableFootnote2 <- 123
 
   expect_error(
     add_table(Table, WbTitle, SheetTitle, TableTitle,
-      StartRow, StartCol, FormatList,
+      StartRow, StartCol,
       TableFootnote2 = TableFootnote2
     )
   )
@@ -119,12 +117,10 @@ test_that("add_table function throws error when passing invalid data type for Ta
   TableTitle <- "Test Table"
   StartRow <- 1
   StartCol <- 1
-  FormatList <- list()
   TableFootnote3 <- 123
 
   expect_error(
     add_table(Table, WbTitle, SheetTitle, TableTitle, StartRow, StartCol,
-      FormatList,
       TableFootnote3 = TableFootnote3
     )
   )
@@ -136,10 +132,9 @@ test_that("add_table function creates the correct sheet name in the workbook", {
   WbTitle <- wb
   SheetTitle <- "Sheet 1"
   TableTitle <- "Test Table"
-  FormatList <- list()
 
   add_table(Table = Table, WbTitle = WbTitle, SheetTitle = SheetTitle, TableTitle = TableTitle,
-            FormatList = FormatList, StartRow = 1, StartCol = 1,
+            StartRow = 1, StartCol = 1,
             TableFootnote1 = "note1",TableFootnote2 = "note2",TableFootnote3 = "note3")
 
   openxlsx::saveWorkbook(
@@ -160,9 +155,8 @@ test_that("add_table function writes the same data frame in the workbook", {
   WbTitle <- wb
   SheetTitle <- "Sheet1"
   TableTitle <- "Test Table"
-  FormatList <- list()
 
-  add_table(Table, WbTitle, SheetTitle, TableTitle, FormatList,
+  add_table(Table, WbTitle, SheetTitle, TableTitle,
             StartRow=1, StartCol = 1,
             TableFootnote1 = "note1",TableFootnote2 = "note2",TableFootnote3 = "note3")
 
@@ -185,9 +179,8 @@ test_that("add_table function writes footnotes in correct locations", {
   WbTitle <- wb
   SheetTitle <- "Sheet1"
   TableTitle <- "Test Table"
-  FormatList <- list()
 
-  add_table(Table, WbTitle, SheetTitle, TableTitle, FormatList,
+  add_table(Table, WbTitle, SheetTitle, TableTitle,
             StartRow=1, StartCol = 1,
             TableFootnote1 = "note1",TableFootnote2 = "note2",TableFootnote3 = "note3")
 
