@@ -29,7 +29,7 @@ add_table <- function(
     TableTitle,
     StartRow = 1,
     StartCol = 1,
-    FormatList = list(),
+    FormatList = setNames(rep(list(Theme[["character"]]), length(colnames(Table))), colnames(Table)),
     Theme = xls_theme_default(),
     HeightTableTitle = 2,
     TableFootnote1 = "",
