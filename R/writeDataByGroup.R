@@ -24,17 +24,19 @@ writeDataByGroup <- function(
     groupname = FALSE,
     groupequal = " = ",
     startRow = 1,
+    startCol = 1,
     ...
 ) {
   table_groups <- split(x[, !names(x) %in% group], x[group], sep = groupsep, drop = TRUE)
 
   s <- startRow
-  openxlsx::writeData(wb, sheet, x[0, !names(x) %in% group], startRow = s, ...)
+  openxlsx::writeData(wb, sheet, x[0, !names(x) %in% group], startRow = s, startCol = startCol, ...)
   s <- s + 1
   for (g in names(table_groups)) {
     groupindic <- if (groupname) paste0(paste(group, collapse = groupsep), groupequal, g) else g
-    openxlsx::writeData(wb, sheet, groupindic, startRow = s, ...)
-    openxlsx::writeData(wb, sheet, table_groups[[g]], startRow = s+1, colNames = FALSE, ...)
+    openxlsx::writeData(wb, sheet, groupindic, startRow = s, startCol = startCol, ...)
+    openxlsx::mergeCells(wb, sheet, cols = startCol + 1:sum(!names(x) %in% group) -1, rows = s)
+    openxlsx::writeData(wb, sheet, table_groups[[g]], startRow = s+1, startCol = startCol, colNames = FALSE, ...)
     s <- s + 1 + nrow(table_groups[[g]])
   }
 
