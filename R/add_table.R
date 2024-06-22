@@ -191,7 +191,7 @@ add_table <- function(
       # loop on each modality of mycol
       for (i in (1:distinct_mergecol)) {
 
-        mergeCells(wb = WbTitle,
+        openxlsx::mergeCells(wb = WbTitle,
                    sheet = mysheet,
                    # here we add 1 because the table starts to be written from col 2 in workbook
                    cols = which(names(Table) %in% mycol)+1,
