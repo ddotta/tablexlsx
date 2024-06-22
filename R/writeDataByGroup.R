@@ -26,7 +26,7 @@ writeDataByGroup <- function(
     startRow = 1,
     ...
 ) {
-  table_groups <- split(x[, !names(x) %in% group], x[group], sep = groupsep)
+  table_groups <- split(x[, !names(x) %in% group], x[group], sep = groupsep, drop = TRUE)
 
   s <- startRow
   openxlsx::writeData(wb, sheet, x[0, !names(x) %in% group], startRow = s, ...)
