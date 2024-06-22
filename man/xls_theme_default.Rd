@@ -7,8 +7,8 @@
 xls_theme_default(
   title = openxlsx::createStyle(fontSize = 16, textDecoration = "bold"),
   footnote1 = openxlsx::createStyle(fontSize = 12),
-  footnote2 = openxlsx::createStyle(fontSize = 12, textDecoration = "bold"),
-  footnote3 = openxlsx::createStyle(fontSize = 12, textDecoration = "bold"),
+  footnote2 = openxlsx::createStyle(fontSize = 12),
+  footnote3 = openxlsx::createStyle(fontSize = 12),
   col_header = openxlsx::createStyle(fontSize = 12, textDecoration = "bold", border =
     c("top", "bottom", "left", "right"), borderStyle = "thin", wrapText = TRUE, halign =
     "center"),
