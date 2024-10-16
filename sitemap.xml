@@ -1,42 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>/404.html</loc>
-  </url>
-  <url>
-    <loc>/CONTRIBUTING.html</loc>
-  </url>
-  <url>
-    <loc>/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>/articles/aa-examples.html</loc>
-  </url>
-  <url>
-    <loc>/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>/authors.html</loc>
-  </url>
-  <url>
-    <loc>/index.html</loc>
-  </url>
-  <url>
-    <loc>/news/index.html</loc>
-  </url>
-  <url>
-    <loc>/reference/add_table.html</loc>
-  </url>
-  <url>
-    <loc>/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>/reference/style.html</loc>
-  </url>
-  <url>
-    <loc>/reference/tablexlsx-package.html</loc>
-  </url>
-  <url>
-    <loc>/reference/toxlsx.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>/404.html</loc></url>
+<url><loc>/CONTRIBUTING.html</loc></url>
+<url><loc>/LICENSE-text.html</loc></url>
+<url><loc>/articles/aa-examples.html</loc></url>
+<url><loc>/articles/index.html</loc></url>
+<url><loc>/authors.html</loc></url>
+<url><loc>/index.html</loc></url>
+<url><loc>/news/index.html</loc></url>
+<url><loc>/reference/add_table.html</loc></url>
+<url><loc>/reference/index.html</loc></url>
+<url><loc>/reference/style.html</loc></url>
+<url><loc>/reference/tablexlsx-package.html</loc></url>
+<url><loc>/reference/toxlsx.html</loc></url>
+<url><loc>/reference/xls_theme.html</loc></url>
+<url><loc>/reference/xls_theme_default.html</loc></url>
+<url><loc>/reference/xls_theme_plain.html</loc></url>
 </urlset>
+
