@@ -11,7 +11,9 @@ add_table(
   TableTitle,
   StartRow = 1,
   StartCol = 1,
-  FormatList = list(),
+  FormatList = setNames(rep(list(Theme[["character"]]), length(colnames(Table))),
+    colnames(Table)),
+  Theme = xls_theme_default(),
   HeightTableTitle = 2,
   TableFootnote1 = "",
   TableFootnote2 = "",
@@ -36,6 +38,8 @@ add_table(
 \item{StartCol}{: export start column number in the sheet (by default 1)}
 
 \item{FormatList}{: list that indicates the format of each column of the data frame}
+
+\item{Theme}{: styling theme, a named list of `openxlsx` Styles}
 
 \item{HeightTableTitle}{: multiplier (if needed) for the height of the title line (by default 2)}
 

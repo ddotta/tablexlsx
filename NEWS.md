@@ -1,8 +1,9 @@
 # tablexlsx (WIP)
 
-* (fix) `toxlsx()` no longer fails when the `object` argument is the result of a computation (#18)
+* new method for styling tables: `toxlsx()` now accepts a `theme` argument, which has to be supplied as an object returned by `xls_theme()` functions. Some themes are provided by default: `xls_theme_default()` and `xls_theme_plain()`. The default theme has been slightly changed. (#40)
 * provide meaningful error message if merge cols don't exist (#20)
 * `path` can now be supplied as a file name with full path instead of a directory name (#29)
+* (fix) `toxlsx()` no longer fails when the `object` argument is the result of a computation (#18)
 
 # tablexlsx 1.0.0
 

@@ -9,6 +9,7 @@
 #' @param StartRow : export start line number in the sheet (by default 1)
 #' @param StartCol : export start column number in the sheet (by default 1)
 #' @param FormatList : list that indicates the format of each column of the data frame
+#' @param Theme : styling theme, a named list of `openxlsx` Styles
 #' @param HeightTableTitle : multiplier (if needed) for the height of the title line (by default 2)
 #' @param TableFootnote1 : string for TableFootnote1
 #' @param TableFootnote2 : string for TableFootnote2
@@ -28,7 +29,8 @@ add_table <- function(
     TableTitle,
     StartRow = 1,
     StartCol = 1,
-    FormatList = list(),
+    FormatList = setNames(rep(list(Theme[["character"]]), length(colnames(Table))), colnames(Table)),
+    Theme = xls_theme_default(),
     HeightTableTitle = 2,
     TableFootnote1 = "",
     TableFootnote2 = "",
@@ -68,9 +70,7 @@ add_table <- function(
 
 
   # Adjusting the size of columns and rows
-  openxlsx::setColWidths(WbTitle, sheet = mysheet, cols = StartCol + 1, widths = 45)
-  openxlsx::setColWidths(WbTitle, sheet = mysheet, cols = StartCol + 2, widths = 30)
-  openxlsx::setColWidths(WbTitle, sheet = mysheet, cols = c(StartCol + 3:38), widths = 20)
+  openxlsx::setColWidths(WbTitle, sheet = mysheet, cols = StartCol + 1:(ncol(Table)-length(ByGroup)), widths = 20)
 
   # Size of column headers
   openxlsx::setRowHeights(WbTitle, sheet = mysheet, rows = StartRow + 2, heights = 20 * HeightTableTitle)
@@ -92,7 +92,7 @@ add_table <- function(
     sheet = mysheet,
     cols = StartCol,
     rows = StartRow,
-    style = style$title
+    style = Theme$title
   )
 
   if (isTRUE(asTable)) {
@@ -110,7 +110,7 @@ add_table <- function(
       startRow = StartRow + 2,
       startCol = StartCol + 1,
       rowNames = FALSE,
-      headerStyle = style$col_header
+      headerStyle = Theme$col_header
     )
     lastrowtable <- StartRow + 2 + nrow(Table)
   } else {
@@ -121,12 +121,15 @@ add_table <- function(
       startRow = StartRow + 2,
       startCol = StartCol + 1,
       rowNames = FALSE,
-      headerStyle = style$col_header,
+      headerStyle = Theme$col_header,
       group = ByGroup,
       groupname = GroupName,
     )
     lastrowtable <- StartRow + 2 + nrow(Table) + nrow(unique(Table[ByGroup]))
   }
+
+  # Remove grouping columns from the list of formats
+  FormatList[colnames(Table) %in% ByGroup] <- NULL
 
   # Format of the table's columns
   sapply(seq_len(length(FormatList)), function(i) {
@@ -149,7 +152,7 @@ add_table <- function(
     WbTitle,
     sheet = mysheet,
     cols = StartCol, rows = lastrowtable + 2,
-    style = style$footnote1
+    style = Theme$footnote1
   )
 
   openxlsx::writeData(
@@ -161,7 +164,7 @@ add_table <- function(
     WbTitle,
     sheet = mysheet,
     cols = StartCol, rows = lastrowtable + 3,
-    style = style$footnote2
+    style = Theme$footnote2
   )
 
   openxlsx::writeData(
@@ -173,7 +176,7 @@ add_table <- function(
     WbTitle,
     sheet = mysheet,
     cols = StartCol, rows = lastrowtable + 4,
-    style = style$footnote3
+    style = Theme$footnote3
   )
 
   # If mergecol is filled in
@@ -188,7 +191,7 @@ add_table <- function(
       # loop on each modality of mycol
       for (i in (1:distinct_mergecol)) {
 
-        mergeCells(wb = WbTitle,
+        openxlsx::mergeCells(wb = WbTitle,
                    sheet = mysheet,
                    # here we add 1 because the table starts to be written from col 2 in workbook
                    cols = which(names(Table) %in% mycol)+1,
@@ -206,7 +209,7 @@ add_table <- function(
         rows = convert_range_string(
           get_indices_from_vector(Table[[mycol]])
         )  + StartRow + 2,
-        style = style$mergedcell
+        style = Theme$mergedcell
       )
 
     }
