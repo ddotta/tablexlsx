@@ -35,6 +35,14 @@
     </div>
 
     <div class="section level2">
+<h2 class="pkg-version" data-toc-text="1.1.0" id="tablexlsx-110">tablexlsx 1.1.0<a class="anchor" aria-label="anchor" href="#tablexlsx-110"></a></h2>
+<ul><li>new method for styling tables: <code><a href="../reference/toxlsx.html">toxlsx()</a></code> now accepts a <code>theme</code> argument, which has to be supplied as an object returned by <code><a href="../reference/xls_theme.html">xls_theme()</a></code> functions. Some themes are provided by default: <code><a href="../reference/xls_theme_default.html">xls_theme_default()</a></code> and <code><a href="../reference/xls_theme_plain.html">xls_theme_plain()</a></code>. The default theme has been slightly changed. <a href="https://github.com/ddotta/tablexlsx/issues/40" class="external-link">#40</a></li>
+<li>provide meaningful error message if merge cols don’t exist <a href="https://github.com/ddotta/tablexlsx/issues/20" class="external-link">#20</a></li>
+<li>
+<code>path</code> can now be supplied as a file name with full path instead of a directory name <a href="https://github.com/ddotta/tablexlsx/issues/29" class="external-link">#29</a></li>
+<li>(fix) <code><a href="../reference/toxlsx.html">toxlsx()</a></code> no longer fails when the <code>object</code> argument is the result of a computation <a href="https://github.com/ddotta/tablexlsx/issues/18" class="external-link">#18</a></li>
+</ul></div>
+    <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.0.0" id="tablexlsx-100">tablexlsx 1.0.0<a class="anchor" aria-label="anchor" href="#tablexlsx-100"></a></h2><p class="text-muted">CRAN release: 2024-06-06</p>
 <p>This release includes :</p>
 <ul><li>
