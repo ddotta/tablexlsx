@@ -18,7 +18,7 @@ LazyData: true
 URL: https://ddotta.github.io/tablexlsx/,
     https://github.com/ddotta/tablexlsx
 BugReports: https://github.com/ddotta/tablexlsx/issues
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.3
 Depends: 
     R (>= 2.10)
 Suggests: 

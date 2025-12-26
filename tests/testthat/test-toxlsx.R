@@ -101,6 +101,13 @@ test_that("toxlsx works correctly with a lot of specifications", {
   expect_equal(ncol(cars), ncol(new_table_cars))
 })
 
+# Table of Contents tests -----
+test_that("toxlsx creates a Table of Contents sheet when requested", {
+  iris %>% toxlsx(path = tempdir(), table_of_contents = TRUE)
+  sheets <- openxlsx::getSheetNames(file.path(tempdir(), "Export.xlsx"))
+  expect_true("Table of Contents" %in% sheets)
+})
+
 # TEST COMMENTED BECAUSE CANNOT BE TESTED IN GHA
 # test_that("mafonction opens workbook when automaticopen is TRUE", {
 #

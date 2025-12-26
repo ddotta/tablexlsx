@@ -13,6 +13,8 @@
 #'   If omitted, sheets are named by default "Sheet 1", "Sheet 2"...
 #' @param title list of title for each element of object
 #'   If omitted, title takes the name of the dataframe in `object`
+#' @param table_of_contents boolean indicating if a table of contents sheet
+#'   should be included in the final workbook
 #' @param columnstyle list of style for columns of each element of object
 #'   Only useful if you want to customise the style of each column `
 #' @param theme styling theme, a named list of `openxlsx` Styles
@@ -44,6 +46,7 @@ toxlsx <- function(object,
                    path,
                    tosheet = list(),
                    title = list(),
+                   table_of_contents = FALSE,
                    columnstyle = list("default" = NULL),
                    theme = xls_theme_default(),
                    footnote1 = list(),
@@ -56,6 +59,7 @@ toxlsx <- function(object,
                    asTable = FALSE,
                    automaticopen = FALSE) {
 
+  # Change to &&?
   if (isTRUE(asTable) & !is.null(mergecol)) {
     stop("mergecol cannot be defined when asTable is TRUE")
   }
@@ -76,6 +80,10 @@ toxlsx <- function(object,
     object_name <- get("lhs", sys.frames()[[max(which(is_magrittr_env))]])
   } else {
     object_name <- substitute(object)
+  }
+
+  if (!is.logical(table_of_contents) || length(table_of_contents) != 1L || is.na(table_of_contents)) {
+    stop("table_of_contents must be a single logical value.")
   }
 
   if (is_list) {
@@ -163,6 +171,10 @@ toxlsx <- function(object,
   wb <- openxlsx::createWorkbook()
 
   ### Fill workbook
+
+  if (isTRUE(table_of_contents)) {
+    insert_toc(wb = wb, sheets = Sheetslist)
+  }
 
   # loop for each df in output_name
   for (i in seq_along(output_name)) {
