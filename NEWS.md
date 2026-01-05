@@ -1,3 +1,10 @@
+# tablexlsx 1.1.1
+
+This release includes :
+
+
+* Added functionallity for `table_of_contents` argument to be passed onto `toxlsx` #33
+
 # tablexlsx 1.1.0
 
 * new method for styling tables: `toxlsx()` now accepts a `theme` argument, which has to be supplied as an object returned by `xls_theme()` functions. Some themes are provided by default: `xls_theme_default()` and `xls_theme_plain()`. The default theme has been slightly changed. #40

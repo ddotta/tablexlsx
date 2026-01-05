@@ -9,6 +9,7 @@ toxlsx(
   path,
   tosheet = list(),
   title = list(),
+  table_of_contents = FALSE,
   columnstyle = list(default = NULL),
   theme = xls_theme_default(),
   footnote1 = list(),
@@ -32,6 +33,9 @@ If omitted, sheets are named by default "Sheet 1", "Sheet 2"...}
 
 \item{title}{list of title for each element of object
 If omitted, title takes the name of the dataframe in `object`}
+
+\item{table_of_contents}{boolean indicating if a table of contents sheet
+should be included in the final workbook}
 
 \item{columnstyle}{list of style for columns of each element of object
 Only useful if you want to customise the style of each column `}
