@@ -1,0 +1,4 @@
+# License
+
+    YEAR: 2014-2023
+    COPYRIGHT HOLDER: openxlsx authors
